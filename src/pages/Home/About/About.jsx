@@ -1,0 +1,30 @@
+import React from "react";
+import Container from "../../../components/shared/Container";
+import { Background, Parallax } from "react-parallax";
+import aboutBg from "../../../assets/about.png";
+
+const About = () => {
+  return (
+    <div className="min-h-[300px] h-[80vh] w-full bg-about bg-fixed flex  justify-center items-center">
+      <div className="flex flex-col  items-center justify-center text-white w-[70%] gap-4">
+        <h3 className=" font-clashSemibold">
+          Your Journey in Style Begins Here
+        </h3>
+        <h1 className="text-5xl text-center font-clashBold">
+          Discover the World <br />
+          of Exceptional Footwear
+        </h1>
+        <p className="text-center w-[80%] text-gray-200">
+          Embark on a stylish journey with our curated footwear collection. From
+          timeless classics to cutting-edge designs, we celebrate diversity in
+          every step. Explore a world where craftsmanship meets innovation,
+          where every pair tells a unique story. Elevate your style, elevate
+          your stride—discover exceptional footwear that resonates with your
+          individuality.
+        </p>
+      </div>
+    </div>
+  );
+};
+
+export default About;
