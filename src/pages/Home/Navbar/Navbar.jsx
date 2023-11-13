@@ -24,14 +24,14 @@ const Navbar = () => {
 
   return (
     <Container>
-      <div className="flex justify-between  py-4">
+      <div className="flex justify-between  py-4 items-center">
         {/* Logo */}
         <div className="w-[20%]">
           <p className="font-clashBold text-lg sm:text-xl">ShoeSphere</p>
         </div>
 
         {/* NavItems */}
-        <div className="flex justify-center gap-4 w-[40%] font-clashRegular items-center">
+        <div className="hidden lg:flex justify-center gap-4 w-[40%] font-clashRegular items-center ">
           {navItems.map(({ name, slug }) => (
             <div key={name}>
               <NavLink
@@ -48,8 +48,8 @@ const Navbar = () => {
 
         {/* Search and Cart */}
 
-        <div className="flex justify-end items-center gap-4 w-[40%]">
-          <Search />
+        <div className="flex justify-end items-center gap-4  md:w-[80%] lg:w-[40%]">
+          <Search className="hidden md:flex" />
           <AiOutlineShoppingCart className="text-2xl" />
           <LogoutBtn />
         </div>
