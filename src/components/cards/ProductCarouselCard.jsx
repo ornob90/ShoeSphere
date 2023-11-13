@@ -9,7 +9,7 @@ const ProductCarouselCard = () => {
 
   return (
     <div
-      className="h-[350px] mb-48 group relative"
+      className="h-[350px] mb-48 group relative w-full"
       style={{ backgroundColor: "rgb(234 234 234)" }}
       onMouseEnter={() => setHover(true)}
       onMouseLeave={() => setHover(false)}
