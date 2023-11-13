@@ -1,16 +1,17 @@
 import React from "react";
-import ProductCarouselCard from "../cards/ProductCarouselCard";
-import Container from "./Container";
+import ProductCarouselCard from "../../cards/ProductCarouselCard";
+import Container from "../Container";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
+// import "./style.css";
 
 const ProductCarousel = () => {
   return (
     <Container className="">
       <Swiper
-        slidesPerView={"auto"}
+        // slidesPerView={"auto"}
         spaceBetween={30}
         pagination={{
           clickable: true,
@@ -18,7 +19,18 @@ const ProductCarousel = () => {
         modules={[Pagination]}
         className="mySwiper "
         style={{
-          height: "400px", // Set the desired height here
+          height: "400px",
+        }}
+        breakpoints={{
+          640: {
+            width: 640,
+            slidesPerView: 1,
+          },
+
+          768: {
+            width: 768,
+            slidesPerView: 2,
+          },
         }}
       >
         {/* <SwiperSlide className="h-[100px]">Slide 1</SwiperSlide> */}
