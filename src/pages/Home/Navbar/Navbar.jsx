@@ -27,15 +27,15 @@ const Navbar = () => {
   ];
 
   return (
-    <Container>
-      <nav className="flex justify-between  py-4 items-center overflow-hidden max-h-screen">
+    <div className=" shadow-sm">
+      <nav className="w-[90%] mx-auto flex justify-between  py-4 items-center overflow-hidden max-h-screen">
         {/* Logo */}
         <div className="w-[20%]">
           <p className="font-clashBold text-lg sm:text-xl">ShoeSphere</p>
         </div>
 
         {/* NavItems */}
-        <ul className="hidden lg:flex justify-center gap-4 w-[40%] font-clashRegular items-center ">
+        <ul className="hidden lg:flex justify-center gap-4 w-[40%] font-clashRegular items-center pl-[5%]">
           {navItems.map(({ name, slug }) => (
             <li key={name}>
               <NavLink
@@ -55,7 +55,7 @@ const Navbar = () => {
         <div className="flex justify-end items-center gap-4  md:w-[80%] lg:w-[40%]">
           <Search
             className="hidden md:flex"
-            iconClass="text-xl right-[3%]"
+            iconClass="text-xl right-[3%] top-[25%]"
             inputClass="py-2"
           />
           <AiOutlineShoppingCart className="text-xl md:text-2xl" />
@@ -67,7 +67,7 @@ const Navbar = () => {
         </div>
         <DropDown menu={menu} setMenu={setMenu} navItems={navItems} />
       </nav>
-    </Container>
+    </div>
   );
 };
 
