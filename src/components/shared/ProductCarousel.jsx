@@ -16,7 +16,10 @@ const ProductCarousel = () => {
           clickable: true,
         }}
         modules={[Pagination]}
-        className="mySwiper"
+        className="mySwiper "
+        style={{
+          height: "400px", // Set the desired height here
+        }}
       >
         {/* <SwiperSlide className="h-[100px]">Slide 1</SwiperSlide> */}
 
