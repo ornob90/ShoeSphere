@@ -8,6 +8,29 @@
   .font-poppins {
     font-family: "Poppins", sans-serif;
   }
+
+  .nav-button {
+    position: relative;
+  }
+
+  .nav-button:after {
+    content: "";
+    position: absolute;
+    background-color: black;
+    height: 1px;
+    width: 0;
+    left: 0;
+    bottom: -1px;
+    transition: 0.3s;
+  }
+
+  .nav-button:hover {
+    color: black;
+  }
+
+  .nav-button:hover:after {
+    width: 100%;
+  }
 }
 
 @font-face {
