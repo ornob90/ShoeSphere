@@ -6,9 +6,9 @@ import ProductCarousel from "../../../components/shared/ProductCarousel";
 const Home = () => {
   return (
     <div>
-      {/* <Banner />
+      <Banner />
       <SectionHeader title="New Arrivals" />
-      <ProductCarousel /> */}
+      <ProductCarousel />
     </div>
   );
 };
