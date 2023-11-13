@@ -5,7 +5,7 @@ import Navbar from "../pages/Home/Navbar/Navbar";
 const Root = () => {
   return (
     <div>
-      <div className=" max-w-[1440px] mx-auto border-black border">
+      <div className=" max-w-[1440px] mx-auto ">
         <Navbar />
         <Outlet />
       </div>
