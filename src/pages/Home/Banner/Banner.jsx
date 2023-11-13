@@ -16,24 +16,26 @@ const Banner = () => {
             Explore our curated collection of the latest trends in footwear.
             Find the perfect pair that suits your style and comfort
           </p>
-          <Button className=" py-1 px-4 font-poppins">Find Your Style</Button>
+          <Button className="text-white py-1 px-4 font-poppins">
+            Find Your Style
+          </Button>
         </div>
       </div>
 
       {/* Banner Grid */}
       <div className="grid grid-cols-1 md:grid-cols-5 gap-2 h-[400px] mt-10 mb-10">
-        <div className=" bg-banner1 relative md:col-span-3">
+        <div className="banner bg-banner1 relative md:col-span-3 overflow-hidden hover:bg-[160%] duration-[.4s] ">
           <h2 className="absolute left-[10%] bottom-[20%] text-white font-clashSemibold text-2xl">
             Iconic Style, Exceptional Comfort.
           </h2>
         </div>
         <div className="grid grid-row-2 md:col-span-2 gap-2">
-          <div className="bg-banner2 relative">
+          <div className="bg-banner2 relative hover:bg-[160%] duration-[.4s] ">
             <h2 className="absolute left-[10%] bottom-[20%] text-white font-clashSemibold text-xl">
               Casual Comfort, Effortless Style.
             </h2>
           </div>
-          <div className="bg-banner3 relative">
+          <div className="bg-banner3 relative hover:bg-[160%] duration-[.4s] ">
             <h2 className="absolute left-[10%] bottom-[20%] text-white font-clashSemibold text-xl">
               Run Beyond Limits
             </h2>
