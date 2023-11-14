@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Container from "../../../components/shared/Container";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import Input from "../../../components/html/Input";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import LogoutBtn from "../../../components/shared/LogoutBtn";
@@ -10,6 +10,13 @@ import DropDown from "../../../components/shared/DropDown";
 
 const Navbar = () => {
   const [menu, setMenu] = useState(false);
+  const [transparent, setTransparent] = useState(false);
+
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    setTransparent(pathname.includes("/product/"));
+  }, [pathname]);
 
   const navItems = [
     {
@@ -18,7 +25,7 @@ const Navbar = () => {
     },
     {
       name: "Collection",
-      slug: "/collection",
+      slug: "/product/1",
     },
     {
       name: "Contact",
@@ -27,8 +34,16 @@ const Navbar = () => {
   ];
 
   return (
-    <div className="fixed top-0 left-0 z-10 w-full bg-black h-max">
-      <nav className="px-[5%] flex justify-between  py-4 items-center overflow-hidden border-b border-b-gray-500  shadow-gray-300 z-10 bg-white">
+    <div
+      className={`fixed top-0 left-0 z-10 w-full  ${
+        transparent ? " bg-transparent" : "bg-white"
+      } h-max `}
+    >
+      <nav
+        className={`px-[5%] flex justify-between  py-4 items-center overflow-hidden border-b ${
+          transparent ? "border-none" : "border-b-gray-500"
+        }   z-10 `}
+      >
         {/* Logo */}
         <div className="w-[20%]">
           <p className="text-lg font-clashBold sm:text-xl">ShoeSphere</p>
