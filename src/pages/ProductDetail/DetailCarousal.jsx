@@ -10,7 +10,7 @@ const DetailCarousal = ({ images }) => {
       showIndicators={false}
       stopOnHover={true}
       swipeable={true}
-      width={"80%"}
+      width={"90%"}
       infiniteLoop={true}
     >
       {images.map((image) => (
