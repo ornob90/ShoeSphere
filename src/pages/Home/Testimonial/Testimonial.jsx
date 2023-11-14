@@ -60,6 +60,7 @@ const Testimonial = () => {
         className="mySwiper"
         autoplay={{ delay: 2500, disableOnInteraction: false }}
         loop={true}
+        speed={2000}
       >
         {testimonialData.map((testimonial) => (
           <SwiperSlide key={testimonial.imageUrl}>

@@ -69,7 +69,7 @@ const Navbar = () => {
         className={`px-[5%] flex justify-between  py-4 items-center overflow-hidden border-b ${
           transparent && !bgWhite
             ? "border-none text-white"
-            : bgWhite
+            : bgWhite && transparent
             ? "bg-white text-black"
             : "border-b-gray-500 text-black"
         }   z-10 `}
