@@ -5,6 +5,7 @@ import ProductCarousel from "../../../components/shared/ProductCarousel/ProductC
 import BrandsSection from "../BrandsSection/BrandsSection";
 import About from "../About/About";
 import Subscribe from "../Subscribe/Subscribe";
+import Testimonial from "../Testimonial/Testimonial";
 
 const Home = () => {
   return (
@@ -15,6 +16,7 @@ const Home = () => {
       <ProductCarousel />
       <About />
       <Subscribe />
+      <Testimonial />
     </div>
   );
 };

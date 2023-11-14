@@ -5,7 +5,7 @@ import Button from "../../../components/html/Button";
 const Subscribe = () => {
   return (
     <div
-      className="bg-[#151515] min-h-[400px] lg:min-h-[500px] h-[60vh] mb-48 text-white font-poppins flex items-center bg-subscribe"
+      className="bg-[#151515] min-h-[400px] lg:min-h-[500px] h-[60vh]  text-white font-poppins flex items-center bg-subscribe"
       //   style={{ backgroundColor: "red" }}
     >
       <Container className="flex flex-col items-center justify-center gap-2 md:block">
