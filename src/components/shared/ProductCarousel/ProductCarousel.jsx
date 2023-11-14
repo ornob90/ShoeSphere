@@ -9,7 +9,7 @@ import { Pagination } from "swiper/modules";
 
 const ProductCarousel = () => {
   return (
-    <Container className="">
+    <Container className="mb-28">
       <Swiper
         // slidesPerView={"auto"}
         spaceBetween={30}

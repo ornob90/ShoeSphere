@@ -50,9 +50,12 @@ const Testimonial = () => {
     },
   ];
   return (
-    <div className="mb-48 bg-gray-200">
+    <div className="pb-0 bg-gray-200">
+      <p className="pt-16 text-xl text-center font-clashBold md:text-2xl lg:text-3xl">
+        Word's Of Satisfaction
+      </p>
       <Swiper
-        pagination={true}
+        // pagination={true}
         modules={[Autoplay, Navigation, Pagination, Scrollbar, EffectCube]}
         className="mySwiper"
         autoplay={{ delay: 2500, disableOnInteraction: false }}

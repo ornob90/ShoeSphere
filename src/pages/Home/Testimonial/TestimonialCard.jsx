@@ -3,7 +3,7 @@ import React from "react";
 
 const TestimonialCard = ({ testimonial }) => {
   return (
-    <div className="min-h-[500px] h-[60vh] w-[70%] mx-auto flex justify-center items-center pt-10 ">
+    <div className="min-h-[500px] h-[60vh] w-[70%] mx-auto flex flex-col md:flex-row justify-center items-center gap-6 md:gap-0 mt-10 md:mt-0">
       <div className="w-[80%] h-[280px]  ">
         <img
           src={testimonial.imageUrl}

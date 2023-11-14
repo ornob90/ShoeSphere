@@ -15,8 +15,8 @@ const Home = () => {
       <SectionHeader title="New Arrivals" />
       <ProductCarousel />
       <About />
-      <Subscribe />
       <Testimonial />
+      <Subscribe />
     </div>
   );
 };
