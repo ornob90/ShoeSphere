@@ -7,16 +7,36 @@ import LogoutBtn from "../../../components/shared/LogoutBtn";
 import Search from "../../../components/shared/Search";
 import { CgMenuRightAlt } from "react-icons/cg";
 import DropDown from "../../../components/shared/DropDown";
+import { useScroll, motion, useMotionValueEvent } from "framer-motion";
 
 const Navbar = () => {
   const [menu, setMenu] = useState(false);
   const [transparent, setTransparent] = useState(false);
+  const [bgWhite, setBgWhite] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const { scrollY } = useScroll();
 
   const { pathname } = useLocation();
 
   useEffect(() => {
     setTransparent(pathname.includes("/product/"));
   }, [pathname]);
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const prevValue = scrollY.getPrevious();
+    console.log(latest);
+    if (latest > 240) {
+      setBgWhite(true);
+    } else {
+      setBgWhite(false);
+    }
+
+    if (latest > prevValue) {
+      setHidden(true);
+    } else {
+      setHidden(false);
+    }
+  });
 
   const navItems = [
     {
@@ -34,15 +54,23 @@ const Navbar = () => {
   ];
 
   return (
-    <div
+    <motion.div
+      variants={{
+        visible: { y: 0 },
+        hidden: { y: "-100%" },
+      }}
+      animate={hidden ? "hidden" : "visible"}
+      transition={{ duration: 0.35, ease: "easeInOut" }}
       className={`fixed top-0 left-0 z-10 w-full  ${
         transparent ? " bg-transparent" : "bg-white"
       } h-max `}
     >
       <nav
         className={`px-[5%] flex justify-between  py-4 items-center overflow-hidden border-b ${
-          transparent
+          transparent && !bgWhite
             ? "border-none text-white"
+            : bgWhite
+            ? "bg-white text-black"
             : "border-b-gray-500 text-black"
         }   z-10 `}
       >
@@ -85,7 +113,7 @@ const Navbar = () => {
         </div>
         <DropDown menu={menu} setMenu={setMenu} navItems={navItems} />
       </nav>
-    </div>
+    </motion.div>
   );
 };
 
