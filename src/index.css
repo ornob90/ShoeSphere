@@ -73,6 +73,11 @@
       url("https://images.unsplash.com/flagged/photo-1556637640-2c80d3201be8?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
     background-size: cover;
   }
+  .bg-detail {
+    background: linear-gradient(to right, rgb(0 0 0 / 84%), rgb(16 7 7 / 35%)),
+      url("https://plus.unsplash.com/premium_photo-1661606021743-12feba886af0?q=80&w=1856&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+    background-size: cover;
+  }
 }
 
 @font-face {

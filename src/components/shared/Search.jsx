@@ -2,10 +2,15 @@ import React from "react";
 import Input from "../html/Input";
 import { AiOutlineSearch } from "react-icons/ai";
 
-const Search = ({ className = "", inputClass, iconClass }) => {
+const Search = ({ className = "", inputClass, iconClass, transparent }) => {
   return (
     <div className={`w-[60%] relative ${className} `}>
-      <Input placeholder="Search" className={`w-full  ${inputClass}`} />
+      <Input
+        placeholder="Search"
+        className={`w-full  ${inputClass} ${
+          transparent ? " bg-transparent" : ""
+        }`}
+      />
       <AiOutlineSearch className={`absolute top-[20%]  ${iconClass}`} />
     </div>
   );

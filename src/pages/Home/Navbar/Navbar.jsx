@@ -41,7 +41,9 @@ const Navbar = () => {
     >
       <nav
         className={`px-[5%] flex justify-between  py-4 items-center overflow-hidden border-b ${
-          transparent ? "border-none" : "border-b-gray-500"
+          transparent
+            ? "border-none text-white"
+            : "border-b-gray-500 text-black"
         }   z-10 `}
       >
         {/* Logo */}
@@ -70,13 +72,14 @@ const Navbar = () => {
         <div className="flex justify-end items-center gap-4  md:w-[80%] lg:w-[40%]">
           <Search
             className="hidden md:flex"
-            iconClass="text-xl right-[3%] top-[25%]"
+            iconClass={`text-xl right-[3%] top-[25%] `}
+            transparent={transparent}
             inputClass="py-2"
           />
           <AiOutlineShoppingCart className="text-xl md:text-2xl" />
           <LogoutBtn />
           <CgMenuRightAlt
-            className="text-xl md:hidden"
+            className="text-xl md:hidden "
             onClick={() => setMenu(!menu)}
           />
         </div>
