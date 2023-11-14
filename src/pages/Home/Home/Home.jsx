@@ -4,6 +4,7 @@ import SectionHeader from "../../../components/shared/SectionHeader";
 import ProductCarousel from "../../../components/shared/ProductCarousel/ProductCarousel";
 import BrandsSection from "../BrandsSection/BrandsSection";
 import About from "../About/About";
+import Subscribe from "../Subscribe/Subscribe";
 
 const Home = () => {
   return (
@@ -13,6 +14,7 @@ const Home = () => {
       <SectionHeader title="New Arrivals" />
       <ProductCarousel />
       <About />
+      <Subscribe />
     </div>
   );
 };

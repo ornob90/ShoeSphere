@@ -27,11 +27,11 @@ const Navbar = () => {
   ];
 
   return (
-    <div className=" fixed top-0 left-0 w-full h-max bg-black  z-10 ">
-      <nav className="px-[5%] flex justify-between  py-4 items-center overflow-hidden shadow-sm shadow-gray-300 z-10 bg-white">
+    <div className="fixed top-0 left-0 z-10 w-full bg-black h-max">
+      <nav className="px-[5%] flex justify-between  py-4 items-center overflow-hidden border-b border-b-gray-500  shadow-gray-300 z-10 bg-white">
         {/* Logo */}
         <div className="w-[20%]">
-          <p className="font-clashBold text-lg sm:text-xl">ShoeSphere</p>
+          <p className="text-lg font-clashBold sm:text-xl">ShoeSphere</p>
         </div>
 
         {/* NavItems */}
