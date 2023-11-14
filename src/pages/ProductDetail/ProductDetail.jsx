@@ -4,6 +4,8 @@ import Container from "../../components/shared/Container";
 import DetailCarousal from "./DetailCarousal";
 import { Rating } from "@mui/material";
 import Button from "../../components/html/Button";
+import SectionHeader from "../../components/shared/SectionHeader";
+import ProductCarousel from "../../components/shared/ProductCarousel/ProductCarousel";
 
 const ProductDetail = () => {
   const images = [
@@ -23,8 +25,8 @@ const ProductDetail = () => {
         </h3>
       </div>
 
-      <Container className="grid grid-cols-1 md:grid-cols-5 mt-10">
-        <div className="md:col-span-3 ">
+      <Container className="grid grid-cols-1 md:grid-cols-5 mt-10 gap-8 md:gap-0">
+        <div className="md:col-span-3 text-center">
           <DetailCarousal images={images} />
         </div>
         <div className="flex flex-col gap-2 md:col-span-2 ">
@@ -56,11 +58,11 @@ const ProductDetail = () => {
             ))}
           </div>
           <div className="flex items-center gap-4 mt-3">
-            <p className="w-[35px] h-[35px] rounded-full bg-gray-300 flex justify-center items-center text-xl">
+            <p className="w-[35px] h-[35px] rounded-full bg-gray-300 flex justify-center items-center text-xl cursor-pointer active:scale-95 duration-300">
               -
             </p>
             <p className=" font-semibold">5</p>
-            <p className="w-[35px] h-[35px] rounded-full bg-gray-300 flex justify-center items-center text-xl">
+            <p className="w-[35px] h-[35px] rounded-full bg-gray-300 flex justify-center items-center text-xl cursor-pointer active:scale-95 duration-300">
               +
             </p>
           </div>
@@ -72,6 +74,9 @@ const ProductDetail = () => {
           </div>
         </div>
       </Container>
+
+      <SectionHeader title="You may like" />
+      <ProductCarousel />
     </div>
   );
 };

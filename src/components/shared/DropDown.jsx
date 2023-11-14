@@ -9,7 +9,7 @@ const DropDown = ({ navItems, menu, setMenu }) => {
     <div
       className={`block md:hidden w-screen h-[300px] absolute bg-gray-100  ${
         menu ? "top-0" : "-top-[300px]"
-      } right-0 duration-[.4s]  pt-4 `}
+      } right-0 duration-[.4s]  pt-4 text-black`}
     >
       <div className="flex justify-between w-[90%] mx-auto  items-center">
         <Search

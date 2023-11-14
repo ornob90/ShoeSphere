@@ -5,7 +5,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 const DetailCarousal = ({ images }) => {
   return (
     <Carousel
-      className=""
+      className="flex flex-col justify-center items-center md:justify-normal md:items-start"
       autoPlay={true}
       showIndicators={false}
       stopOnHover={true}
@@ -14,7 +14,7 @@ const DetailCarousal = ({ images }) => {
       infiniteLoop={true}
     >
       {images.map((image) => (
-        <div key={image} className="">
+        <div key={image} className="text-center">
           <img src={image} alt="" className="object-cover" />
         </div>
       ))}
