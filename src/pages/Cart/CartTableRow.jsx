@@ -1,4 +1,5 @@
 import React from "react";
+import { MdClose } from "react-icons/md";
 import QuantityBtn from "../../components/shared/QuantityBtn";
 
 const CartTableRow = () => {
@@ -16,13 +17,20 @@ const CartTableRow = () => {
         <div className="flex flex-col justify-center w-[50%] gap-1">
           <p className=" font-poppins font-bold">Shoe Name</p>
           <p className="text-[12px] text-gray-400">Color: BLue / Size: 3</p>
-          <p className=" font-clashSemibold">$300</p>
+          <p className=" font-clashRegular text-sm">$300</p>
         </div>
       </td>
-      <td className="col-span-1 flex flex-col  justify-center">
+      <td className="col-span-1 flex flex-col  justify-center pb-[10%]">
         <QuantityBtn />
       </td>
-      <td className="col-span-1"></td>
+      <td className="col-span-1 flex flex-col justify-center">
+        <div className="flex justify-between">
+          <p className=" font-clashRegular text-sm">$300</p>
+          <div className="bg-black flex justify-center items-center p-1 rounded-full active:scale-95 divide-blue-[.4s]">
+            <MdClose className=" text-white rounded-full" />
+          </div>
+        </div>
+      </td>
     </tr>
   );
 };
