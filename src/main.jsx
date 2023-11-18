@@ -7,9 +7,12 @@ import { RouterProvider } from "react-router-dom";
 
 // const queryClient = new QueryClient();
 import router from "./routes/Routes";
+import DrawerProvider from "./provider/DrawerProvider";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <DrawerProvider>
+      <RouterProvider router={router} />
+    </DrawerProvider>
   </React.StrictMode>
 );

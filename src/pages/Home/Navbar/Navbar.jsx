@@ -10,7 +10,7 @@ import DropDown from "../../../components/shared/DropDown";
 import { useScroll, motion, useMotionValueEvent } from "framer-motion";
 import CartBtn from "./CartBtn";
 
-const Navbar = () => {
+const Navbar = ({ handleCartOpen }) => {
   const [menu, setMenu] = useState(false);
   const [transparent, setTransparent] = useState(false);
   const [bgWhite, setBgWhite] = useState(false);
@@ -105,8 +105,13 @@ const Navbar = () => {
             transparent={transparent}
             inputClass="py-2"
           />
-          {/* <AiOutlineShoppingCart className="text-xl md:text-2xl" /> */}
-          <CartBtn />
+          <div>
+            <AiOutlineShoppingCart
+              onClick={handleCartOpen}
+              className="text-xl md:text-2xl"
+            />
+          </div>
+
           <LogoutBtn />
           <CgMenuRightAlt
             className="text-xl md:hidden "

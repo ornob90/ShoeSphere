@@ -3,14 +3,21 @@ import { MdClose } from "react-icons/md";
 import CartDrawerCard from "./CartDrawerCard";
 import Button from "../../components/html/Button";
 
-const CartDrawer = () => {
+const CartDrawer = ({ cartOpen, handleCartOpen }) => {
   return (
-    <div className="max-h-screen min-h-[300px]  sm:w-[70%] md:w-[50%] lg:w-[30%] fixed right-0 top-0  bg-[#F0F0F4] h-screen p-2 z-20 flex flex-col justify-between">
+    <div
+      className={`max-h-screen min-h-[300px]  sm:w-[70%] md:w-[50%] lg:w-[30%] fixed  top-0  bg-[#F0F0F4] h-screen p-2  flex flex-col justify-between ${
+        cartOpen ? "right-0 z-20" : "right-[-200%] md:right-[-100%] z-0"
+      } duration-[.4s]`}
+    >
       {/* Top Side  */}
       <div className="bg-white h-[70%] p-4 rounded-lg shadow-sm overflow-y-auto no-scrollbar flex flex-col justify-between ">
         <div className="flex justify-between items-center mt-3">
           <p className=" font-clashSemibold text-2xl">Your Cart</p>
-          <MdClose className="text-2xl hover:rotate-90 duration-[.4s]" />
+          <MdClose
+            className="text-2xl hover:rotate-90 duration-[.4s]"
+            onClick={handleCartOpen}
+          />
         </div>
         <div className="h-[80%] overflow-y-auto no-scrollbar">
           <CartDrawerCard />
