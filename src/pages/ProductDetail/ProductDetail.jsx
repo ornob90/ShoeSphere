@@ -6,6 +6,7 @@ import { Rating } from "@mui/material";
 import Button from "../../components/html/Button";
 import SectionHeader from "../../components/shared/SectionHeader";
 import ProductCarousel from "../../components/shared/ProductCarousel/ProductCarousel";
+import QuantityBtn from "../../components/shared/QuantityBtn";
 
 const ProductDetail = () => {
   const images = [
@@ -57,15 +58,7 @@ const ProductDetail = () => {
               </div>
             ))}
           </div>
-          <div className="flex items-center gap-4 mt-3">
-            <p className="w-[35px] h-[35px] rounded-full bg-gray-300 flex justify-center items-center text-xl cursor-pointer active:scale-95 duration-300">
-              -
-            </p>
-            <p className=" font-semibold">5</p>
-            <p className="w-[35px] h-[35px] rounded-full bg-gray-300 flex justify-center items-center text-xl cursor-pointer active:scale-95 duration-300">
-              +
-            </p>
-          </div>
+          <QuantityBtn />
           <div className="flex flex-col gap-2 mt-10">
             <Button className="py-2 text-white">Add To Cart</Button>
             <Button className="py-2 text-black bg-white border border-black">
