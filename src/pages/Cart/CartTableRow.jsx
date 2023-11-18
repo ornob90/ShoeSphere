@@ -4,10 +4,10 @@ import QuantityBtn from "../../components/shared/QuantityBtn";
 
 const CartTableRow = () => {
   return (
-    <tr className="grid grid-cols-4 border-b pb-4 mt-2">
+    <tr className="grid grid-cols-4 border-b pb-4 mt-2 overflow-scroll min-w-[500px]">
       <td className="flex  col-span-2 justify-between">
         <input type="checkbox" name="" id="" />
-        <div className="w-[20%] ">
+        <div className="w-[15%] lg:w-[20%] ">
           <img
             src="https://i.ibb.co/9NrJwGT/photo-1525966222134-fcfa99b8ae77-q-80-w-1396-auto-format-fit-crop-ixlib-rb-4-0-removebg-preview.png"
             alt=""
@@ -15,8 +15,12 @@ const CartTableRow = () => {
           />
         </div>
         <div className="flex flex-col justify-center w-[50%] gap-1">
-          <p className=" font-poppins font-bold">Shoe Name</p>
-          <p className="text-[12px] text-gray-400">Color: BLue / Size: 3</p>
+          <p className=" font-poppins font-bold text-sm md:text-base">
+            Shoe Name
+          </p>
+          <p className="text-[10px] lg:text-[12px] text-gray-400">
+            Color: BLue / Size: 3
+          </p>
           <p className=" font-clashRegular text-sm">$300</p>
         </div>
       </td>
