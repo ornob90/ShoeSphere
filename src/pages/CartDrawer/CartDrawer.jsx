@@ -5,7 +5,7 @@ import Button from "../../components/html/Button";
 
 const CartDrawer = () => {
   return (
-    <div className="max-h-screen min-h-[300px] w-[30%] fixed right-0 top-0  bg-[#F0F0F4] h-screen p-2 z-20 flex flex-col justify-between">
+    <div className="max-h-screen min-h-[300px]  sm:w-[70%] md:w-[50%] lg:w-[30%] fixed right-0 top-0  bg-[#F0F0F4] h-screen p-2 z-20 flex flex-col justify-between">
       {/* Top Side  */}
       <div className="bg-white h-[70%] p-4 rounded-lg shadow-sm overflow-y-auto no-scrollbar flex flex-col justify-between ">
         <div className="flex justify-between items-center mt-3">

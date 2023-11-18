@@ -3,7 +3,7 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import PlusMinusBtn from "../../components/shared/PlusMinusBtn";
 const CartDrawerCard = () => {
   return (
-    <div className="mt-5 border  flex justify-between font-poppins overflow-y-auto">
+    <div className="mt-5 border  flex justify-between font-poppins overflow-y-auto rounded-md">
       <div className="w-[28%] bg-[#F0F0F4]">
         <img
           src="https://i.ibb.co/9NrJwGT/photo-1525966222134-fcfa99b8ae77-q-80-w-1396-auto-format-fit-crop-ixlib-rb-4-0-removebg-preview.png"
