@@ -8,6 +8,7 @@ import Search from "../../../components/shared/Search";
 import { CgMenuRightAlt } from "react-icons/cg";
 import DropDown from "../../../components/shared/DropDown";
 import { useScroll, motion, useMotionValueEvent } from "framer-motion";
+import CartBtn from "./CartBtn";
 
 const Navbar = () => {
   const [menu, setMenu] = useState(false);
@@ -104,7 +105,8 @@ const Navbar = () => {
             transparent={transparent}
             inputClass="py-2"
           />
-          <AiOutlineShoppingCart className="text-xl md:text-2xl" />
+          {/* <AiOutlineShoppingCart className="text-xl md:text-2xl" /> */}
+          <CartBtn />
           <LogoutBtn />
           <CgMenuRightAlt
             className="text-xl md:hidden "
