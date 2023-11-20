@@ -25,7 +25,7 @@ const Navbar = ({ handleCartOpen }) => {
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     const prevValue = scrollY.getPrevious();
-    console.log(latest);
+    // console.log("latest: ", latest - 50, "prev: ", prevValue);
     if (latest > 240) {
       setBgWhite(true);
     } else {
@@ -50,7 +50,7 @@ const Navbar = ({ handleCartOpen }) => {
     },
     {
       name: "Contact",
-      slug: "/contact",
+      slug: "/checkout",
     },
   ];
 
