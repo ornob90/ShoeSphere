@@ -6,8 +6,8 @@ const CheckoutDetails = () => {
   const [customerActive, setCustomerActive] = useState(true);
 
   return (
-    <div className="lg:col-span-3 relative">
-      <h1 className="text-lg mb-16">Checkout Details</h1>
+    <div className="lg:col-span-3 relative min-h-[700px]">
+      <h1 className=" mb-16">Checkout Details</h1>
       <div className="flex gap-5 mb-7">
         <div
           onClick={() => setCustomerActive(true)}
