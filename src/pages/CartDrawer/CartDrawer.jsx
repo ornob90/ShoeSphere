@@ -2,8 +2,11 @@ import React from "react";
 import { MdClose } from "react-icons/md";
 import CartDrawerCard from "./CartDrawerCard";
 import Button from "../../components/html/Button";
+import { useNavigate } from "react-router-dom";
 
 const CartDrawer = ({ cartOpen, handleCartOpen }) => {
+  const navigate = useNavigate();
+
   return (
     <div
       className={`max-h-screen min-h-[300px]  sm:w-[70%] md:w-[50%] lg:w-[30%] fixed  top-0  bg-[#F0F0F4] h-screen p-2  flex flex-col justify-between ${
@@ -33,7 +36,10 @@ const CartDrawer = ({ cartOpen, handleCartOpen }) => {
           <p className="text-lg">Sub Total</p>
           <p className="text-base">280 $</p>
         </div>
-        <Button className="w-full mt-4 text-white py-3 rounded-md font-semibold  font-clashLight">
+        <Button
+          onClick={() => navigate("/checkout")}
+          className="w-full mt-4 text-white py-3 rounded-md font-semibold  font-clashLight"
+        >
           Continue To Checkout
         </Button>
         <p className="text-[12px] text-black mt-2 w-full text-center font-poppins ">

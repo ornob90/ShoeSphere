@@ -3,12 +3,12 @@ import { FaHeart } from "react-icons/fa";
 
 const FavoriteCard = () => {
   return (
-    <div className="h-[300px] border rounded-lg shadow-sm">
+    <div className="h-[300px] md:h-[300px] border rounded-lg shadow-sm">
       <div className="h-4/5 bg-gray-200 ">
         <img
           src="https://i.ibb.co/9NrJwGT/photo-1525966222134-fcfa99b8ae77-q-80-w-1396-auto-format-fit-crop-ixlib-rb-4-0-removebg-preview.png"
           alt=""
-          className="w-[80%] mx-auto h-full object-cover rounded-lg"
+          className="w-[70%] md:w-[80%] mx-auto h-full object-cover rounded-lg"
         />
       </div>
       <div className="h-1/5 px-4 pt-2">
@@ -19,7 +19,7 @@ const FavoriteCard = () => {
           </div>
           <div className="flex flex-col justify-center items-end gap-1">
             <FaHeart />
-            <p>$66</p>
+            <p className=" font-medium">$66</p>
           </div>
         </div>
       </div>

@@ -8,7 +8,7 @@ const CheckoutDetails = () => {
   return (
     <div className="lg:col-span-3 relative min-h-[700px]">
       <h1 className=" mb-16 border-b-2 border-[#EBEBEB] font-medium w-max">
-        Checkout Details
+        Your Details
       </h1>
       <div className="flex gap-5 mb-7">
         <div
@@ -20,7 +20,7 @@ const CheckoutDetails = () => {
               customerActive ? "bg-black" : "border border-black"
             }`}
           ></p>
-          <p className=" font-semibold">Customer</p>
+          <p className=" font-semibold">Personal</p>
         </div>
         <div
           onClick={() => setCustomerActive(false)}
