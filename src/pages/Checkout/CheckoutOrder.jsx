@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "../../components/html/Button";
 
 const CheckoutOrder = () => {
   const dummyData = [
@@ -33,7 +34,9 @@ const CheckoutOrder = () => {
 
   return (
     <div className="w-[90%] mx-auto lg:col-span-2">
-      <h1 className=" mb-16">Your Order</h1>
+      <h1 className=" mb-16 border-b-2 border-[#EBEBEB] w-max font-medium">
+        Your Order
+      </h1>
       <table className="w-full">
         <thead className="w-full ">
           <tr className="grid grid-cols-5 text-left border-b-2 border-[#050505] pb-1">
@@ -63,6 +66,9 @@ const CheckoutOrder = () => {
           ))}
         </tbody>
       </table>
+      <Button className="text-white w-full mt-4 py-2 hover:bg-white hover:border-black hover:text-black border border-white">
+        Place Order
+      </Button>
     </div>
   );
 };

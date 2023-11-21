@@ -7,7 +7,9 @@ const CheckoutDetails = () => {
 
   return (
     <div className="lg:col-span-3 relative min-h-[700px]">
-      <h1 className=" mb-16">Checkout Details</h1>
+      <h1 className=" mb-16 border-b-2 border-[#EBEBEB] font-medium w-max">
+        Checkout Details
+      </h1>
       <div className="flex gap-5 mb-7">
         <div
           onClick={() => setCustomerActive(true)}

@@ -1,8 +1,11 @@
 import React from "react";
 
-const Button = ({ children, className }) => {
+const Button = ({ children, className, onClick }) => {
   return (
-    <button className={`active:scale-95 duration-300 bg-black   ${className}`}>
+    <button
+      onClick={onClick}
+      className={`active:scale-95 duration-300 bg-black   ${className}`}
+    >
       {children}
     </button>
   );
