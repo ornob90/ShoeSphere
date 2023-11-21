@@ -2,11 +2,13 @@ import React from "react";
 import Select from "../../components/html/Select";
 import customerForm from "../../utils/checkoutData";
 
-const CheckoutCustomerForm = () => {
-  const options = ["Bangladesh", "India", "China", "Nepal"];
-
+const CheckoutCustomerForm = ({ customerActive }) => {
   return (
-    <form className="flex flex-col gap-2">
+    <form
+      className={`flex flex-col gap-2 absolute ${
+        customerActive ? "w-full left-0" : "top-[30%] -left-[100%]"
+      } duration-[.5s]`}
+    >
       {customerForm.map(({ name, type, placeHolder, options }) => (
         <div key={name}>
           {type === "select" ? (

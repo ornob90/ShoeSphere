@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import CheckoutCustomerForm from "./CheckoutCustomerForm";
+import CheckoutPaymentForm from "./CheckoutPaymentForm";
 
 const CheckoutDetails = () => {
   const [customerActive, setCustomerActive] = useState(true);
 
   return (
-    <div className="lg:col-span-3">
+    <div className="lg:col-span-3 relative">
       <h1 className="text-lg mb-16">Checkout Details</h1>
       <div className="flex gap-5 mb-7">
         <div
@@ -31,7 +32,9 @@ const CheckoutDetails = () => {
           <p className=" font-semibold">Payment</p>
         </div>
       </div>
-      <CheckoutCustomerForm />
+
+      <CheckoutCustomerForm customerActive={customerActive} />
+      <CheckoutPaymentForm customerActive={customerActive} />
     </div>
   );
 };
