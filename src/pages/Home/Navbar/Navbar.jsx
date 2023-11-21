@@ -49,12 +49,12 @@ const Navbar = ({ handleCartOpen }) => {
       slug: "/cart",
     },
     {
-      name: "Contact",
-      slug: "/checkout",
-    },
-    {
       name: "Favorites",
       slug: "/favorites",
+    },
+    {
+      name: "Contact",
+      slug: "/checkout",
     },
   ];
 
