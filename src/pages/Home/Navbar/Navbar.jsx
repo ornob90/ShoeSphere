@@ -46,7 +46,7 @@ const Navbar = ({ handleCartOpen }) => {
     },
     {
       name: "Collection",
-      slug: "/cart",
+      slug: "/collection",
     },
     {
       name: "Favorites",
@@ -54,7 +54,7 @@ const Navbar = ({ handleCartOpen }) => {
     },
     {
       name: "Contact",
-      slug: "/checkout",
+      slug: "/login",
     },
   ];
 
@@ -66,9 +66,9 @@ const Navbar = ({ handleCartOpen }) => {
       }}
       animate={hidden ? "hidden" : "visible"}
       transition={{ duration: 0.35, ease: "easeInOut" }}
-      className={`fixed top-0 left-0 z-10 w-full  ${
-        transparent ? " bg-transparent" : "bg-white"
-      } h-max `}
+      className={`fixed top-0 left-0 z-10 w-full ${
+        pathname === "/login" || pathname === "/signup" ? "hidden" : ""
+      } ${transparent ? " bg-transparent" : "bg-white"} h-max `}
     >
       <nav
         className={`px-[5%] flex justify-between  py-4 items-center overflow-hidden border-b ${

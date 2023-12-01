@@ -8,7 +8,7 @@ const CheckoutOrder = () => {
       total: 1500,
     },
     {
-      product: "Meen Medium-App-1m app visits/month",
+      product: "Meen Medium-App-1m app visits/",
       total: 1000,
     },
   ];
@@ -66,7 +66,7 @@ const CheckoutOrder = () => {
           ))}
         </tbody>
       </table>
-      <Button className="text-white w-full mt-4 py-2 hover:bg-white hover:border-black hover:text-black border border-white">
+      <Button className="w-full py-2 mt-4 text-white border border-white hover:bg-white hover:border-black hover:text-black">
         Place Order
       </Button>
     </div>
