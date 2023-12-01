@@ -5,6 +5,10 @@ const MultiSelect = ({ options }) => {
   const [dropdownOpen, setDrownDownOpen] = useState(true);
   const [chosenOptions, setChosenOptions] = useState({});
 
+  const atleastOneSelect = Object.keys(chosenOptions)?.find(
+    (key) => chosenOptions[key]
+  );
+
   const handleChosenOptions = (option) => {
     setChosenOptions((prev) => ({ ...prev, [option]: !prev[option] }));
     // setChosenOptions((prev) => ({ ...prev, [option]: true }));
@@ -17,7 +21,7 @@ const MultiSelect = ({ options }) => {
         onClick={() => setDrownDownOpen(!dropdownOpen)}
       >
         <p>
-          {chosenOptions ? (
+          {atleastOneSelect ? (
             <>
               {Object.keys(chosenOptions)?.map(
                 (key) => chosenOptions[key] && key + " | "
@@ -37,15 +41,13 @@ const MultiSelect = ({ options }) => {
       <ul
         className={`w-full   ${
           dropdownOpen ? "max-h-[150px] h-auto" : "max-h-0 h-0"
-        } duration-[.4s]  overflow-y-auto`}
+        } duration-[.4s]  overflow-y-auto `}
       >
         {options.map((option) => (
           <li
             key={option}
             className={`${
-              dropdownOpen
-                ? "border-y pl-1  py-2 cursor-pointer mt-2"
-                : "hidden"
+              dropdownOpen ? "border pl-1  py-2 cursor-pointer mt-2" : "hidden"
             } ${chosenOptions[option] ? "bg-gray-200" : ""}`}
             onClick={() => handleChosenOptions(option)}
           >

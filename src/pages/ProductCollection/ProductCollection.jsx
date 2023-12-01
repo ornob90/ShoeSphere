@@ -34,7 +34,9 @@ const ProductCollection = () => {
           </li>
         ))}
       </ul>
-      <FilterDrawer />
+      <div className="mt-5">
+        <FilterDrawer />
+      </div>
     </Container>
   );
 };
