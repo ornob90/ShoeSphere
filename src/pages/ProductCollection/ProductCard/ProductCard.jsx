@@ -14,14 +14,14 @@ const ProductCard = () => {
         <FaRegHeart className="absolute top-[5%] right-[5%] text-lg" />
       </div>
       <div className="flex flex-col gap-1 mt-3 text-sm font-medium">
-        <h1>FUSION BACK T-SHIRT</h1>
-        <div className="flex items-center justify-between w-[90%]">
+        <h1 className="font-semibold">FUSION BACK T-SHIRT</h1>
+        <div className="flex items-center justify-between w-[95%]">
           <p>$50.00</p>
           <p className="w-[15px] h-[15px] bg-black rounded-full"></p>
         </div>
-        <div className="flex justify-between">
-          <p>Add to cart</p>
-          <p className="text-2xl text-gray-400">+</p>
+        <div className="flex justify-between w-[96%]">
+          <p className="text-[12px]">Add to cart</p>
+          <p className="text-2xl text-gray-400 cursor-pointer">+</p>
         </div>
       </div>
     </div>
