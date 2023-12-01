@@ -1,6 +1,7 @@
 import React from "react";
 import Container from "../../components/shared/Container";
 import ProductCollectionCarousal from "./ProductCollectionCarousal/ProductCollectionCarousal";
+import FilterDrawer from "./FilterDrawer/FilterDrawer";
 
 const ProductCollection = () => {
   const shoeBrands = [
@@ -33,6 +34,7 @@ const ProductCollection = () => {
           </li>
         ))}
       </ul>
+      <FilterDrawer />
     </Container>
   );
 };
