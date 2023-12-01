@@ -80,7 +80,7 @@ const Navbar = ({ handleCartOpen }) => {
         }   z-10 `}
       >
         {/* Logo */}
-        <div className="w-[20%]">
+        <div className="w-max">
           <p className="text-lg font-clashBold sm:text-xl">ShoeSphere</p>
         </div>
 
@@ -102,7 +102,7 @@ const Navbar = ({ handleCartOpen }) => {
 
         {/* Search and Cart */}
 
-        <div className="flex justify-end items-center gap-4  md:w-[80%] lg:w-[40%]">
+        <div className="flex justify-end items-center gap-4  md:w-[80%] lg:w-[50%]">
           <Search
             className="hidden md:flex"
             iconClass={`text-xl right-[3%] top-[25%] `}
@@ -116,7 +116,8 @@ const Navbar = ({ handleCartOpen }) => {
             />
           </div>
 
-          <LogoutBtn />
+          <LogoutBtn className="hidden sm:block" />
+          <div className="w-[30px] h-[30px] md:w-[40px] md:h-[40px] rounded-full border border-black"></div>
           <CgMenuRightAlt
             className="text-xl md:hidden "
             onClick={() => setMenu(!menu)}

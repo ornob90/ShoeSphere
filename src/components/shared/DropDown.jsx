@@ -4,6 +4,7 @@ import Container from "./Container";
 import { NavLink } from "react-router-dom";
 import Search from "./Search";
 import { MdClose } from "react-icons/md";
+import LogoutBtn from "./LogoutBtn";
 const DropDown = ({ navItems, menu, setMenu }) => {
   return (
     <div
@@ -17,11 +18,12 @@ const DropDown = ({ navItems, menu, setMenu }) => {
           inputClass="py-1"
           iconClass="text-xl right-[3%] top-[25%]"
         />
+        <LogoutBtn />
         <MdClose className="text-xl" onClick={() => setMenu(!menu)} />
       </div>
       <ul className="w-[90%] mx-auto space-y-4 mt-5  font-clashRegular">
         {navItems.map(({ name, slug }) => (
-          <li key={name} className="w-full   text-center">
+          <li key={name} className="w-full text-center">
             <NavLink to={slug} className="">
               {name}
             </NavLink>{" "}
