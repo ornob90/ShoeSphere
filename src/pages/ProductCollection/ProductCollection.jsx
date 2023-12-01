@@ -34,8 +34,16 @@ const ProductCollection = () => {
           </li>
         ))}
       </ul>
-      <div className="mt-5">
+      <div className="mt-5 relative flex">
         <FilterDrawer />
+        <div className="w-full lg:w-[75%] bg-black h-[400px] mt-16 lg:mt-0">
+          <div className="bg-blue-600">
+            <p>
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nulla,
+              quas.
+            </p>
+          </div>
+        </div>
       </div>
     </Container>
   );
