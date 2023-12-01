@@ -1,14 +1,19 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const ProfileCircle = () => {
-  const [profileMenu, setProfileMenu] = useState(true);
+  const [profileMenu, setProfileMenu] = useState(false);
+
+  const navigate = useNavigate();
 
   const navItems = [
     {
       name: "Profile",
+      slug: "/profile/1",
     },
     {
       name: "Dashboard",
+      slug: "/dashboard",
     },
   ];
 
@@ -20,11 +25,12 @@ const ProfileCircle = () => {
       <ul
         className={`${
           profileMenu ? "scale-100" : "scale-0"
-        } duration-[.4s] w-[150px] h-[200px] absolute right-[20%] md:right-[7%] top-[70%]  bg-[#F2F2F2] flex flex-col  gap-3 pt-2 text-sm font-semibold`}
+        } duration-[.4s] w-[150px] py-2 absolute right-[20%] md:right-[7%] top-[70%]  bg-[#F2F2F2] flex flex-col  gap-3 pt-2 text-sm font-semibold`}
       >
         {navItems.map(({ name }) => (
           <li
             key={name}
+            onClick={() => navigate("/profile/1")}
             className="px-4 py-2 border-b cursor-pointer hover:bg-black hover:text-white"
           >
             {name}

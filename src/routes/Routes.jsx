@@ -9,6 +9,7 @@ import Checkout from "../pages/Checkout/Checkout";
 import Favorites from "../pages/Favorites/Favorites";
 import Login from "../pages/Login/Login";
 import Signup from "../pages/Signup/Signup";
+import Profile from "../layout/Profile";
 
 const router = createBrowserRouter([
   {
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
         element: <Favorites />,
       },
     ],
+  },
+  {
+    path: "/profile/:id",
+    element: <Profile />,
   },
 ]);
 

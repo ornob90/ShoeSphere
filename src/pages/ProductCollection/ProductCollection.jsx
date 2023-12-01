@@ -29,9 +29,16 @@ const ProductCollection = () => {
         {shoeBrands.map((brand) => (
           <li
             key={brand}
-            className="py-3 w-[25%] md:w-[20%] lg:w-[13%]  flex-shrink-0 text-center hover:bg-black hover:text-white cursor-pointer duration-[.4s] text-sm md:text-base"
+            className="py-3 w-[25%] md:w-[20%] lg:w-[13%]  flex-shrink-0 text-center hover:bg-black hover:text-white cursor-pointer duration-[.4s] text-sm flex  justify-center"
           >
             {brand}
+            <div>
+              <img
+                src="https://i.ibb.co/PWsdp31/dc03893a0baf50b2efbdede6350e4d67-removebg-preview.png"
+                alt=""
+                className="w-[20px]  "
+              />
+            </div>
           </li>
         ))}
       </ul>
