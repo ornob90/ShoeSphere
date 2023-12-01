@@ -6,12 +6,15 @@ import BrandsSection from "../BrandsSection/BrandsSection";
 import About from "../About/About";
 import Subscribe from "../Subscribe/Subscribe";
 import Testimonial from "../Testimonial/Testimonial";
+import ProductCollectionCarousal from "../../ProductCollection/ProductCollectionCarousal/ProductCollectionCarousal";
 
 const Home = () => {
   return (
     <div>
       <Banner />
       <BrandsSection />
+      <SectionHeader title="Discover Brands" />
+      <ProductCollectionCarousal />
       <SectionHeader title="New Arrivals" />
       <ProductCarousel />
       <About />

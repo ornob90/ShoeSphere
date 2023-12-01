@@ -4,10 +4,11 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
+import Container from "../../../components/shared/Container";
 
 const ProductCollectionCarousal = () => {
   return (
-    <div className="">
+    <Container className="">
       <Swiper
         // slidesPerView={"auto"}
         spaceBetween={10}
@@ -43,7 +44,7 @@ const ProductCollectionCarousal = () => {
           </SwiperSlide>
         ))}
       </Swiper>
-    </div>
+    </Container>
   );
 };
 
