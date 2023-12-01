@@ -2,6 +2,7 @@ import React from "react";
 import Container from "../../components/shared/Container";
 import ProductCollectionCarousal from "./ProductCollectionCarousal/ProductCollectionCarousal";
 import FilterDrawer from "./FilterDrawer/FilterDrawer";
+import Products from "./Products/Products";
 
 const ProductCollection = () => {
   const shoeBrands = [
@@ -11,39 +12,32 @@ const ProductCollection = () => {
     "Converse",
     "Reebok",
     "Vans",
-    "New Balance",
+    "New",
     "Skechers",
     "Timberland",
     "Fila",
-    "Under Armour",
+    "Under",
     "ASICS",
     "Ecco",
-    "Dr. Martens",
+    "Dr. ",
     "Salomon",
   ];
 
   return (
-    <Container className="pt-[25%] sm:pt-[20%] md:pt-[15%] lg:pt-[7%] min-h-[500px]">
-      <ul className="overflow-x-scroll max-w-full w-full flex gap-4  no-scrollbar mt-5 border-y ">
+    <Container className="pt-[25%] sm:pt-[20%] md:pt-[15%] lg:pt-[7%] min-h-[600px]">
+      <ul className="flex w-full max-w-full gap-4 mt-5 overflow-x-scroll no-scrollbar border-y">
         {shoeBrands.map((brand) => (
           <li
             key={brand}
-            className="py-3 w-[20%] lg:w-[13%]  flex-shrink-0 text-center hover:bg-black hover:text-white cursor-pointer duration-[.4s]"
+            className="py-3 w-[25%] md:w-[20%] lg:w-[13%]  flex-shrink-0 text-center hover:bg-black hover:text-white cursor-pointer duration-[.4s] text-sm md:text-base"
           >
             {brand}
           </li>
         ))}
       </ul>
-      <div className="mt-5 relative flex">
+      <div className="relative flex flex-col mt-5 lg:flex-row">
         <FilterDrawer />
-        <div className="w-full lg:w-[75%] bg-black h-[400px] mt-16 lg:mt-0">
-          <div className="bg-blue-600">
-            <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nulla,
-              quas.
-            </p>
-          </div>
-        </div>
+        <Products />
       </div>
     </Container>
   );
