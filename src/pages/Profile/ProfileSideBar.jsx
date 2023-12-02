@@ -31,7 +31,7 @@ const ProfileSideBar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <div className="w-max  lg:h-auto lg:w-[18%] h-full">
+    <div className="w-max  lg:h-auto lg:w-[18%] h-full z-20">
       <h1
         onClick={() => setMenuOpen(true)}
         className={`${menuOpen ? "hidden" : ""} mt-[5vh] ml-[5vw] lg:hidden`}

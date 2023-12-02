@@ -5,10 +5,9 @@ import customerForm from "../../utils/checkoutData";
 const CheckoutCustomerForm = ({ customerActive }) => {
   return (
     <form
-
       className={`flex flex-col gap-2 absolute ${
         customerActive ? "w-full left-0" : "top-[30%] -left-[100%]"
-      } duration-[.5s] bg-whiteg`}
+      } duration-[.5s] bg-white`}
     >
       {customerForm.map(({ name, type, placeHolder, options }) => (
         <div key={name}>
