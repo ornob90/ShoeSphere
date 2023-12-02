@@ -2,12 +2,13 @@ import React from "react";
 import Input from "../../../components/html/Input";
 import profileInput from "../../../utils/profileDetails";
 import Select from "../../../components/html/Select";
+import Button from "../../../components/html/Button";
 
 const ProfileForm = () => {
   const country = ["USA", "Canada", "UK", "Australia", "Other"];
   const region = ["California", "New York", "Texas", "Florida", "Other"];
   return (
-    <div className="mt-10 bg-white min-h-[77vh]">
+    <div className="mt-10 bg-white min-h-[68vh]">
       <form className="w-[90%] mx-auto pt-5 grid grid-cols-1 md:grid-cols-6 gap-2 ">
         <Input
           name="firstName"
@@ -47,6 +48,7 @@ const ProfileForm = () => {
           name="zipCode"
           placeHolder="Zip Code"
         />
+        <Button className="py-2 mt-4 text-white font-clashMedium">Save</Button>
       </form>
     </div>
   );

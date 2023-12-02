@@ -59,6 +59,10 @@ const router = createBrowserRouter([
         path: "/profile/:id",
         element: <MyAccount />,
       },
+      {
+        path: "/profile/:id/wishlist",
+        element: <Favorites />,
+      },
     ],
   },
 ]);
