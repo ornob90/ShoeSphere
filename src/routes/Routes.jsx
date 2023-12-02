@@ -11,6 +11,7 @@ import Login from "../pages/Login/Login";
 import Signup from "../pages/Signup/Signup";
 import Profile from "../layout/Profile";
 import MyAccount from "../pages/Profile/MyAccount/MyAccount";
+import MyOrders from "../pages/Profile/MyOrders/MyOrders";
 
 const router = createBrowserRouter([
   {
@@ -62,6 +63,10 @@ const router = createBrowserRouter([
       {
         path: "/profile/:id/wishlist",
         element: <Favorites />,
+      },
+      {
+        path: "/profile/:id/orders",
+        element: <MyOrders />,
       },
     ],
   },

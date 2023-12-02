@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Outlet } from "react-router-dom";
-import ProfileSideBar from "../pages/Profile/ProfileSideBar";
+import ProfileSideBar from "../components/shared/Sidebar/ProfileSideBar";
 
 const Profile = () => {
   return (
