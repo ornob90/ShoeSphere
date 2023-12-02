@@ -1,12 +1,12 @@
 import React from "react";
-import Container from "../../components/shared/Container";
+import Container from "../../components/shared/Containers/Container";
 
 import DetailCarousal from "./DetailCarousal";
 import { Rating } from "@mui/material";
 import Button from "../../components/html/Button";
-import SectionHeader from "../../components/shared/SectionHeader";
+import SectionHeader from "../../components/shared/Headers/SectionHeader";
 import ProductCarousel from "../../components/shared/ProductCarousel/ProductCarousel";
-import QuantityBtn from "../../components/shared/QuantityBtn";
+import QuantityBtn from "../../components/shared/SingleUseButtons/QuantityBtn";
 
 const ProductDetail = () => {
   const images = [

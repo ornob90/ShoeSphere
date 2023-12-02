@@ -1,5 +1,5 @@
 import React from "react";
-import Container from "../../components/shared/Container";
+import Container from "../../components/shared/Containers/Container";
 import CartTable from "./CartTable";
 import CartSummery from "./CartSummery";
 

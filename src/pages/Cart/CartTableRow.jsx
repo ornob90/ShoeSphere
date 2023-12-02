@@ -1,6 +1,6 @@
 import React from "react";
 import { MdClose } from "react-icons/md";
-import QuantityBtn from "../../components/shared/QuantityBtn";
+import QuantityBtn from "../../components/shared/SingleUseButtons/QuantityBtn";
 
 const CartTableRow = () => {
   return (

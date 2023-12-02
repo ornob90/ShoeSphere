@@ -1,5 +1,5 @@
 import React from "react";
-import Container from "../../components/shared/Container";
+import Container from "../../components/shared/Containers/Container";
 import ProductCollectionCarousal from "./ProductCollectionCarousal/ProductCollectionCarousal";
 import FilterDrawer from "./FilterDrawer/FilterDrawer";
 import Products from "./Products/Products";
@@ -34,9 +34,9 @@ const ProductCollection = () => {
             {brand}
             <div>
               <img
-                src="https://i.ibb.co/PWsdp31/dc03893a0baf50b2efbdede6350e4d67-removebg-preview.png"
+                src="https://i.ibb.co/PmnkYfM/nike-removebg-preview.png"
                 alt=""
-                className="w-[20px]  "
+                className="w-[20px] "
               />
             </div>
           </li>

@@ -10,6 +10,7 @@ import Favorites from "../pages/Favorites/Favorites";
 import Login from "../pages/Login/Login";
 import Signup from "../pages/Signup/Signup";
 import Profile from "../layout/Profile";
+import MyAccount from "../pages/Profile/MyAccount/MyAccount";
 
 const router = createBrowserRouter([
   {
@@ -53,6 +54,12 @@ const router = createBrowserRouter([
   {
     path: "/profile/:id",
     element: <Profile />,
+    children: [
+      {
+        path: "/profile/:id",
+        element: <MyAccount />,
+      },
+    ],
   },
 ]);
 

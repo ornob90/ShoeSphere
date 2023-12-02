@@ -1,5 +1,5 @@
 import React from "react";
-import Container from "../../components/shared/Container";
+import Container from "../../components/shared/Containers/Container";
 import FavoriteCard from "./FavoriteCard";
 import Button from "../../components/html/Button";
 

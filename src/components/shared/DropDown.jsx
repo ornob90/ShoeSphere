@@ -1,10 +1,10 @@
 import React from "react";
 import { CiMenuFries } from "react-icons/ci";
-import Container from "./Container";
+import Container from "./Containers/Container";
 import { NavLink } from "react-router-dom";
 import Search from "./Search";
 import { MdClose } from "react-icons/md";
-import LogoutBtn from "./LogoutBtn";
+import LogoutBtn from "./SingleUseButtons/LogoutBtn";
 const DropDown = ({ navItems, menu, setMenu }) => {
   return (
     <div

@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
-import Container from "../../../components/shared/Container";
+import Container from "../../../components/shared/Containers/Container";
 
 const ProductCollectionCarousal = () => {
   return (

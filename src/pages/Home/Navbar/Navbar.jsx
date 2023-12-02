@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import Container from "../../../components/shared/Container";
+import Container from "../../../components/shared/Containers/Container";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import Input from "../../../components/html/Input";
 import { AiOutlineShoppingCart } from "react-icons/ai";
-import LogoutBtn from "../../../components/shared/LogoutBtn";
+import LogoutBtn from "../../../components/shared/SingleUseButtons/LogoutBtn";
 import Search from "../../../components/shared/Search";
 import { CgMenuRightAlt } from "react-icons/cg";
 import DropDown from "../../../components/shared/DropDown";
@@ -82,7 +82,9 @@ const Navbar = ({ handleCartOpen }) => {
       >
         {/* Logo */}
         <div className="w-max">
-          <p className="text-lg font-clashBold sm:text-xl">ShoeSphere</p>
+          <Link to="/" className="text-lg font-clashBold sm:text-xl underline">
+            ShoeSphere
+          </Link>
         </div>
 
         {/* NavItems */}

@@ -1,6 +1,6 @@
 import React from "react";
 import { RiDeleteBin6Line } from "react-icons/ri";
-import PlusMinusBtn from "../../components/shared/PlusMinusBtn";
+import PlusMinusBtn from "../../components/shared/SingleUseButtons/PlusMinusBtn";
 const CartDrawerCard = () => {
   return (
     <div className="mt-5 border  flex justify-between font-poppins overflow-y-auto rounded-md">

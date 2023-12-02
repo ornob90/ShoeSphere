@@ -1,5 +1,5 @@
 import React from "react";
-import Container from "../../../components/shared/Container";
+import Container from "../../../components/shared/Containers/Container";
 import { Background, Parallax } from "react-parallax";
 import aboutBg from "../../../assets/about.png";
 

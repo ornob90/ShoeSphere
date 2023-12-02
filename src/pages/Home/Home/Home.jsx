@@ -1,6 +1,6 @@
 import React from "react";
 import Banner from "../Banner/Banner";
-import SectionHeader from "../../../components/shared/SectionHeader";
+import SectionHeader from "../../../components/shared/Headers/SectionHeader";
 import ProductCarousel from "../../../components/shared/ProductCarousel/ProductCarousel";
 import BrandsSection from "../BrandsSection/BrandsSection";
 import About from "../About/About";

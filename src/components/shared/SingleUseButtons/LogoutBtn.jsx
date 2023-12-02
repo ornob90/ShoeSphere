@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "../html/Button";
+import Button from "../../html/Button";
 
 const LogoutBtn = ({ className }) => {
   return (

@@ -4,8 +4,8 @@ import ProductCard from "../ProductCard/ProductCard";
 
 const Products = () => {
   return (
-    <div className="lg:ml-5 font-bold h-[500px] mt-16 lg:mt-0 w-[90%] mx-auto lg:w-full">
-      <div className="flex px-4 py-2 border rounded-md shadow-sm cursor-pointer w-max text-[12px] md:text-base">
+    <div className="lg:ml-5 font-medium h-[500px] mt-16 lg:mt-0 w-[90%] mx-auto lg:w-full">
+      <div className="flex px-4 py-2 border rounded-md shadow-sm cursor-pointer w-max text-[12px] md:text-base text-gray-600">
         <p className="mr-2">Sort By: </p>
         <p className="flex items-center gap-2 ">
           <span className="ml-2 font-medium">

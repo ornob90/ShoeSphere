@@ -1,6 +1,6 @@
 import React from "react";
-import Container from "./Container";
-import Button from "../html/Button";
+import Container from "../Containers/Container";
+import Button from "../../html/Button";
 
 const SectionHeader = ({ title }) => {
   return (
