@@ -17,8 +17,12 @@ const Favorites = () => {
       <div className="grid grid-cols-1 mt-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-3 gap-y-10">
         <FavoriteCard />
         <FavoriteCard />
+        <FavoriteCard />
+        <FavoriteCard />
+        <FavoriteCard />
+        <FavoriteCard />
       </div>
-      <Button className="w-full py-2 mt-8 text-lg text-black bg-white border border-black font-clashSemibold">
+      <Button className="w-full py-2 mt-8 mb-10 text-lg text-black bg-white border border-black font-clashSemibold">
         Load More
       </Button>
     </DashboardProfileContainer>

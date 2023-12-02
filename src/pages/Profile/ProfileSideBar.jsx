@@ -34,12 +34,12 @@ const ProfileSideBar = () => {
     <div className="w-max  lg:h-auto lg:w-[18%] h-full z-20">
       <h1
         onClick={() => setMenuOpen(true)}
-        className={`${menuOpen ? "hidden" : ""} mt-[5vh] ml-[5vw] lg:hidden`}
+        className={` mt-[5vh] ml-[5vw] lg:hidden`}
       >
         <CgMenuLeftAlt className="text-2xl" />
       </h1>
       <aside
-        className={`w-[70%] sm:w-[38%] lg:w-full pt-5 pl-5  min-h-[500px] h-full duration-[.4s] fixed lg:static ${
+        className={`w-[70%] sm:w-[38%] lg:w-[18%] pt-5 pl-5  min-h-[500px] h-full duration-[.4s]  fixed ${
           menuOpen ? "top-0 left-0" : "left-[-100%] lg:top-0 lg:left-0"
         } duration-[.4s] bg-[#0E0E0E] `}
       >
