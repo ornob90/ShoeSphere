@@ -5,6 +5,7 @@ import { BsCartPlus } from "react-icons/bs";
 import TableHeader from "../../../components/shared/table/TableHeader";
 import Table from "../../../components/shared/Table/Table";
 import TableBody from "../../../components/shared/Table/TableBody";
+import TableRow from "../../../components/shared/table/TableRow";
 
 const MyOrders = () => {
   const headers = ["ID", "Name", "Quantity", "Price", "Status"];
@@ -54,7 +55,19 @@ const MyOrders = () => {
       <div className="min-h-[400px] bg-white mt-5 pt-5">
         <Table>
           <TableHeader headers={headers} cellWidth="35%" />
-          <TableBody data={orders} cellWidth="35%" />
+          <TableBody>
+            {orders?.map((row) => (
+              <>
+                <TableRow
+                  key={row?.ID}
+                  cells={Object.values(row).slice(0, -1)}
+                  cellWidth="35%"
+                >
+                  <th className="text-start w-[35%]">"last"</th>
+                </TableRow>
+              </>
+            ))}
+          </TableBody>
         </Table>
       </div>
     </DashboardProfileContainer>

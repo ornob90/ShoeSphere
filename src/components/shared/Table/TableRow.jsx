@@ -14,18 +14,19 @@ const TableRow = ({
       className={`flex  justify-between items-center border-b pl-2 py-2 ${className}`}
       {...props}
     >
-      {cells?.map((cells) => (
+      {cells?.map((cell) => (
         <th
           className="overflow-x-scroll no-scrollbar"
           style={{
             width: cellWidth,
-            textAlign: textPosition,
+            textAlign: "start",
           }}
-          key={cells}
+          key={cell}
         >
-          <p className="w-[90%] overflow-x-auto no-scrollbar">{cells}</p>
+          <p className="w-[90%] overflow-x-auto no-scrollbar">{cell}</p>
         </th>
       ))}
+      {children}
     </tr>
   );
 };
