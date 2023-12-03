@@ -14,6 +14,7 @@ import MyAccount from "../pages/Profile/MyAccount/MyAccount";
 import MyOrders from "../pages/Profile/MyOrders/MyOrders";
 import MyTransaction from "../pages/Profile/MyTransaction/MyTransaction";
 import SalesOverview from "../pages/AdminDashboard/SalesOverview/SalesOverview";
+import OrderManage from "../pages/AdminDashboard/OrderManage/OrderManage";
 
 const router = createBrowserRouter([
   {
@@ -82,6 +83,10 @@ const router = createBrowserRouter([
       {
         path: "/profile/:id/admin/sales-overview",
         element: <SalesOverview />,
+      },
+      {
+        path: "/profile/:id/admin/orders-manage",
+        element: <OrderManage />,
       },
     ],
   },
