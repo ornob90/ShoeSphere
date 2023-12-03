@@ -1,15 +1,15 @@
 import React from "react";
 import DashboardProfileContainer from "../../../components/shared/Containers/DashboardProfileContainer";
-import OrderCount from "./OrderCount";
-import OrderTable from "./OrderTable";
+import ProductStates from "./ProductStates";
+import ProductTable from "./ProductTable";
 
-const OrderManage = () => {
+const ProductManage = () => {
   return (
     <DashboardProfileContainer>
-      <OrderCount />
-      <OrderTable />
+      <ProductStates />
+      <ProductTable />
     </DashboardProfileContainer>
   );
 };
 
-export default OrderManage;
+export default ProductManage;
