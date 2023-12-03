@@ -4,14 +4,14 @@ import { AiOutlineSearch } from "react-icons/ai";
 
 const Search = ({ className = "", inputClass, iconClass, transparent }) => {
   return (
-    <div className={`w-[60%] relative ${className} `}>
+    <div className={`w-[60%] relative ${className} rounded-md`}>
       <Input
         placeholder="Search"
         className={`w-full  ${inputClass} ${
           transparent ? " bg-transparent" : ""
-        }`}
+        } pl-4 rounded-md`}
       />
-      <AiOutlineSearch className={`absolute top-[20%]  ${iconClass}`} />
+      <AiOutlineSearch className={`absolute top-[28%]  ${iconClass}`} />
     </div>
   );
 };

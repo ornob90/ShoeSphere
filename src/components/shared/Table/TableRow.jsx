@@ -7,12 +7,10 @@ const TableRow = ({
   cellWidth,
   textPosition,
   border = "1px",
-  ...props
 }) => {
   return (
     <tr
       className={`flex  justify-between items-center border-b pl-2 py-2 ${className}`}
-      {...props}
     >
       {cells?.map((cell) => (
         <th

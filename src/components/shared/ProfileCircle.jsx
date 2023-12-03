@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import LogoutBtn from "./SingleUseButtons/LogoutBtn";
 
 const ProfileCircle = () => {
   const [profileMenu, setProfileMenu] = useState(false);
@@ -36,6 +37,9 @@ const ProfileCircle = () => {
             {name}
           </li>
         ))}
+        <li className="pl-4">
+          <LogoutBtn className="md:text-[9px] md:py-1" />
+        </li>
       </ul>
     </div>
   );

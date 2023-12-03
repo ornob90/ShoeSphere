@@ -13,6 +13,7 @@ import Profile from "../layout/Profile";
 import MyAccount from "../pages/Profile/MyAccount/MyAccount";
 import MyOrders from "../pages/Profile/MyOrders/MyOrders";
 import MyTransaction from "../pages/Profile/MyTransaction/MyTransaction";
+import SalesOverview from "../pages/AdminDashboard/SalesOverview/SalesOverview";
 
 const router = createBrowserRouter([
   {
@@ -57,6 +58,8 @@ const router = createBrowserRouter([
     path: "/profile/:id",
     element: <Profile />,
     children: [
+      // User Route
+
       {
         path: "/profile/:id",
         element: <MyAccount />,
@@ -72,6 +75,13 @@ const router = createBrowserRouter([
       {
         path: "/profile/:id/transaction",
         element: <MyTransaction />,
+      },
+
+      // Admin Route
+
+      {
+        path: "/profile/:id/admin/sales-overview",
+        element: <SalesOverview />,
       },
     ],
   },

@@ -10,6 +10,7 @@ import DropDown from "../../../components/shared/DropDown";
 import { useScroll, motion, useMotionValueEvent } from "framer-motion";
 import CartBtn from "./CartBtn";
 import ProfileCircle from "../../../components/shared/ProfileCircle";
+import { RiHeartAddLine } from "react-icons/ri";
 
 const Navbar = ({ handleCartOpen }) => {
   const [menu, setMenu] = useState(false);
@@ -110,7 +111,7 @@ const Navbar = ({ handleCartOpen }) => {
             className="hidden md:flex"
             iconClass={`text-xl right-[3%] top-[25%] `}
             transparent={transparent}
-            inputClass="py-2"
+            inputClass="py-2 pl-2"
           />
           <div>
             <AiOutlineShoppingCart
@@ -118,8 +119,14 @@ const Navbar = ({ handleCartOpen }) => {
               className="text-xl md:text-2xl"
             />
           </div>
+          <div>
+            <RiHeartAddLine
+              // onClick={handleCartOpen}
+              className="text-xl md:text-2xl"
+            />
+          </div>
 
-          <LogoutBtn className="hidden sm:block" />
+          {/* <LogoutBtn className="hidden sm:block" /> */}
           <ProfileCircle />
           <CgMenuRightAlt
             className="text-xl md:hidden "
