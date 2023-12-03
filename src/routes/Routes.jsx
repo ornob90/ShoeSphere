@@ -16,6 +16,7 @@ import MyTransaction from "../pages/Profile/MyTransaction/MyTransaction";
 import SalesOverview from "../pages/AdminDashboard/SalesOverview/SalesOverview";
 import OrderManage from "../pages/AdminDashboard/OrderManage/OrderManage";
 import ProductManage from "../pages/AdminDashboard/ProductManage/ProductManage";
+import AddProduct from "../pages/AdminDashboard/ProductManage/AddProduct";
 
 const router = createBrowserRouter([
   {
@@ -92,6 +93,10 @@ const router = createBrowserRouter([
       {
         path: "/profile/:id/admin/product-manage",
         element: <ProductManage />,
+      },
+      {
+        path: "/profile/:id/admin/add-product",
+        element: <AddProduct />,
       },
     ],
   },
