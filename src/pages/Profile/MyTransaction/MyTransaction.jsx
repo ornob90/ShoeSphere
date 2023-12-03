@@ -1,13 +1,13 @@
 import React from "react";
 import DashboardProfileContainer from "../../../components/shared/Containers/DashboardProfileContainer";
 import ProfileHeader from "../../../components/shared/Headers/ProfileHeader";
-import { BsCartPlus } from "react-icons/bs";
-import TableHeader from "../../../components/shared/table/TableHeader";
+import { AiOutlineTransaction } from "react-icons/ai";
 import Table from "../../../components/shared/Table/Table";
+import TableHeader from "../../../components/shared/table/TableHeader";
 import TableBody from "../../../components/shared/Table/TableBody";
 import TableRow from "../../../components/shared/table/TableRow";
 
-const MyOrders = () => {
+const MyTransaction = () => {
   const headers = ["ID", "Name", "Quantity", "Price", "Status"];
   const orders = [
     {
@@ -49,8 +49,8 @@ const MyOrders = () => {
   return (
     <DashboardProfileContainer>
       <ProfileHeader
-        header="My Orders"
-        icon={<BsCartPlus className="text-2xl lg:text-3xl" />}
+        header="My Transaction"
+        icon={<AiOutlineTransaction className="text-2xl lg:text-3xl" />}
       />
       <div className="min-h-[400px] bg-white mt-5 pt-5 overflow-x-auto">
         <Table>
@@ -75,4 +75,4 @@ const MyOrders = () => {
   );
 };
 
-export default MyOrders;
+export default MyTransaction;

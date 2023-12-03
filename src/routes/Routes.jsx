@@ -12,6 +12,7 @@ import Signup from "../pages/Signup/Signup";
 import Profile from "../layout/Profile";
 import MyAccount from "../pages/Profile/MyAccount/MyAccount";
 import MyOrders from "../pages/Profile/MyOrders/MyOrders";
+import MyTransaction from "../pages/Profile/MyTransaction/MyTransaction";
 
 const router = createBrowserRouter([
   {
@@ -67,6 +68,10 @@ const router = createBrowserRouter([
       {
         path: "/profile/:id/orders",
         element: <MyOrders />,
+      },
+      {
+        path: "/profile/:id/transaction",
+        element: <MyTransaction />,
       },
     ],
   },

@@ -2,7 +2,9 @@ import React from "react";
 
 const Table = ({ children, className }) => {
   return (
-    <table className={`overflow-x-auto w-[90%] mx-auto  ${className}`}>
+    <table
+      className={` overflow-scroll w-[90%] ml-[5%] sm:pl-0 min-w-[500px]  mx-auto  ${className}`}
+    >
       {children}
     </table>
   );
