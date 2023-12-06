@@ -23,7 +23,7 @@ const FilterOptions = ({
     >
       <div className="w-full">
         <p>Price Range</p>
-        <div className="flex items-center justify-between mt-2">
+        <div className="flex items-center justify-between gap-4 mt-2">
           <Input
             value={priceRange.min}
             onChange={(e) =>
@@ -31,7 +31,7 @@ const FilterOptions = ({
             }
             type="number"
             min={0}
-            className="w-[30%] bg-white border border-gray-300 shadow-sm py-1 md:py-1 "
+            className="w-[35%] bg-white border border-gray-300 shadow-sm py-1 md:py-1 "
           />
           <Input
             value={+priceRange.max}
@@ -40,7 +40,7 @@ const FilterOptions = ({
             }
             type="number"
             min={+priceRange.min}
-            className="w-[30%] bg-white border border-gray-300 shadow-sm py-1 md:py-1 "
+            className="w-[35%] bg-white border border-gray-300 shadow-sm py-1 md:py-1 "
           />
         </div>
       </div>
