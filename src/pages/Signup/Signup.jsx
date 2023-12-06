@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Input from "../../components/html/Input";
 import Button from "../../components/html/Button";
 import { FcGoogle } from "react-icons/fc";
@@ -7,6 +7,9 @@ import { FaUpload } from "react-icons/fa6";
 import Upload from "../../components/shared/Upload";
 import useAuth from "../../hooks/auth/useAuth";
 import { updateProfile } from "firebase/auth";
+import { useMutation } from "@tanstack/react-query";
+import toast from "react-hot-toast";
+import useAxiosSecure from "../../hooks/axios/useAxiosSecure";
 
 const Signup = () => {
   const [photo, setPhoto] = useState("");
@@ -17,6 +20,34 @@ const Signup = () => {
   const navigate = useNavigate();
   const { state } = useLocation();
   const [loading, setLoading] = useState(false);
+  const axiosSecure = useAxiosSecure();
+
+  const { mutateAsync: addUser } = useMutation({
+    mutationFn: async (data) => {
+      const res = await axiosSecure.post("/user", data);
+      return res?.data;
+    },
+  });
+
+  useEffect(() => {
+    setLoading(true);
+    console.log(user?.email);
+    if (user?.email) {
+      addUser({ email: user?.email, name: user?.displayName })
+        .then((res) => {
+          console.log(res.data);
+          navigate("/");
+          setLoading(false);
+          toast.success("You have successfully signed up!");
+        })
+        .catch((err) => {
+          setLoading(false);
+          navigate("/");
+          console.error(err);
+          setErrorMsg(err.message);
+        });
+    }
+  }, [user, user?.email]);
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -56,7 +87,19 @@ const Signup = () => {
           displayName: name,
           photoURL: photo,
         });
-        navigate("/");
+        addUser({ email, name })
+          .then((res) => {
+            console.log(res.data);
+            navigate("/");
+            setLoading(false);
+            toast.success("You have successfully signed up!");
+          })
+          .catch((err) => {
+            setLoading(false);
+            // navigate("/");
+            console.error(err);
+            setErrorMsg(err.message);
+          });
       })
       .catch((err) => {
         setLoading(false);

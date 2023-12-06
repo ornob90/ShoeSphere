@@ -9,13 +9,18 @@ import { RouterProvider } from "react-router-dom";
 import router from "./routes/Routes";
 import DrawerProvider from "./provider/DrawerProvider";
 import AuthProvider from "./provider/AuthProvider";
-
+import { Toaster } from "react-hot-toast";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+const queryClient = new QueryClient();
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <AuthProvider>
-      <DrawerProvider>
-        <RouterProvider router={router} />
-      </DrawerProvider>
-    </AuthProvider>
+    <QueryClientProvider client={queryClient}>
+      <AuthProvider>
+        <DrawerProvider>
+          <RouterProvider router={router} />
+          <Toaster />
+        </DrawerProvider>
+      </AuthProvider>
+    </QueryClientProvider>
   </React.StrictMode>
 );

@@ -6,13 +6,13 @@ import useAuth from "../auth/useAuth";
 const useGetSecure = (queryKeys, endpoint) => {
   const axiosSecure = useAxiosSecure();
 
-  const { loading: authLoading } = useAuth();
+  const { loading: authLoading, user } = useAuth();
 
   console.log(authLoading);
 
   const response = useQuery({
     queryKey: queryKeys,
-    enabled: !authLoading,
+    enabled: !!user?.email,
     queryFn: async () => {
       const res = await axiosSecure.get(endpoint);
       return res?.data;
