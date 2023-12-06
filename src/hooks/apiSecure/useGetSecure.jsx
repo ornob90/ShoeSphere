@@ -8,7 +8,7 @@ const useGetSecure = (queryKeys, endpoint) => {
 
   const { loading: authLoading, user } = useAuth();
 
-  console.log(authLoading);
+  // console.log(authLoading);
 
   const response = useQuery({
     queryKey: queryKeys,

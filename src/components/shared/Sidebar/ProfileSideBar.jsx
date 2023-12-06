@@ -7,24 +7,58 @@ import { AiOutlineTransaction } from "react-icons/ai";
 import { BiLeftArrowAlt } from "react-icons/bi";
 import { Link } from "react-router-dom";
 import { BsCartPlus } from "react-icons/bs";
+import { FaMoneyBillTrendUp } from "react-icons/fa6";
+import { FaBoxes } from "react-icons/fa";
+import useUser from "../../../hooks/specific/useUser";
+import useRole from "../../../hooks/specific/useRole";
 
 const ProfileSideBar = () => {
+  const { _id, ...user } = useUser() || {};
+  const { role } = useRole() || {};
+
+  const [activeItem, setActiveItem] = useState("Account");
   const navItem = [
     {
       name: "Account",
+      to: `/profile/${_id}`,
       icon: (className) => <BiSolidUserAccount className={`${className}`} />,
+      show: role === "user",
     },
     {
       name: "Wishlist",
+      to: `/profile/${_id}/wishlist`,
       icon: (className) => <IoBookmarks className={`${className}`} />,
+      show: role === "user",
     },
     {
       name: "Orders",
+      to: `/profile/${_id}/orders`,
       icon: (className) => <BsCartPlus className={`${className}`} />,
+      show: role === "user",
     },
     {
       name: "Transaction",
+      to: `/profile/${_id}/transaction`,
       icon: (className) => <AiOutlineTransaction className={`${className}`} />,
+      show: role === "user",
+    },
+    {
+      name: "Sales Overview",
+      to: `/profile/${_id}/admin/sales-overview`,
+      icon: (className) => <FaMoneyBillTrendUp className={`${className}`} />,
+      show: role === "admin",
+    },
+    {
+      name: "Manage Orders",
+      to: `/profile/${_id}/admin/orders-manage`,
+      icon: (className) => <BsCartPlus className={`${className}`} />,
+      show: role === "admin",
+    },
+    {
+      name: "Manage Products",
+      to: `/profile/${_id}/admin/product-manage`,
+      icon: (className) => <FaBoxes className={`${className}`} />,
+      show: role === "admin",
     },
   ];
 
@@ -65,14 +99,18 @@ const ProfileSideBar = () => {
           </div>
         </div>
         <ul className="flex flex-col gap-4 mt-10 ">
-          {navItem.map(({ name, icon }) => (
-            <li
-              className="text-sm sm:text-base flex items-center gap-4 text-white hover:bg-white hover:text-black duration-[.3s] py-2 pl-1 cursor-pointer"
-              key={name}
-            >
-              {icon("text-xl")}
-              {name}
-            </li>
+          {navItem.map(({ name, icon, to, show }) => (
+            <Link key={name} to={to}>
+              <li
+                onClick={() => setActiveItem(name)}
+                className={`text-sm sm:text-base flex items-center gap-4  hover:bg-white hover:text-black duration-[.3s] py-2 pl-1 cursor-pointer ${
+                  activeItem === name ? " bg-white text-black" : "text-white"
+                } ${show ? "" : ""}`}
+              >
+                {icon("text-xl")}
+                {name}
+              </li>
+            </Link>
           ))}
         </ul>
       </aside>
