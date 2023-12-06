@@ -13,13 +13,13 @@ const FilterDrawer = () => {
         drawerOpen
           ? "w-[70%] md:w-[40%] lg:w-[25%] border"
           : "w-max lg:w-[25%] lg:border"
-      }`}
+      } z-10`}
     >
-      <p className="text-lg lg:text-2xl border-b pb-2">
+      <p className="pb-2 text-lg border-b lg:text-2xl">
         {drawerOpen ? (
           <FaRegWindowMinimize onClick={() => setDrawerOpen(false)} />
         ) : (
-          <span className="flex gap-2 items-center ">
+          <span className="flex items-center gap-2 ">
             Filter <IoFilterOutline onClick={() => setDrawerOpen(true)} />
           </span>
         )}

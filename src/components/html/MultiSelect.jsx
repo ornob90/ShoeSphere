@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FaM, FaP, FaPlus } from "react-icons/fa6";
 import { FaMinus } from "react-icons/fa6";
-const MultiSelect = ({ options }) => {
+const MultiSelect = ({ options, placeHolder = "Select" }) => {
   const [dropdownOpen, setDrownDownOpen] = useState(false);
   const [chosenOptions, setChosenOptions] = useState({});
 
@@ -15,9 +15,9 @@ const MultiSelect = ({ options }) => {
   };
 
   return (
-    <div className=" w-full ">
+    <div className="w-full ">
       <div
-        className=" flex justify-between items-center py-3 pl-1 border"
+        className="flex items-center justify-between py-3 pl-1 border "
         onClick={() => setDrownDownOpen(!dropdownOpen)}
       >
         <p>
@@ -28,7 +28,7 @@ const MultiSelect = ({ options }) => {
               )}
             </>
           ) : (
-            "Select"
+            placeHolder
           )}
         </p>
         {dropdownOpen ? (

@@ -36,7 +36,7 @@ const Navbar = ({ handleCartOpen }) => {
       setBgWhite(false);
     }
 
-    if (latest > prevValue) {
+    if (latest > prevValue && latest > 30) {
       setHidden(true);
     } else {
       setHidden(false);
@@ -70,7 +70,7 @@ const Navbar = ({ handleCartOpen }) => {
       }}
       animate={hidden ? "hidden" : "visible"}
       transition={{ duration: 0.35, ease: "easeInOut" }}
-      className={`fixed top-0 left-0 z-10 w-full ${
+      className={`fixed top-0 left-0 z-[12] w-full ${
         pathname === "/login" || pathname === "/signup" ? "hidden" : ""
       } ${transparent ? " bg-transparent" : "bg-white"} h-max `}
     >
