@@ -1,9 +1,14 @@
 import React, { useState } from "react";
 import { FaM, FaP, FaPlus } from "react-icons/fa6";
 import { FaMinus } from "react-icons/fa6";
-const MultiSelect = ({ options, placeHolder = "Select" }) => {
+const MultiSelect = ({
+  options,
+  placeHolder = "Select",
+  chosenOptions,
+  setChosenOptions,
+}) => {
   const [dropdownOpen, setDrownDownOpen] = useState(false);
-  const [chosenOptions, setChosenOptions] = useState({});
+  // const [chosenOptions, setChosenOptions] = useState({});
 
   const atleastOneSelect = Object.keys(chosenOptions)?.find(
     (key) => chosenOptions[key]

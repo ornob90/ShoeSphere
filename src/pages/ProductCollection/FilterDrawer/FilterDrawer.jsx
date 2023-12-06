@@ -4,7 +4,14 @@ import { FaRegWindowMinimize } from "react-icons/fa";
 import FilterOptions from "./FilterOptions";
 import { IoFilterOutline } from "react-icons/io5";
 
-const FilterDrawer = () => {
+const FilterDrawer = ({
+  setGenders,
+  setAvailable,
+  setPriceRange,
+  priceRange,
+  genders,
+  available,
+}) => {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   return (
@@ -24,7 +31,15 @@ const FilterDrawer = () => {
           </span>
         )}
       </p>
-      <FilterOptions drawerOpen={drawerOpen} />
+      <FilterOptions
+        drawerOpen={drawerOpen}
+        setGenders={setGenders}
+        setAvailable={setAvailable}
+        setPriceRange={setPriceRange}
+        priceRange={priceRange}
+        genders={genders}
+        available={available}
+      />
     </div>
   );
 };
