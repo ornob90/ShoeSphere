@@ -7,8 +7,11 @@ import About from "../About/About";
 import Subscribe from "../Subscribe/Subscribe";
 import Testimonial from "../Testimonial/Testimonial";
 import ProductCollectionCarousal from "../../ProductCollection/ProductCollectionCarousal/ProductCollectionCarousal";
+import useAuth from "../../../hooks/auth/useAuth";
 
 const Home = () => {
+  const { user } = useAuth();
+  console.log(user);
   return (
     <div>
       <Banner />

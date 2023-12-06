@@ -11,6 +11,7 @@ import { useScroll, motion, useMotionValueEvent } from "framer-motion";
 import CartBtn from "./CartBtn";
 import ProfileCircle from "../../../components/shared/ProfileCircle";
 import { RiHeartAddLine } from "react-icons/ri";
+import useAuth from "../../../hooks/auth/useAuth";
 
 const Navbar = ({ handleCartOpen }) => {
   const [menu, setMenu] = useState(false);
@@ -83,7 +84,7 @@ const Navbar = ({ handleCartOpen }) => {
       >
         {/* Logo */}
         <div className="w-max">
-          <Link to="/" className="text-lg font-clashBold sm:text-xl underline">
+          <Link to="/" className="text-lg underline font-clashBold sm:text-xl">
             ShoeSphere
           </Link>
         </div>

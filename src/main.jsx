@@ -8,11 +8,14 @@ import { RouterProvider } from "react-router-dom";
 // const queryClient = new QueryClient();
 import router from "./routes/Routes";
 import DrawerProvider from "./provider/DrawerProvider";
+import AuthProvider from "./provider/AuthProvider";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <DrawerProvider>
-      <RouterProvider router={router} />
-    </DrawerProvider>
+    <AuthProvider>
+      <DrawerProvider>
+        <RouterProvider router={router} />
+      </DrawerProvider>
+    </AuthProvider>
   </React.StrictMode>
 );

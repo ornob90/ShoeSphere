@@ -1,12 +1,69 @@
-import React from "react";
+import React, { useState } from "react";
 import Input from "../../components/html/Input";
 import Button from "../../components/html/Button";
 import { FcGoogle } from "react-icons/fc";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { FaUpload } from "react-icons/fa6";
+import Upload from "../../components/shared/Upload";
+import useAuth from "../../hooks/auth/useAuth";
+import { updateProfile } from "firebase/auth";
 
 const Signup = () => {
+  const [photo, setPhoto] = useState("");
+  const [photoLoad, setPhotoLoad] = useState("");
+  const { signUpMethod, loading: authLoading, user } = useAuth();
+  const [errorMsg, setErrorMsg] = useState("");
+  const [showPass, setShowPass] = useState(false);
   const navigate = useNavigate();
+  const { state } = useLocation();
+  const [loading, setLoading] = useState(false);
+
+  const handleRegister = async (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    const name = e.target.name.value;
+
+    if (!photo) {
+      setErrorMsg("Photo Required!");
+      return;
+    }
+
+    if (password.length < 6) {
+      setErrorMsg("Password Length Must Be More Then 6 Characters!!");
+      return;
+    }
+
+    if (/^[^A-Z]*$/.test(password)) {
+      setErrorMsg("Password must contain atleast one capital letter");
+      return;
+    }
+
+    if (/^[a-zA-Z0-9\s]*$/.test(password)) {
+      setErrorMsg("Password must contain a special character");
+      return;
+    }
+    setLoading(true);
+
+    e.target.email.value = "";
+    e.target.password.value = "";
+    e.target.name.value = "";
+
+    signUpMethod(email, password)
+      .then((res) => {
+        setErrorMsg("");
+        updateProfile(res.user, {
+          displayName: name,
+          photoURL: photo,
+        });
+        navigate("/");
+      })
+      .catch((err) => {
+        setLoading(false);
+        setErrorMsg(err.message);
+        console.log(err);
+      });
+  };
 
   return (
     <div className="h-screen min-h-[500px] w-[95%] mx-auto grid  grid-cols-1 lg:grid-cols-2">
@@ -26,7 +83,10 @@ const Signup = () => {
       {/* Login Part */}
       <div className="w-[80%] lg:w-[70%] mx-auto my-[2.5%]  flex flex-col justify-center items-center h-auto">
         <h1 className="text-2xl font-clashBold md:text-3xl">Join us today!</h1>
-        <form className="flex flex-col w-full gap-2 mt-6 ">
+        <form
+          onSubmit={handleRegister}
+          className="flex flex-col w-full gap-2 mt-6 "
+        >
           <Input
             name="name"
             placeholder="User name"
@@ -40,10 +100,11 @@ const Signup = () => {
           <Input
             name="password"
             placeholder="Password"
+            type="password"
             className="py-2 text-sm md:text-base"
           />
           {/* <input type="file" className="text-[12px] p-0 border-none" /> */}
-          <label
+          {/* <label
             htmlFor="fileInput"
             className="flex items-center gap-2 px-4 py-2 text-[12px] md:text-sm font-semibold text-black bg-white border border-gray-300 rounded-full w-max"
           >
@@ -54,7 +115,14 @@ const Signup = () => {
             type="file"
             className="hidden"
             // onChange={handleFileChange}
+          /> */}
+          <Upload
+            placeHolder="Upload Photo"
+            setImage={setPhoto}
+            setUploading={setPhotoLoad}
+            productImage={photo}
           />
+          {errorMsg && <p className="text-red-600">{errorMsg}</p>}
           <Button className="py-2 mt-3 text-sm text-white md:text-base">
             Join
           </Button>

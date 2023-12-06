@@ -1,11 +1,62 @@
-import React from "react";
+import React, { useState } from "react";
 import Input from "../../components/html/Input";
 import Button from "../../components/html/Button";
 import { FcGoogle } from "react-icons/fc";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import useAuth from "../../hooks/auth/useAuth";
 
 const Login = () => {
   const navigate = useNavigate();
+  const {
+    user,
+    signInMethod,
+    googleSignInMethod,
+    loading: authLoading,
+  } = useAuth();
+
+  const [loading, setLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
+  const { state } = useLocation();
+
+  const handleSignIn = (e) => {
+    e.preventDefault();
+
+    setLoading(true);
+
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    e.target.email.value = "";
+    e.target.password.value = "";
+
+    signInMethod(email, password)
+      .then((res) => {
+        setErrorMsg("");
+        setLoading(false);
+        navigate("/");
+        // handleCheckRoleAndNavigate(res.user.email);
+      })
+      .catch((err) => {
+        setLoading(false);
+        setErrorMsg(err.message);
+        console.log(err.message);
+      });
+  };
+
+  const handleGoogleSignIn = () => {
+    setLoading(true);
+
+    googleSignInMethod()
+      .then((res) => {
+        setErrorMsg("");
+        setLoading(false);
+        navigate("/");
+      })
+      .catch((err) => {
+        setLoading(false);
+        setErrorMsg(err.message);
+        console.log(err);
+      });
+  };
 
   return (
     <div className="h-screen min-h-[500px] w-[95%] mx-auto grid  grid-cols-1 lg:grid-cols-2">
@@ -27,7 +78,10 @@ const Login = () => {
       {/* Login Part */}
       <div className="w-[80%] lg:w-[70%] mx-auto my-[2.5%]  flex flex-col justify-center items-center h-auto">
         <h1 className="text-2xl font-clashBold md:text-3xl">Welcome back!</h1>
-        <form className="flex flex-col w-full gap-2 mt-6 ">
+        <form
+          onSubmit={handleSignIn}
+          className="flex flex-col w-full gap-2 mt-6 "
+        >
           <Input
             name="email"
             placeholder="Email"
@@ -36,8 +90,10 @@ const Login = () => {
           <Input
             name="password"
             placeholder="Password"
+            type="password"
             className="py-2 text-sm md:text-base"
           />
+          {errorMsg && <p className="text-red-600">{errorMsg}</p>}
           <Button className="py-2 mt-3 text-sm text-white md:text-base">
             Connect
           </Button>
@@ -52,7 +108,10 @@ const Login = () => {
             Sign Up
           </span>
         </p>
-        <div className="flex items-center justify-center w-full gap-2 py-2 text-sm duration-300 border cursor-pointer active:scale-95 md:text-base">
+        <div
+          onClick={handleGoogleSignIn}
+          className="flex items-center justify-center w-full gap-2 py-2 text-sm duration-300 border cursor-pointer active:scale-95 md:text-base"
+        >
           <FcGoogle />
           <p>Continue Wih Google</p>
         </div>
