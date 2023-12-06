@@ -53,8 +53,8 @@ const Navbar = ({ handleCartOpen }) => {
       slug: "/collection",
     },
     {
-      name: "Favorites",
-      slug: "/favorites",
+      name: "Cart",
+      slug: "/cart",
     },
     {
       name: "Contact",
@@ -91,13 +91,15 @@ const Navbar = ({ handleCartOpen }) => {
         </div>
 
         {/* NavItems */}
-        <ul className="hidden lg:flex justify-center gap-4 w-[40%] font-clashRegular items-center pl-[5%]">
+        <ul className="hidden lg:flex justify-center gap-6 w-[40%] font-clashRegular items-center pl-[5%]">
           {navItems.map(({ name, slug }) => (
             <li key={name}>
               <NavLink
                 to={slug}
                 className={({ isActive }) =>
-                  isActive ? "border-b border-black" : "nav-button duration-300"
+                  isActive
+                    ? "border-b border-black text-[15px]"
+                    : "nav-button duration-300 text-[15px]"
                 }
               >
                 {name}

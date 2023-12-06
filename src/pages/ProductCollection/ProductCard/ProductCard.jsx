@@ -34,7 +34,7 @@ const ProductCard = ({ product }) => {
   };
 
   return (
-    <div className="h-[350px] ">
+    <div className="h-[350px] shadow-sm">
       <div
         onClick={() => navigate(`/product/${_id}`)}
         className="h-[70%] bg-[#F2F2F2] relative cursor-pointer"

@@ -4,7 +4,7 @@ import QuantityBtn from "../../components/shared/SingleUseButtons/QuantityBtn";
 
 const CartTableRow = () => {
   return (
-    <tr className="grid grid-cols-4 border-b pb-4 mt-2 overflow-scroll min-w-[500px]">
+    <tr className="grid grid-cols-4 border-b pb-4 mt-2 overflow-scroll min-w-[500px] no-scrollbar">
       <td className="flex  col-span-2 justify-between">
         <input type="checkbox" name="" id="" />
         <div className="w-[15%] lg:w-[20%] ">

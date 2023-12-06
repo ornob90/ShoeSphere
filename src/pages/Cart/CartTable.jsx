@@ -1,9 +1,18 @@
 import React from "react";
 import CartTableRow from "./CartTableRow";
+import useUser from "../../hooks/specific/useUser";
+import useGetSecure from "../../hooks/apiSecure/useGetSecure";
 
 const CartTable = () => {
+  const { _id: userID } = useUser() || {};
+
+  const { data: cartProducts } = useGetSecure(
+    ["CartProducts", userID],
+    `/carts/${userID}`
+  );
+
   return (
-    <table className="font-poppins w-full overflow-auto max-w-full">
+    <table className="h-[200px] no-scrollbar font-poppins w-full overflow-auto max-w-full">
       {/* Header */}
       <thead className="grid grid-cols-4 pb-4 border-b font-semibold gap-2">
         <tr className="flex gap-2 items-center col-span-2">
@@ -21,8 +30,10 @@ const CartTable = () => {
           </tr>
         ))}
       </thead>
-      <tbody>
-        <CartTableRow />
+      <tbody className="h-full">
+        {cartProducts?.map((product) => (
+          <CartTableRow key={product._id} product={product} />
+        ))}
       </tbody>
     </table>
   );

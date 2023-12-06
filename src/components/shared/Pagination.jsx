@@ -9,8 +9,8 @@ const Pagination = ({ setPage, setSize, page, pageCount, size }) => {
           <div
             key={value}
             onClick={() => setPage(value)}
-            className={`w-[45px]  flex-wrap h-[35px] border-black border flex justify-center items-center cursor-pointer ${
-              page === value ? "bg-black border-black text-white" : ""
+            className={`w-[45px]  flex-wrap h-[35px]  shadow-inner border border-[#e2e2e2] flex justify-center items-center cursor-pointer ${
+              page === value ? "bg-black border-[#EBEEEF] text-white" : ""
             }`}
           >
             {value + 1}

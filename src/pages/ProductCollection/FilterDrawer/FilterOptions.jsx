@@ -31,7 +31,7 @@ const FilterOptions = ({
             }
             type="number"
             min={0}
-            className="w-[35%] bg-white border border-gray-300 shadow-sm py-1 md:py-1 "
+            className=" shadow-inner w-[35%] bg-white border border-gray-300  py-1 md:py-1 "
           />
           <Input
             value={+priceRange.max}
@@ -40,7 +40,7 @@ const FilterOptions = ({
             }
             type="number"
             min={+priceRange.min}
-            className="w-[35%] bg-white border border-gray-300 shadow-sm py-1 md:py-1 "
+            className="shadow-inner-sm w-[35%] bg-white border border-gray-300  py-1 md:py-1 "
           />
         </div>
       </div>
