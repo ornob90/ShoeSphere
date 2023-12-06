@@ -1,10 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FaArrowRightArrowLeft } from "react-icons/fa6";
 import ProductCard from "../ProductCard/ProductCard";
+import Pagination from "../../../components/shared/Pagination";
+import useGetSecure from "../../../hooks/apiSecure/useGetSecure";
 
 const Products = () => {
+  const [page, setPage] = useState(0);
+  const [size, setSize] = useState(10);
+  const [pageCount, setPageCount] = useState(null);
+
+  const { data } = useGetSecure(["ProductCount"], "/product-count");
+
+  const { data: products } = useGetSecure(
+    ["Products", page, size],
+    `/products?page=${page}&size=${size}`
+  );
+
+  useEffect(() => {
+    setPageCount(Math.ceil(data?.productCount) / size);
+  }, [data]);
+
   return (
-    <div className="lg:ml-5 font-medium h-[500px] mt-16 lg:mt-0 w-[90%] mx-auto lg:w-full">
+    <div className="lg:ml-5 font-medium min-h-[500px] mt-16 lg:mt-0 w-[90%] mx-auto lg:w-full ">
       <div className="flex px-4 py-2 border rounded-md shadow-sm cursor-pointer w-max text-[12px] md:text-base text-gray-600">
         <p className="mr-2">Sort By: </p>
         <p className="flex items-center gap-2 ">
@@ -16,9 +33,19 @@ const Products = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 mt-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-        <ProductCard />
+      <div className="grid grid-cols-1 mt-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mb-4 gap-x-2 gap-y-8">
+        {products?.map((product) => (
+          <ProductCard key={product._id} product={product} />
+        ))}
       </div>
+
+      <Pagination
+        setPage={setPage}
+        pageCount={pageCount}
+        page={page}
+        setSize={setSize}
+        size={size}
+      />
     </div>
   );
 };
