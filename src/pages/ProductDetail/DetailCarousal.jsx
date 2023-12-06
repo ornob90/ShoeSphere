@@ -13,7 +13,7 @@ const DetailCarousal = ({ images }) => {
       width={"90%"}
       infiniteLoop={true}
     >
-      {images.map((image) => (
+      {images?.map((image) => (
         <div key={image} className="text-center">
           <img src={image} alt="" className="object-cover" />
         </div>

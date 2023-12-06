@@ -1,29 +1,19 @@
 import React from "react";
 import { GoPlus } from "react-icons/go";
 import { FaRegHeart } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 const ProductCard = ({ product }) => {
-  const {
-    _id,
-    name,
-    brand,
-    gender,
-    price,
-    available,
-    description,
-    shippingPrice,
-    sizes,
-    images,
-    discount,
-    buyingCost,
-    profitPercentage,
-    sellPrice,
-    addedDate,
-  } = product || {};
+  const { _id, name, price, images } = product || {};
+
+  const navigate = useNavigate();
 
   return (
     <div className="h-[350px] ">
-      <div className="h-[70%] bg-[#F2F2F2] relative">
+      <div
+        onClick={() => navigate(`/product/${_id}`)}
+        className="h-[70%] bg-[#F2F2F2] relative cursor-pointer"
+      >
         <img
           src={images[0]}
           alt={name}
