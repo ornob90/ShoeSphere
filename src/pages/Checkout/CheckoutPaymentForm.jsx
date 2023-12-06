@@ -18,16 +18,16 @@ const CheckoutPaymentForm = ({ customerActive }) => {
 
   const price = 148.05;
 
-  useEffect(() => {
-    axios
-      .post("http://localhost:5000/create-payment-intent", {
-        price,
-      })
-      .then((res) => {
-        // console.log(res.data.clientSecret);
-        setClientSecret(res.data.clientSecret);
-      });
-  }, [price]);
+  // useEffect(() => {
+  //   axios
+  //     .post("http://localhost:5000/create-payment-intent", {
+  //       price,
+  //     })
+  //     .then((res) => {
+  //       // console.log(res.data.clientSecret);
+  //       setClientSecret(res.data.clientSecret);
+  //     });
+  // }, [price]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

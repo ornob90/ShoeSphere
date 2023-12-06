@@ -20,43 +20,31 @@ const customerForm = [
   {
     placeHolder: "Street Address",
     type: "text",
-    name: "streetAddress",
-    options: [],
+    name: "address",
   },
-  {
-    placeHolder: "Street Address",
-    type: "text",
-    name: "streetAddress",
-    options: [],
-  },
+
   {
     placeHolder: "Select your state / region",
-    type: "select",
-    name: "state",
+    type: "text",
+    name: "region",
     options: ["California", "New York", "Texas", "Florida", "Other"],
   },
   {
     placeHolder: "Town / City",
     type: "text",
-    name: "town-city",
+    name: "city",
     options: [],
   },
   {
     placeHolder: "Postcode / ZIP",
     type: "number",
-    name: "postcode",
+    name: "zipCode",
     options: [],
   },
   {
     placeHolder: "Phone",
     type: "text",
     name: "phone",
-    options: [],
-  },
-  {
-    placeHolder: "Email Address",
-    type: "email",
-    name: "email",
     options: [],
   },
 ];
