@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Container from "../../../components/shared/Containers/Container";
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import Input from "../../../components/html/Input";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import LogoutBtn from "../../../components/shared/SingleUseButtons/LogoutBtn";
@@ -12,6 +12,7 @@ import CartBtn from "./CartBtn";
 import ProfileCircle from "../../../components/shared/ProfileCircle";
 import { RiHeartAddLine } from "react-icons/ri";
 import useAuth from "../../../hooks/auth/useAuth";
+import Button from "../../../components/html/Button";
 
 const Navbar = ({ handleCartOpen }) => {
   const [menu, setMenu] = useState(false);
@@ -19,9 +20,9 @@ const Navbar = ({ handleCartOpen }) => {
   const [bgWhite, setBgWhite] = useState(false);
   const [hidden, setHidden] = useState(false);
   const { scrollY } = useScroll();
-
+  const { user } = useAuth();
   const { pathname } = useLocation();
-
+  const navigate = useNavigate();
   useEffect(() => {
     setTransparent(pathname.includes("/product/"));
   }, [pathname]);
@@ -128,7 +129,18 @@ const Navbar = ({ handleCartOpen }) => {
           </div>
 
           {/* <LogoutBtn className="hidden sm:block" /> */}
-          <ProfileCircle />
+
+          {user?.email ? (
+            <ProfileCircle />
+          ) : (
+            <Button
+              onClick={() => navigate("/login")}
+              className={`text-[12px] text-white md:text-sm px-4 md:px-3 font-clashRegular py-1 md:py-2 `}
+            >
+              Sign In
+            </Button>
+          )}
+
           <CgMenuRightAlt
             className="text-xl md:hidden "
             onClick={() => setMenu(!menu)}

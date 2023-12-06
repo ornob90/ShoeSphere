@@ -4,6 +4,9 @@ import Button from "../../components/html/Button";
 import { FcGoogle } from "react-icons/fc";
 import { useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/auth/useAuth";
+import useAxiosSecure from "../../hooks/axios/useAxiosSecure";
+import { useMutation } from "@tanstack/react-query";
+import toast from "react-hot-toast";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -17,6 +20,14 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   const { state } = useLocation();
+  const axiosSecure = useAxiosSecure();
+
+  const { mutateAsync: addUser } = useMutation({
+    mutationFn: async (data) => {
+      const res = await axiosSecure.post("/user", data);
+      return res?.data;
+    },
+  });
 
   const handleSignIn = (e) => {
     e.preventDefault();
@@ -48,8 +59,20 @@ const Login = () => {
     googleSignInMethod()
       .then((res) => {
         setErrorMsg("");
-        setLoading(false);
-        navigate("/");
+        const { email, displayName } = res.user;
+        addUser({ email, name: displayName })
+          .then((res) => {
+            console.log(res.data);
+            navigate("/");
+            setLoading(false);
+            toast.success("You have successfully Logged in!");
+          })
+          .catch((err) => {
+            setLoading(false);
+            navigate("/");
+            console.error(err);
+            setErrorMsg(err.message);
+          });
       })
       .catch((err) => {
         setLoading(false);
