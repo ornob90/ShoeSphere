@@ -7,8 +7,8 @@ const useDeleteSecure = (queryKeys) => {
   const axiosSecure = useAxiosSecure();
 
   const { mutateAsync } = useMutation({
-    mutationFn: async (endpoint) => {
-      const res = await axiosSecure.delete(endpoint);
+    mutationFn: async (endpoint, bodyData = []) => {
+      const res = await axiosSecure.delete(endpoint, { data: bodyData });
       return res?.data;
     },
     onSuccess: () => {

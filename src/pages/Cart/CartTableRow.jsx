@@ -4,7 +4,7 @@ import QuantityBtn from "../../components/shared/SingleUseButtons/QuantityBtn";
 
 const CartTableRow = ({ cartProduct, handleSelected, selectedIds }) => {
   const { product, quantity, price, _id } = cartProduct || {};
-  console.log(selectedIds);
+  // console.log(selectedIds);
   return (
     <tr className="grid grid-cols-4 border-b pb-4 mt-2 overflow-scroll min-w-[500px] no-scrollbar">
       <td className="flex  col-span-2 justify-between">

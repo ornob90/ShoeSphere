@@ -3,9 +3,18 @@ import { MdClose } from "react-icons/md";
 import CartDrawerCard from "./CartDrawerCard";
 import Button from "../../components/html/Button";
 import { useNavigate } from "react-router-dom";
+import useGetSecure from "../../hooks/apiSecure/useGetSecure";
+import useUser from "../../hooks/specific/useUser";
 
 const CartDrawer = ({ cartOpen, handleCartOpen }) => {
   const navigate = useNavigate();
+
+  const { _id: userID } = useUser() || {};
+
+  const { data: cartProducts } = useGetSecure(
+    ["Carts", userID],
+    `/carts/${userID}`
+  );
 
   return (
     <div
@@ -23,10 +32,9 @@ const CartDrawer = ({ cartOpen, handleCartOpen }) => {
           />
         </div>
         <div className="h-[80%] overflow-y-auto no-scrollbar">
-          <CartDrawerCard />
-          <CartDrawerCard />
-          <CartDrawerCard />
-          <CartDrawerCard />
+          {cartProducts?.map((cartProduct) => (
+            <CartDrawerCard key={cartProduct._id} cartProduct={cartProduct} />
+          ))}
         </div>
       </div>
 

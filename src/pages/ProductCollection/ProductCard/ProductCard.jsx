@@ -9,8 +9,7 @@ import useUser from "../../../hooks/specific/useUser";
 const ProductCard = ({ product }) => {
   const { _id, name, price, images } = product || {};
   const { _id: user } = useUser() || {};
-
-  const { mutateAsync: addToCart } = usePostSecure(null, "/cart");
+  const { mutateAsync: addToCart } = usePostSecure([["Carts", user]], "/cart");
 
   const navigate = useNavigate();
 
