@@ -1,9 +1,42 @@
-import React from "react";
+import React, { useState } from "react";
 import { MdClose } from "react-icons/md";
 import QuantityBtn from "../../components/shared/SingleUseButtons/QuantityBtn";
+import toast from "react-hot-toast";
+import usePutSecure from "../../hooks/apiSecure/usePutSecure";
 
 const CartTableRow = ({ cartProduct, handleSelected, selectedIds }) => {
   const { product, quantity, price, _id } = cartProduct || {};
+
+  const [productQuantity, setProductQuantity] = useState(quantity);
+
+  const { mutateAsync: updateQuantityPrice } = usePutSecure(
+    null,
+    `/update-cart-quantity/${_id}`
+  );
+
+  const handleQuantity = async (action) => {
+    let newQuantity;
+    if (action === "+") {
+      newQuantity = productQuantity + 1;
+    } else {
+      newQuantity = productQuantity - 1;
+    }
+
+    setProductQuantity(newQuantity);
+
+    const dataToSend = {
+      quantity: newQuantity,
+      price: product?.price,
+    };
+
+    try {
+      const response = await updateQuantityPrice(dataToSend);
+    } catch (error) {
+      console.log(error.message);
+      toast.error(error.message);
+    }
+  };
+
   // console.log(selectedIds);
   return (
     <tr className="grid grid-cols-4 border-b pb-4 mt-2 overflow-scroll min-w-[500px] no-scrollbar">
@@ -27,11 +60,16 @@ const CartTableRow = ({ cartProduct, handleSelected, selectedIds }) => {
             {product?.name}
           </p>
           <p className="text-[10px] lg:text-[12px] text-gray-400">Size - 3</p>
-          <p className=" font-clashRegular text-sm">$ {product?.price}</p>
+          <p className=" font-clashRegular text-sm">
+            $ {product?.price * productQuantity}
+          </p>
         </div>
       </td>
       <td className="col-span-1 flex flex-col  justify-center pb-[10%]">
-        <QuantityBtn />
+        <QuantityBtn
+          productQuantity={productQuantity}
+          handleQuantity={handleQuantity}
+        />
       </td>
       <td className="col-span-1 flex flex-col justify-center">
         <div className="flex justify-between">
