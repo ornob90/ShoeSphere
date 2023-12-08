@@ -7,10 +7,10 @@ import { loadStripe } from "@stripe/stripe-js";
 const stripePromise = loadStripe(import.meta.env.VITE_PUBLISHABLE_KEY);
 
 const CheckoutDetails = () => {
-  const [customerActive, setCustomerActive] = useState(true);
+  const [customerActive, setCustomerActive] = useState(false);
 
   return (
-    <div className="lg:col-span-3 relative min-h-[700px]">
+    <div className=" lg:col-span-3 relative min-h-[700px]">
       <h1 className=" mb-16 border-b-2 border-[#EBEBEB] font-medium w-max">
         Your Details
       </h1>

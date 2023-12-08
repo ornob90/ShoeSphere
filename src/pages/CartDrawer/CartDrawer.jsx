@@ -19,7 +19,9 @@ const CartDrawer = ({ cartOpen, handleCartOpen }) => {
   return (
     <div
       className={`max-h-screen min-h-[300px]  sm:w-[70%] md:w-[50%] lg:w-[30%] fixed  top-0  bg-[#F0F0F4] h-screen p-2  flex flex-col justify-between ${
-        cartOpen ? "right-0 z-20" : "right-[-200%] md:right-[-100%] z-0"
+        cartOpen
+          ? "right-0 z-20"
+          : "right-[400%] sm:right-[-200%] md:right-[-100%] z-0"
       } duration-[.4s]`}
     >
       {/* Top Side  */}

@@ -47,7 +47,7 @@ const CartSummery = () => {
       >
         Check Out
       </Button>
-      <div className="mt-8">
+      <div className="mt-4 text-[12px] text-center">
         <p>Shop Smart, Ship Free</p>
       </div>
     </div>
