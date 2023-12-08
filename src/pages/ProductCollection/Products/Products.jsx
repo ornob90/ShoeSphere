@@ -4,17 +4,23 @@ import ProductCard from "../ProductCard/ProductCard";
 import Pagination from "../../../components/shared/Pagination";
 import useGetSecure from "../../../hooks/apiSecure/useGetSecure";
 
-const Products = () => {
-  const [page, setPage] = useState(0);
-  const [size, setSize] = useState(10);
-  const [pageCount, setPageCount] = useState(null);
-
+const Products = ({
+  products,
+  page,
+  setPage,
+  size,
+  setSize,
+  pageCount,
+  setPageCount,
+}) => {
   const { data } = useGetSecure(["ProductCount"], "/product-count");
 
-  const { data: products } = useGetSecure(
-    ["Products", page, size],
-    `/products?page=${page}&size=${size}`
-  );
+  // const { data: products } = useGetSecure(
+  //   ["Products", page, size],
+  //   `/products?page=${page}&size=${size}`
+  // );
+
+  // console.log(products);
 
   useEffect(() => {
     setPageCount(Math.ceil(data?.productCount) / size);

@@ -26,12 +26,15 @@ const ProductCollection = () => {
   // ];
 
   const [products, setProducts] = useState([]);
-  const [page, setPage] = useState(0);
-  const [size, setSize] = useState(15);
+
   const axiosSecure = useAxiosSecure();
 
-  const { data: shoeBrands } = useGetSecure(["Brands"], "/brands");
+  const [page, setPage] = useState(0);
+  const [size, setSize] = useState(10);
+  const [pageCount, setPageCount] = useState(null);
 
+  const { data: shoeBrands } = useGetSecure(["Brands"], "/brands");
+  // console.log(shoeBrands);
   const { data } = useGetSecure(
     ["Products"],
     `/products?page=${page}&size=${size}`
@@ -59,45 +62,46 @@ const ProductCollection = () => {
     }
   };
 
-  // useEffect(() => {
-  //   const selectAvailableOptions = Object.keys(available)
-  //     .filter((key) => available[key])
-  //     .map((value) => (value === "Yes" ? true : false));
+  useEffect(() => {
+    const selectAvailableOptions = Object.keys(available)
+      .filter((key) => available[key])
+      .map((value) => (value === "Yes" ? true : false));
 
-  //   const selectGendersOptions = Object.keys(genders).filter(
-  //     (key) => genders[key]
-  //   );
+    const selectGendersOptions = Object.keys(genders).filter(
+      (key) => genders[key]
+    );
 
-  //   const filterOptions = {
-  //     brand: brands,
-  //     available: selectAvailableOptions,
-  //     gender: selectGendersOptions,
-  //     minPrice: [priceRange.min],
-  //     maxPrice:
-  //       priceRange.max >= priceRange.min
-  //         ? [priceRange.max]
-  //         : [priceRange.min + 1],
-  //   };
+    const filterOptions = {
+      brand: brands,
+      available: selectAvailableOptions,
+      gender: selectGendersOptions,
+      minPrice: priceRange.min,
+      maxPrice:
+        priceRange.max >= priceRange.min ? priceRange.max : priceRange.min + 1,
+    };
 
-  //   if (
-  //     brands.length === 0 &&
-  //     selectAvailableOptions.length === 0 &&
-  //     genders.length === 0
-  //   ) {
-  //     setProducts(data);
-  //     return;
-  //   }
+    if (
+      brands.length === 0 &&
+      selectAvailableOptions.length === 0 &&
+      genders.length === 0
+    ) {
+      setProducts(data);
+      return;
+    }
 
-  //   axiosSecure
-  //     .get(`/products?page=${page}&size=${size}`)
-  //     .then((res) => console.log(res.data))
-  //     .catch((err) => console.log(err));
-  // }, [brands, genders, priceRange.min, priceRange.max, available]);
+    axiosSecure
+      .post(`/products?page=${page}&size=${size}`, filterOptions)
+      .then((res) => {
+        console.log(res.data);
+        setProducts(res.data);
+      })
+      .catch((err) => console.log(err.message));
+  }, [brands, genders, priceRange.min, priceRange.max, available, page, size]);
 
   return (
     <Container className="pt-[25%] sm:pt-[20%] md:pt-[15%] lg:pt-[7%] min-h-[600px]">
       <ul className="flex w-full max-w-full gap-4 mt-5 overflow-x-scroll no-scrollbar border-y">
-        {shoeBrands?.map(({ name: brandName }) => (
+        {shoeBrands?.map(({ name: brandName, logo }) => (
           <li
             onClick={() => handleBrand(brandName)}
             key={brandName}
@@ -107,11 +111,7 @@ const ProductCollection = () => {
           >
             {brandName}
             <div>
-              <img
-                src="https://i.ibb.co/PmnkYfM/nike-removebg-preview.png"
-                alt=""
-                className="w-[20px] "
-              />
+              <img src={logo} alt="" className="w-[20px] " />
             </div>
           </li>
         ))}
@@ -125,7 +125,15 @@ const ProductCollection = () => {
           genders={genders}
           available={available}
         />
-        <Products />
+        <Products
+          products={products}
+          page={page}
+          setPage={setPage}
+          size={size}
+          setSize={setSize}
+          pageCount={pageCount}
+          setPageCount={setPageCount}
+        />
       </div>
     </Container>
   );
