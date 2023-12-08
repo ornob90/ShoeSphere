@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const Pagination = ({ setPage, setSize, page, pageCount, size }) => {
-  console.log(pageCount);
+  // console.log(pageCount);
   return (
     <div className="mb-40 w-full  flex justify-center items-center  mt-4 flex-wrap">
       {pageCount &&

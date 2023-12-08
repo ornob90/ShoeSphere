@@ -13,6 +13,7 @@ const Products = ({
   setSize,
   pageCount,
   setPageCount,
+  handleSearch,
 }) => {
   const { data } = useGetSecure(["ProductCount"], "/product-count");
 
@@ -41,6 +42,7 @@ const Products = ({
           </p>
         </div>
         <Search
+          onChange={handleSearch}
           className="hidden md:flex"
           iconClass={`text-xl right-[3%] top-[25%] `}
           inputClass="py-2 pl-2"

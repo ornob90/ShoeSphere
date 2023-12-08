@@ -32,17 +32,44 @@ const ProductCollection = () => {
   const [page, setPage] = useState(0);
   const [size, setSize] = useState(10);
   const [pageCount, setPageCount] = useState(null);
-
+  const [initialProducts, setInitialProducts] = useState(null);
   const { data: shoeBrands } = useGetSecure(["Brands"], "/brands");
   // console.log(shoeBrands);
-  const { data } = useGetSecure(
-    ["Products"],
-    `/products?page=${page}&size=${size}`
-  );
+  // const { data } = useGetSecure(
+  //   ["Products"],
+  //   `/products?page=${page}&size=${size}`
+  // );
 
   useEffect(() => {
-    setProducts(data);
-  }, [data]);
+    axiosSecure
+      .post(`/products?page=${page}&size=${size}`, {
+        minPrice: priceRange.min,
+        maxPrice:
+          priceRange.max >= priceRange.min
+            ? priceRange.max
+            : priceRange.min + 1,
+      })
+      .then((res) => {
+        setProducts(res.data);
+        setInitialProducts(res.data);
+        console.log(res.data);
+        return;
+      });
+  }, []);
+
+  const handleSearch = (e) => {
+    if (!e.target.value) {
+      setProducts(initialProducts);
+    } else {
+      // console.log(data);
+      console.log(initialProducts);
+      setProducts(
+        initialProducts?.filter((product) =>
+          product.name.toLowerCase().includes(e.target.value.toLowerCase())
+        )
+      );
+    }
+  };
 
   const [brands, setBrands] = useState([]);
   const [genders, setGenders] = useState({});
@@ -126,6 +153,7 @@ const ProductCollection = () => {
           available={available}
         />
         <Products
+          handleSearch={handleSearch}
           products={products}
           page={page}
           setPage={setPage}
