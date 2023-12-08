@@ -15,10 +15,6 @@ const ProfileCircle = () => {
       name: "Profile",
       slug: "/profile/1",
     },
-    {
-      name: "Dashboard",
-      slug: "/dashboard",
-    },
   ];
 
   return (

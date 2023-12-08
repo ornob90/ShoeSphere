@@ -14,19 +14,24 @@ const CheckoutOrder = () => {
   const checkoutSummary = [
     {
       title: "Subtotal",
-      total: cartTotal[0]?.totalPrice,
+      total:
+        cartTotal && cartTotal?.length > 0 ? cartTotal[0]?.totalDiscount : 0,
     },
     {
       title: "Discount",
-      total: cartTotal[0]?.totalDiscount,
+      total:
+        cartTotal && cartTotal?.length > 0 ? cartTotal[0]?.totalDiscount : 0,
     },
     {
       title: "Shipping",
-      total: 50,
+      total: cartTotal && cartTotal?.length > 0 ? 50 : 0,
     },
     {
       title: "Total",
-      total: cartTotal[0]?.totalPrice - cartTotal[0]?.totalDiscount + 50,
+      total:
+        cartTotal && cartTotal?.length > 0
+          ? +(cartTotal[0]?.totalPrice - cartTotal[0]?.totalDiscount + 50)
+          : 0,
     },
   ];
 

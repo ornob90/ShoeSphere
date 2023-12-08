@@ -24,21 +24,34 @@ const CartSummery = () => {
       <div className="pt-4 text-sm text-gray-600 pb-5 ">
         <div className="flex justify-between items-center pb-2">
           <p>Subtotal</p>
-          <p>${cartTotal[0]?.totalPrice}</p>
+          <p>
+            $
+            {cartTotal && cartTotal?.length > 0
+              ? cartTotal[0]?.totalDiscount
+              : 0}
+          </p>
         </div>
         <div className="flex justify-between items-center pb-2">
           <p>Discount</p>
-          <p>${cartTotal[0]?.totalDiscount}</p>
+          <p>
+            $
+            {cartTotal && cartTotal?.length > 0
+              ? cartTotal[0]?.totalDiscount
+              : 0}
+          </p>
         </div>
         <div className="flex justify-between items-center">
           <p>Shipping Fees</p>
-          <p>$50.00</p>
+          <p>${cartTotal && cartTotal?.length > 0 ? 50 : 0}</p>
         </div>
       </div>
       <div className="flex justify-between items-center pt-8 border-y pb-4">
         <p className="text-3xl md:text-4xl font-poppins font-base">Total</p>
         <p className="text-xl font-poppins font-semibold ">
-          ${cartTotal[0].totalPrice - cartTotal[0].totalDiscount + 50}
+          $
+          {cartTotal && cartTotal?.length > 0
+            ? +(cartTotal[0]?.totalPrice - cartTotal[0]?.totalDiscount + 50)
+            : 0}
         </p>
       </div>
       <Button

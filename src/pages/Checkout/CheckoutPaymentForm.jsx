@@ -10,6 +10,10 @@ import Button from "../../components/html/Button";
 import axios from "axios";
 import useAxiosSecure from "../../hooks/axios/useAxiosSecure";
 import BASE_URL from "../../utils/api";
+import useUser from "../../hooks/specific/useUser";
+import useGetSecure from "../../hooks/apiSecure/useGetSecure";
+import usePostSecure from "../../hooks/apiSecure/usePostSecure";
+import toast from "react-hot-toast";
 
 const CheckoutPaymentForm = ({ customerActive }) => {
   const stripe = useStripe();
@@ -19,18 +23,37 @@ const CheckoutPaymentForm = ({ customerActive }) => {
   const [transactionId, setTransactionId] = useState("");
   const [paymentLoad, setPaymentLoad] = useState(false);
 
-  const price = 148.05;
+  const { _id: userID } = useUser() || {};
+
+  const { data: cartTotal } = useGetSecure(
+    ["CartTotal", userID],
+    `/cart-total/${userID}`
+  );
+
+  const { mutateAsync: confirmCheckout } = usePostSecure(
+    [["CartTotal", userID]],
+    `/order/${userID}`
+  );
+
+  const price =
+    cartTotal && cartTotal?.length > 0
+      ? +(cartTotal[0]?.totalPrice - cartTotal[0]?.totalDiscount + 50)
+      : null;
+
   const axiosSecure = useAxiosSecure();
+
   useEffect(() => {
-    axiosSecure
-      .post(BASE_URL + "/create-payment-intent", {
-        price,
-      })
-      .then((res) => {
-        // console.log(res.data.clientSecret);
-        setClientSecret(res.data.clientSecret);
-      });
-  }, [price]);
+    if (price) {
+      axiosSecure
+        .post(BASE_URL + "/create-payment-intent", {
+          price,
+        })
+        .then((res) => {
+          // console.log(res.data.clientSecret);
+          setClientSecret(res.data.clientSecret);
+        });
+    }
+  }, [price, cartTotal]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -77,10 +100,26 @@ const CheckoutPaymentForm = ({ customerActive }) => {
       console.log(confirmError.message);
     } else {
       setPaymentLoad(false);
+
       if ((paymentIntent.status = "succeeded")) {
+        await handleConfirmCheckout(paymentIntent.id);
         console.log("Transection id: ", paymentIntent.id);
         setTransactionId(paymentIntent.id);
       }
+    }
+  };
+
+  const handleConfirmCheckout = async (transactionID) => {
+    try {
+      const dataToSend = {
+        transactionID,
+      };
+      const response = await confirmCheckout(dataToSend);
+      console.log(response);
+    } catch (error) {
+      console.error(error);
+      setError(error.message);
+      toast.error(error.message);
     }
   };
 
