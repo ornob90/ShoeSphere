@@ -110,13 +110,13 @@ const Navbar = ({ handleCartOpen }) => {
 
         {/* Search and Cart */}
 
-        <div className="flex justify-end items-center gap-4  md:w-[80%] lg:w-[50%]">
-          <Search
+        <div className="flex justify-end items-center gap-4  md:w-[80%] lg:w-max">
+          {/* <Search
             className="hidden md:flex"
             iconClass={`text-xl right-[3%] top-[25%] `}
             transparent={transparent}
             inputClass="py-2 pl-2"
-          />
+          /> */}
           <div>
             <AiOutlineShoppingCart
               onClick={handleCartOpen}
