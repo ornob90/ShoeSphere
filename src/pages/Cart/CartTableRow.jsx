@@ -3,6 +3,7 @@ import { MdClose } from "react-icons/md";
 import QuantityBtn from "../../components/shared/SingleUseButtons/QuantityBtn";
 import toast from "react-hot-toast";
 import usePutSecure from "../../hooks/apiSecure/usePutSecure";
+import DeleteButton from "../../components/shared/SingleUseButtons/DeleteButton";
 
 const CartTableRow = ({ cartProduct, handleSelected, selectedIds }) => {
   const { product, quantity, price, _id } = cartProduct || {};
@@ -74,9 +75,10 @@ const CartTableRow = ({ cartProduct, handleSelected, selectedIds }) => {
       <td className="col-span-1 flex flex-col justify-center">
         <div className="flex justify-between">
           <p className=" font-clashRegular text-sm">${price}</p>
-          <div className="bg-black flex justify-center items-center p-1 rounded-full active:scale-95 divide-blue-[.4s]">
+          {/* <div className="bg-red-500 flex justify-center items-center p-1 rounded-full active:scale-95 divide-blue-[.4s]">
             <MdClose className=" text-white rounded-full" />
-          </div>
+          </div> */}
+          <DeleteButton id={_id}/>
         </div>
       </td>
     </tr>

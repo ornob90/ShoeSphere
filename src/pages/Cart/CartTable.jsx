@@ -11,21 +11,23 @@ import useAuth from "../../hooks/auth/useAuth";
 const CartTable = () => {
   const { _id: userID } = useUser() || {};
 
-  // const [userID, setUserID] = useState(null);
-
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
 
-  const [cartProducts, setCartProducts] = useState([]);
+  // const [cartProducts, setCartProducts] = useState([]);
+  const { data: cartProducts } = useGetSecure(
+    ["Carts", userID],
+    `/carts/${userID}`
+  );
 
-  useEffect(() => {
-    // console.log(userID);
-    if (userID) {
-      axiosSecure
-        .get(`/carts/${userID}`)
-        .then((res) => setCartProducts(res.data));
-    }
-  }, [userID]);
+  // useEffect(() => {
+  //   // console.log(userID);
+  //   if (userID) {
+  //     axiosSecure
+  //       .get(`/carts/${userID}`)
+  //       .then((res) => setCartProducts(res.data));
+  //   }
+  // }, [userID]);
 
   const [selectedIds, setSelectedIds] = useState({});
 

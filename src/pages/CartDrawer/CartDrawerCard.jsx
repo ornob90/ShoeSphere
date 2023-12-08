@@ -3,6 +3,7 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import PlusMinusBtn from "../../components/shared/SingleUseButtons/PlusMinusBtn";
 import QuantityBtn from "../../components/shared/SingleUseButtons/QuantityBtn";
 import usePutSecure from "../../hooks/apiSecure/usePutSecure";
+import DeleteButton from "../../components/shared/SingleUseButtons/DeleteButton";
 const CartDrawerCard = ({ cartProduct }) => {
   const { product, quantity, price, _id } = cartProduct || {};
 
@@ -46,8 +47,10 @@ const CartDrawerCard = ({ cartProduct }) => {
           <div>
             <h3 className="font-medium">{product?.name}</h3>
           </div>
-          <RiDeleteBin6Line />
+          {/* <RiDeleteBin6Line className="text-red-500" /> */}
+          <DeleteButton id={_id} />
         </div>
+
         <div className="flex justify-between items-center">
           <p className=" font-clashSemibold">
             {product?.price * productQuantity}$

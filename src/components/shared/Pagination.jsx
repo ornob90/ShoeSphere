@@ -21,8 +21,8 @@ const Pagination = ({ setPage, setSize, page, pageCount, size }) => {
         className="border bg-black text-white px-4 py-1 focus:border-primary ml-4"
         value={size}
       >
-        <option value="1">10</option>
-        <option value="10">20</option>
+        <option value="10">10</option>
+        <option value="20">20</option>
         <option value="30">30</option>
       </select>
     </div>
