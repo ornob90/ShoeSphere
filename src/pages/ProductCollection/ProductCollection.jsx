@@ -7,28 +7,31 @@ import useGetSecure from "../../hooks/apiSecure/useGetSecure";
 import useAxiosSecure from "../../hooks/axios/useAxiosSecure";
 
 const ProductCollection = () => {
-  const shoeBrands = [
-    "Nike",
-    "Adidas",
-    "Puma",
-    "Converse",
-    "Reebok",
-    "Vans",
-    "New",
-    "Skechers",
-    "Timberland",
-    "Fila",
-    "Under",
-    "ASICS",
-    "Ecco",
-    "Dr. ",
-    "Salomon",
-  ];
+  // const shoeBrands = [
+  //   "Nike",
+  //   "Adidas",
+  //   "Puma",
+  //   "Converse",
+  //   "Reebok",
+  //   "Vans",
+  //   "New",
+  //   "Skechers",
+  //   "Timberland",
+  //   "Fila",
+  //   "Under",
+  //   "ASICS",
+  //   "Ecco",
+  //   "Dr. ",
+  //   "Salomon",
+  // ];
 
   const [products, setProducts] = useState([]);
   const [page, setPage] = useState(0);
   const [size, setSize] = useState(15);
   const axiosSecure = useAxiosSecure();
+
+  const { data: shoeBrands } = useGetSecure(["Brands"], "/brands");
+
   const { data } = useGetSecure(
     ["Products"],
     `/products?page=${page}&size=${size}`
@@ -94,7 +97,7 @@ const ProductCollection = () => {
   return (
     <Container className="pt-[25%] sm:pt-[20%] md:pt-[15%] lg:pt-[7%] min-h-[600px]">
       <ul className="flex w-full max-w-full gap-4 mt-5 overflow-x-scroll no-scrollbar border-y">
-        {shoeBrands.map((brandName) => (
+        {shoeBrands?.map(({ name: brandName }) => (
           <li
             onClick={() => handleBrand(brandName)}
             key={brandName}
