@@ -5,13 +5,13 @@ import toast from "react-hot-toast";
 import usePutSecure from "../../hooks/apiSecure/usePutSecure";
 import DeleteButton from "../../components/shared/SingleUseButtons/DeleteButton";
 
-const CartTableRow = ({ cartProduct, handleSelected, selectedIds }) => {
+const CartTableRow = ({ cartProduct, handleSelected, selectedIds, userID }) => {
   const { product, quantity, price, _id } = cartProduct || {};
 
   const [productQuantity, setProductQuantity] = useState(quantity);
 
   const { mutateAsync: updateQuantityPrice } = usePutSecure(
-    null,
+    [["CartTotal", userID]],
     `/update-cart-quantity/${_id}`
   );
 
@@ -78,7 +78,7 @@ const CartTableRow = ({ cartProduct, handleSelected, selectedIds }) => {
           {/* <div className="bg-red-500 flex justify-center items-center p-1 rounded-full active:scale-95 divide-blue-[.4s]">
             <MdClose className=" text-white rounded-full" />
           </div> */}
-          <DeleteButton id={_id}/>
+          <DeleteButton id={_id} />
         </div>
       </td>
     </tr>

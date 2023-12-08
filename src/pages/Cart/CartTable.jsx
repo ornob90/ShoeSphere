@@ -102,6 +102,7 @@ const CartTable = () => {
       <tbody className="h-[400px] overflow-auto no-scrollbar">
         {cartProducts?.map((cartProduct) => (
           <CartTableRow
+            userID={userID}
             handleSelected={handleSelected}
             key={cartProduct._id}
             selectedIds={selectedIds}
