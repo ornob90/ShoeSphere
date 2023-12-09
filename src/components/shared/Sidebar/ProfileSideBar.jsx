@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { CgMenuLeftAlt } from "react-icons/cg";
 import { BiSolidUserAccount } from "react-icons/bi";
-import { IoBookmarks } from "react-icons/io5";
+import { IoBookmarks, IoPeople } from "react-icons/io5";
 import { TbInfoOctagonFilled } from "react-icons/tb";
 import { AiOutlineTransaction } from "react-icons/ai";
 import { BiLeftArrowAlt } from "react-icons/bi";
@@ -36,12 +36,7 @@ const ProfileSideBar = () => {
       icon: (className) => <BsCartPlus className={`${className}`} />,
       show: role === "user",
     },
-    {
-      name: "Transaction",
-      to: `/profile/${_id}/transaction`,
-      icon: (className) => <AiOutlineTransaction className={`${className}`} />,
-      show: role === "user",
-    },
+
     {
       name: "Sales Overview",
       to: `/profile/${_id}/admin/sales-overview`,
@@ -59,6 +54,12 @@ const ProfileSideBar = () => {
       to: `/profile/${_id}/admin/product-manage`,
       icon: (className) => <FaBoxes className={`${className}`} />,
       show: role === "admin",
+    },
+    {
+      name: "Manage Users",
+      to: `/profile/${_id}/admin/manage-users`,
+      icon: (className) => <IoPeople className={`${className}`} />,
+      show: role === "user",
     },
   ];
 

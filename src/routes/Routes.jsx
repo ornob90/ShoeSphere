@@ -17,6 +17,7 @@ import SalesOverview from "../pages/AdminDashboard/SalesOverview/SalesOverview";
 import OrderManage from "../pages/AdminDashboard/OrderManage/OrderManage";
 import ProductManage from "../pages/AdminDashboard/ProductManage/ProductManage";
 import AddProduct from "../pages/AdminDashboard/ProductManage/AddProduct";
+import ManageUsers from "../pages/AdminDashboard/ManageUsers/ManageUsers";
 
 const router = createBrowserRouter([
   {
@@ -75,10 +76,6 @@ const router = createBrowserRouter([
         path: "/profile/:id/orders",
         element: <MyOrders />,
       },
-      {
-        path: "/profile/:id/transaction",
-        element: <MyTransaction />,
-      },
 
       // Admin Route
 
@@ -97,6 +94,10 @@ const router = createBrowserRouter([
       {
         path: "/profile/:id/admin/add-product",
         element: <AddProduct />,
+      },
+      {
+        path: "/profile/:id/admin/manage-users",
+        element: <ManageUsers />,
       },
     ],
   },

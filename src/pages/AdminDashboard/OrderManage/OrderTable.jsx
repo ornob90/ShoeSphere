@@ -4,66 +4,98 @@ import TableHeader from "../../../components/shared/table/TableHeader";
 import TableBody from "../../../components/shared/Table/TableBody";
 import TableRow from "../../../components/shared/table/TableRow";
 import { AiFillDelete } from "react-icons/ai";
+import useUser from "../../../hooks/specific/useUser";
+import useGetSecure from "../../../hooks/apiSecure/useGetSecure";
+import usePutSecure from "../../../hooks/apiSecure/usePutSecure";
+import useAxiosSecure from "../../../hooks/axios/useAxiosSecure";
+import toast from "react-hot-toast";
+import Swal from "sweetalert2";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 const OrderTable = () => {
-  const headers = ["ID", "Name", "Quantity", "Price", "Status", "Action"];
-  const orders = [
-    {
-      ID: "1",
-      Name: "Apples",
-      Quantity: 10,
-      Price: 2.99,
-      Status: "In Stock",
-    },
-    {
-      ID: "2",
-      Name: "Orangesasdfadfadfasfadsf",
-      Quantity: 5,
-      Price: 3.49,
-      Status: "In Stock",
-    },
-    {
-      ID: "3",
-      Name: "Bread",
-      Quantity: 8,
-      Price: 2.5,
-      Status: "Out of Stock",
-    },
-    {
-      ID: "4",
-      Name: "Milk",
-      Quantity: 15,
-      Price: 1.99,
-      Status: "In Stock",
-    },
-    {
-      ID: "5",
-      Name: "Cheese",
-      Quantity: 3,
-      Price: 4.99,
-      Status: "In Stock",
-    },
+  const headers = [
+    "OrderID",
+    "Transaction ID",
+    "Quantity",
+    "Price",
+    "Order Date",
+    "Status",
   ];
+
+  const { _id: userID } = useUser() || {};
+  const { data: orders } = useGetSecure(
+    ["MyOrders", userID],
+    `/orders/${userID}`
+  );
+  const queryClient = useQueryClient();
+
+  const { mutateAsync: updateStatus } = useMutation({
+    mutationFn: async (endpoint, data) => {
+      console.log("hit add user");
+      const res = await axiosSecure.patch(endpoint, data);
+      return res?.data;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries(["MyOrders", userID]);
+    },
+  });
+
+  const axiosSecure = useAxiosSecure();
+
+  const handleUpdateStatus = async (orderID, status) => {
+    if (status !== "pending") return;
+
+    try {
+      Swal.fire({
+        title: "Marked as delivered?",
+        text: "The order will be marked as delivered.",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Proceed",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          updateStatus(`/order/${orderID}`, {}).then((res) => {
+            toast.success("Order Delivered!!");
+          });
+        }
+      });
+    } catch (error) {
+      console.error(error.message);
+      toast.error(error.message);
+    }
+  };
+
   return (
     <div className="min-h-[400px] bg-white mt-5 pt-5 overflow-x-auto">
       <Table>
         <TableHeader headers={headers} cellWidth="35%" />
         <TableBody>
-          {orders?.map((row, idx) => (
-            <>
+          {orders?.map(
+            (
+              { _id, transactionID, quantity, price, orderDate, status },
+              idx
+            ) => (
               <TableRow
+                key={_id}
                 className=" font-[300] text-gray-700 text-sm"
-                key={row.ID}
-                cells={Object.values(row).slice(0, -1)}
+                cells={[_id, transactionID, quantity, price, orderDate]}
                 cellWidth="35%"
               >
-                <th className="text-start w-[35%]">Pending</th>
-                <th className="text-start w-[35%]">
-                  <AiFillDelete className="text-red-500 text-2xl" />
+                <th
+                  onClick={() => handleUpdateStatus(_id, status)}
+                  className={`text-start w-[35%]  cursor-pointer ${
+                    status === "pending"
+                      ? "text-red-500 underline"
+                      : "text-green-600 "
+                  }`}
+                >
+                  {status}
                 </th>
               </TableRow>
-            </>
-          ))}
+            )
+          )}
         </TableBody>
       </Table>
     </div>
