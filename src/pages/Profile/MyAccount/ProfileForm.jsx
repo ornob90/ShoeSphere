@@ -5,10 +5,13 @@ import useUser from "../../../hooks/specific/useUser";
 import useAuth from "../../../hooks/auth/useAuth";
 import usePutSecure from "../../../hooks/apiSecure/usePutSecure";
 import toast from "react-hot-toast";
+import { useState } from "react";
+import Select from "../../../components/html/Select";
 
 const ProfileForm = () => {
   const country = ["USA", "Canada", "UK", "Australia", "Other"];
   const region = ["California", "New York", "Texas", "Florida", "Other"];
+
   const user = useUser() || {};
   // console.log(user);
   const { user: curUser } = useAuth();
@@ -19,6 +22,7 @@ const ProfileForm = () => {
   );
   const onSubmit = async (data) => {
     const response = await updateUser(data);
+
     if (response.updateOne) {
       toast.success("User updated successfully!!");
     }
@@ -49,6 +53,7 @@ const ProfileForm = () => {
           {...register("country")}
           placeHolder="Country"
         />
+
         <input
           defaultValue={user?.city || ""}
           className="w-full bg-[#EBEBEB] py-3 pl-2 text-gray-500 relative flex justify-between items-center focus:outline-none md:col-span-2"
@@ -68,6 +73,7 @@ const ProfileForm = () => {
           {...register("address")}
           placeHolder="Address"
         />
+
         <input
           defaultValue={user?.email || ""}
           className="w-full bg-[#EBEBEB] py-3 pl-2 text-gray-500 relative flex justify-between items-center focus:outline-none md:col-span-6 "

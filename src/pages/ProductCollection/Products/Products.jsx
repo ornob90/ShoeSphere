@@ -30,8 +30,8 @@ const Products = ({
 
   return (
     <div className="lg:ml-5 font-medium min-h-[500px] mt-16 lg:mt-0 w-[90%] mx-auto lg:w-full ">
-      <div className="flex w-full justify-between px-4 py-2 border rounded-md shadow-sm cursor-pointer  text-[12px] md:text-base text-gray-600">
-        <div className="flex items-center">
+      <div className="flex w-full justify-end px-4 py-2 border rounded-md shadow-sm cursor-pointer  text-[12px] md:text-base text-gray-600">
+        {/* <div className="flex items-center">
           <p className="mr-2">Sort By: </p>
           <p className="flex items-center gap-2 ">
             <span className="ml-2 font-medium">
@@ -40,7 +40,7 @@ const Products = ({
             <FaArrowRightArrowLeft />
             <span className="font-medium">High</span>
           </p>
-        </div>
+        </div> */}
         <Search
           onChange={handleSearch}
           className="hidden md:flex"

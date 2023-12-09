@@ -5,8 +5,11 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
 import Container from "../../../components/shared/Containers/Container";
+import useGetSecure from "../../../hooks/apiSecure/useGetSecure";
 
 const ProductCollectionCarousal = () => {
+  const { data: shoeBrands } = useGetSecure(["Brands"], "/brands");
+  console.log(shoeBrands);
   return (
     <Container className="">
       <Swiper
@@ -38,9 +41,9 @@ const ProductCollectionCarousal = () => {
       >
         {/* <SwiperSlide className="h-[100px]">Slide 1</SwiperSlide> */}
 
-        {[1, 2, 3, 4, 5, 6, 7].map((value) => (
-          <SwiperSlide key={value} className="h-[350px]">
-            <ProductCollectionCarousalCard />
+        {shoeBrands?.map((brand) => (
+          <SwiperSlide key={brand._id} className="h-[350px]">
+            <ProductCollectionCarousalCard brand={brand} />
           </SwiperSlide>
         ))}
       </Swiper>

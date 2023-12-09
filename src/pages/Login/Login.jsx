@@ -29,6 +29,21 @@ const Login = () => {
     },
   });
 
+  const handleDemo = (email, password) => {
+    signInMethod(email, password)
+      .then((res) => {
+        setErrorMsg("");
+        setLoading(false);
+        navigate("/");
+        // handleCheckRoleAndNavigate(res.user.email);
+      })
+      .catch((err) => {
+        setLoading(false);
+        setErrorMsg(err.message);
+        console.log(err.message);
+      });
+  };
+
   const handleSignIn = (e) => {
     e.preventDefault();
 
@@ -120,6 +135,22 @@ const Login = () => {
           <Button className="py-2 mt-3 text-sm text-white md:text-base">
             Connect
           </Button>
+          <div className="flex justify-between gap-4">
+            <Button
+              onClick={() => handleDemo("demo@gmail.com", "Demo1200,()")}
+              type="button"
+              className="flex-1 bg-green-500 py-2 mt-3 text-sm text-white md:text-base"
+            >
+              Demo User
+            </Button>
+            <Button
+              onClick={() => handleDemo("admin@gmail.com", "Admin1200,()")}
+              type="button"
+              className="flex-1 bg-red-500 py-2 mt-3 text-sm text-white md:text-base"
+            >
+              Demo Admin
+            </Button>
+          </div>
         </form>
         <div className="mt-4 divider">or</div>
         <p className="text-[12px] md:text-sm mb-8">

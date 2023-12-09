@@ -127,19 +127,19 @@ const ProductCollection = () => {
 
   return (
     <Container className="pt-[25%] sm:pt-[20%] md:pt-[15%] lg:pt-[7%] min-h-[600px]">
-      <ul className="flex w-full max-w-full gap-4 mt-5 overflow-x-scroll no-scrollbar border-y">
+      <ul className="flex w-full max-w-full gap-4 mt-5 overflow-x-scroll no-scrollbar ">
         {shoeBrands?.map(({ _id, name: brandName, logo }) => (
           <li
-            onClick={() => handleBrand(_id)}
+            onClick={() => handleBrand(brandName)}
             key={brandName}
-            className={`py-3 w-[25%] md:w-[20%] lg:w-[13%]  flex-shrink-0 text-center hover:border-black border border-white  cursor-pointer duration-[.4s] text-sm flex  justify-center ${
+            className={` py-3 w-[25%] md:w-[20%] lg:w-[13%]  flex-shrink-0 text-center hover:border-black border border-gray-300  cursor-pointer duration-[.4s] text-sm flex  justify-center ${
               brands.includes(brandName) ? " bg-black text-white" : "text-black"
             }`}
           >
             {brandName}
-            <div>
+            {/* <div>
               <img src={logo} alt="" className="w-[20px] " />
-            </div>
+            </div> */}
           </li>
         ))}
       </ul>

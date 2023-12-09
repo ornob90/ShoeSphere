@@ -87,14 +87,15 @@ const router = createBrowserRouter([
         path: "/profile/:id/admin/orders-manage",
         element: <OrderManage />,
       },
-      {
-        path: "/profile/:id/admin/product-manage",
-        element: <ProductManage />,
-      },
-      {
-        path: "/profile/:id/admin/add-product",
-        element: <AddProduct />,
-      },
+      // Upcoming...
+      // {
+      //   path: "/profile/:id/admin/product-manage",
+      //   element: <ProductManage />,
+      // },
+      // {
+      //   path: "/profile/:id/admin/add-product",
+      //   element: <AddProduct />,
+      // },
       {
         path: "/profile/:id/admin/manage-users",
         element: <ManageUsers />,

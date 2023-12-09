@@ -2,10 +2,14 @@ import React, { useState } from "react";
 import { FaM, FaP, FaPlus } from "react-icons/fa6";
 import { FaMinus } from "react-icons/fa6";
 
-const Select = ({ className = "", options, placeHolder }) => {
+const Select = ({
+  className = "",
+  options,
+  placeHolder,
+  chosenValue,
+  setChosenValue,
+}) => {
   const [dropdownOpen, setDrownDownOpen] = useState(false);
-
-  const [chosenValue, setChosenValue] = useState(placeHolder);
 
   return (
     <div

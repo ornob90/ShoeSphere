@@ -9,7 +9,12 @@ import ProductCarousel from "../../components/shared/ProductCarousel/ProductCaro
 import QuantityBtn from "../../components/shared/SingleUseButtons/QuantityBtn";
 import useGetSecure from "../../hooks/apiSecure/useGetSecure";
 import { useParams } from "react-router-dom";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
 
+import ProductCarouselCard from "../../components/cards/ProductCarouselCard";
+import { Pagination } from "swiper/modules";
 const ProductDetail = () => {
   // const images = [
   //   "https://images.unsplash.com/photo-1608231387042-66d1773070a5?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -43,6 +48,15 @@ const ProductDetail = () => {
     sellPrice,
     addedDate,
   } = product || {};
+
+  console.log(product);
+
+  const { data: suggestions } = useGetSecure(
+    ["SuggestionProducts", brand],
+    `/suggested-product?brand=${brand}`
+  );
+
+  console.log(brand);
 
   return (
     <div className="min-h-screen font-poppins">
@@ -94,7 +108,41 @@ const ProductDetail = () => {
       </Container>
 
       <SectionHeader title="You may like" />
-      <ProductCarousel />
+      {/* Similar Products */}
+
+      <Container className="mb-28">
+        <Swiper
+          // slidesPerView={"auto"}
+          spaceBetween={30}
+          pagination={{
+            clickable: true,
+          }}
+          modules={[Pagination]}
+          className="mySwiper "
+          style={{
+            height: "400px",
+          }}
+          breakpoints={{
+            640: {
+              width: 640,
+              slidesPerView: 1,
+            },
+
+            768: {
+              width: 768,
+              slidesPerView: 2,
+            },
+          }}
+        >
+          {/* <SwiperSlide className="h-[100px]">Slide 1</SwiperSlide> */}
+
+          {suggestions?.map((product) => (
+            <SwiperSlide key={product?._id} className="h-[100px]">
+              <ProductCarouselCard product={product} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </Container>
     </div>
   );
 };

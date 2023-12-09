@@ -3,22 +3,25 @@ import { FaMoneyBillTrendUp } from "react-icons/fa6";
 import { LiaOpencart } from "react-icons/lia";
 import { VscGraphLine } from "react-icons/vsc";
 import { BsFillCartCheckFill } from "react-icons/bs";
+import useGetSecure from "../../../hooks/apiSecure/useGetSecure";
 
 const SalesSummary = () => {
+  const { data } = useGetSecure(null, "/sales-summary");
+
   const summary = [
     {
       title: "Total Sales",
-      amount: 1440.05,
+      amount: data?.totalSales || "Loading..",
       icon: <VscGraphLine className={`text-4xl `} />,
     },
     {
       title: "Total Orders",
-      amount: 100,
+      amount: data?.totalOrders || "Loading..",
       icon: <LiaOpencart className={`text-4xl `} />,
     },
     {
       title: "Avg Order Amount",
-      amount: 140,
+      amount: data?.avgOrderAmount || "Loading..",
       icon: <BsFillCartCheckFill className={`text-4xl `} />,
     },
   ];

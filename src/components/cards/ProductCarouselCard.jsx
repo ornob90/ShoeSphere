@@ -1,9 +1,14 @@
 import React, { useState } from "react";
 import Button from "../html/Button";
+import { useNavigate } from "react-router-dom";
 
-const ProductCarouselCard = () => {
+const ProductCarouselCard = ({ product }) => {
   const img =
     "https://i.ibb.co/9NrJwGT/photo-1525966222134-fcfa99b8ae77-q-80-w-1396-auto-format-fit-crop-ixlib-rb-4-0-removebg-preview.png";
+
+  const navigate = useNavigate();
+
+  const { images, name, _id } = product;
 
   const [hover, setHover] = useState(false);
 
@@ -16,7 +21,7 @@ const ProductCarouselCard = () => {
     >
       <div
         style={{
-          backgroundImage: ` url(${img})`,
+          backgroundImage: ` url(${images[0]})`,
           backgroundSize: "cover",
           width: "80%",
         }}
@@ -25,7 +30,7 @@ const ProductCarouselCard = () => {
         }`}
       ></div>
       <div className=" h-[50px] bg-[rgb(234 234 234)] w-full  font-clashSemibold text-center">
-        Shoe Name
+        {name}
       </div>
       {/* show on hover */}
       <div
@@ -34,6 +39,7 @@ const ProductCarouselCard = () => {
         }`}
       >
         <Button
+          onClick={() => navigate(`/product/${_id}`)}
           className={` w-[80%] border border-black bg-transparent text-black ${
             hover
               ? " h-[10%] text-base "
