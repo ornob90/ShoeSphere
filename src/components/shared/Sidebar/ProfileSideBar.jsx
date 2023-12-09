@@ -11,10 +11,12 @@ import { FaMoneyBillTrendUp } from "react-icons/fa6";
 import { FaBoxes } from "react-icons/fa";
 import useUser from "../../../hooks/specific/useUser";
 import useRole from "../../../hooks/specific/useRole";
+import useAuth from "../../../hooks/auth/useAuth";
 
 const ProfileSideBar = () => {
-  const { _id, ...user } = useUser() || {};
+  const { _id, name: userName } = useUser() || {};
   const { role } = useRole() || {};
+  const { user: curUser } = useAuth();
 
   const [activeItem, setActiveItem] = useState("Account");
   const navItem = [
@@ -93,11 +95,16 @@ const ProfileSideBar = () => {
         </div>
         <div className="flex items-center gap-4 pb-6 mt-5 text-white border-b">
           <div className="w-[80px] h-[80px] rounded-full bg-white text-black flex justify-center items-center font-clashBold text-2xl">
-            JK
+            {/* JK */}
+            <img
+              src={curUser?.photoURL}
+              alt={curUser.displayName}
+              className="w-full h-full rounded-full object-cover"
+            />
           </div>
           <div>
             <p>Hi,</p>
-            <p className="font-bold">John Khan</p>
+            <p className="font-bold">{userName.toUpperCase()}</p>
           </div>
         </div>
         <ul className="flex flex-col gap-4 mt-10 ">
