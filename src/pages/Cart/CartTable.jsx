@@ -14,11 +14,15 @@ const CartTable = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
 
-  // const [cartProducts, setCartProducts] = useState([]);
-  const { data: cartProducts } = useGetSecure(
-    ["Carts", userID],
-    `/carts/${userID}`
-  );
+  const [cartProducts, setCartProducts] = useState([]);
+
+  const { data } = useGetSecure(["Carts", userID], `/carts/${userID}`);
+
+  useEffect(() => {
+    setCartProducts(data);
+  }, [data]);
+
+  console.log(cartProducts);
 
   // useEffect(() => {
   //   // console.log(userID);
@@ -36,7 +40,7 @@ const CartTable = () => {
   };
 
   const handleSelectAll = (e) => {
-    const ids = cartProducts.map(({ _id }) => _id);
+    const ids = cartProducts?.map(({ _id }) => _id);
 
     ids.forEach((id) => {
       setSelectedIds((prev) => ({ ...prev, [id]: e.target.checked }));

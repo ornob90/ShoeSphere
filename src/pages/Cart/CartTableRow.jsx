@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MdClose } from "react-icons/md";
 import QuantityBtn from "../../components/shared/SingleUseButtons/QuantityBtn";
 import toast from "react-hot-toast";
@@ -7,8 +7,12 @@ import DeleteButton from "../../components/shared/SingleUseButtons/DeleteButton"
 
 const CartTableRow = ({ cartProduct, handleSelected, selectedIds, userID }) => {
   const { product, quantity, price, _id } = cartProduct || {};
+  console.log(cartProduct);
+  const [productQuantity, setProductQuantity] = useState(null);
 
-  const [productQuantity, setProductQuantity] = useState(quantity);
+  useEffect(() => {
+    setProductQuantity(quantity);
+  }, [quantity]);
 
   const { mutateAsync: updateQuantityPrice } = usePutSecure(
     [["CartTotal", userID]],

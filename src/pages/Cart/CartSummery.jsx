@@ -25,10 +25,7 @@ const CartSummery = () => {
         <div className="flex justify-between items-center pb-2">
           <p>Subtotal</p>
           <p>
-            $
-            {cartTotal && cartTotal?.length > 0
-              ? cartTotal[0]?.totalDiscount
-              : 0}
+            ${cartTotal && cartTotal?.length > 0 ? cartTotal[0]?.totalPrice : 0}
           </p>
         </div>
         <div className="flex justify-between items-center pb-2">

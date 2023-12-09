@@ -52,7 +52,7 @@ const ProductCollection = () => {
       .then((res) => {
         setProducts(res.data);
         setInitialProducts(res.data);
-        console.log(res.data);
+        // console.log(res.data);
         return;
       });
   }, []);
