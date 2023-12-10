@@ -12,11 +12,13 @@ import { FaBoxes } from "react-icons/fa";
 import useUser from "../../../hooks/specific/useUser";
 import useRole from "../../../hooks/specific/useRole";
 import useAuth from "../../../hooks/auth/useAuth";
+import ProfileInfoSkeleton from "../../skeletons/ProfileInfoSkeleton";
+import SidebarLinkSkeleton from "../../skeletons/SidebarLinkSkeleton";
 
 const ProfileSideBar = () => {
   const { _id, name: userName } = useUser() || {};
   const { role } = useRole() || {};
-  const { user: curUser } = useAuth();
+  const { user: curUser, loading } = useAuth();
 
   const [activeItem, setActiveItem] = useState("Account");
   const navItem = [
@@ -62,7 +64,7 @@ const ProfileSideBar = () => {
       name: "Manage Users",
       to: `/profile/${_id}/admin/manage-users`,
       icon: (className) => <IoPeople className={`${className}`} />,
-      show: role === "user",
+      show: role === "admin",
     },
   ];
 
@@ -93,35 +95,44 @@ const ProfileSideBar = () => {
             className="text-2xl lg:hidden"
           />
         </div>
-        <div className="flex items-center gap-4 pb-6 mt-5 text-white border-b">
-          <div className="w-[80px] h-[80px] rounded-full bg-white text-black flex justify-center items-center font-clashBold text-2xl">
-            {/* JK */}
-            <img
-              src={curUser?.photoURL}
-              alt={curUser.displayName}
-              className="w-full h-full rounded-full object-cover"
-            />
+        {loading ? (
+          <ProfileInfoSkeleton />
+        ) : (
+          <div className="flex items-center gap-4 pb-6 mt-5 text-white border-b">
+            <div className="w-[80px] h-[80px] rounded-full bg-white text-black flex justify-center items-center font-clashBold text-2xl">
+              {/* JK */}
+              <img
+                src={curUser?.photoURL}
+                alt={curUser.displayName}
+                className="w-full h-full rounded-full object-cover"
+              />
+            </div>
+            <div>
+              <p>Hi,</p>
+              <p className="font-bold">{userName && userName.toUpperCase()}</p>
+            </div>
           </div>
-          <div>
-            <p>Hi,</p>
-            <p className="font-bold">{userName && userName.toUpperCase()}</p>
-          </div>
-        </div>
-        <ul className="flex flex-col gap-4 mt-10 ">
-          {navItem.map(({ name, icon, to, show }) => (
-            <Link key={name} to={to}>
-              <li
-                onClick={() => setActiveItem(name)}
-                className={`text-sm sm:text-base flex items-center gap-4  hover:bg-white hover:text-black duration-[.3s] py-2 pl-1 cursor-pointer ${
-                  activeItem === name ? " bg-white text-black" : "text-white"
-                } ${show ? "" : ""}`}
-              >
-                {icon("text-xl")}
-                {name}
-              </li>
-            </Link>
-          ))}
-        </ul>
+        )}
+
+        {loading ? (
+          <SidebarLinkSkeleton />
+        ) : (
+          <ul className="flex flex-col gap-4 mt-10 ">
+            {navItem.map(({ name, icon, to, show }) => (
+              <Link key={name} to={to}>
+                <li
+                  onClick={() => setActiveItem(name)}
+                  className={`text-sm sm:text-base flex items-center gap-4  hover:bg-white hover:text-black duration-[.3s] py-2 pl-1 cursor-pointer ${
+                    activeItem === name ? " bg-white text-black" : "text-white"
+                  } ${show ? "" : "hidden"}`}
+                >
+                  {icon("text-xl")}
+                  {name}
+                </li>
+              </Link>
+            ))}
+          </ul>
+        )}
       </aside>
     </div>
   );
