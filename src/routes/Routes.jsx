@@ -18,6 +18,7 @@ import OrderManage from "../pages/AdminDashboard/OrderManage/OrderManage";
 import ProductManage from "../pages/AdminDashboard/ProductManage/ProductManage";
 import AddProduct from "../pages/AdminDashboard/ProductManage/AddProduct";
 import ManageUsers from "../pages/AdminDashboard/ManageUsers/ManageUsers";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -38,7 +39,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/product/:id",
-        element: <ProductDetail />,
+        element: (
+          <PrivateRoute>
+            <ProductDetail />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/collection",
@@ -46,21 +51,37 @@ const router = createBrowserRouter([
       },
       {
         path: "/cart",
-        element: <Cart />,
+        element: (
+          <PrivateRoute>
+            <Cart />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/checkout",
-        element: <Checkout />,
+        element: (
+          <PrivateRoute>
+            <Checkout />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/favorites",
-        element: <Favorites />,
+        element: (
+          <PrivateRoute>
+            <Favorites />
+          </PrivateRoute>
+        ),
       },
     ],
   },
   {
     path: "/profile/:id",
-    element: <Profile />,
+    element: (
+      <PrivateRoute>
+        <Profile />
+      </PrivateRoute>
+    ),
     children: [
       // User Route
 
