@@ -4,8 +4,14 @@
 This is a Full stack E-Commerce website built using the MERN (MongoDB, Express.js, React.js, Node.js) stack. The platform provides a secure authentication system, efficient product exploration, shopping cart management,  a seamless checkout process with stripe payment system and ADMIN DASHBOARD.
 ## Live Link
 ```
-shoesphere-3804a.firebaseapp.com
+   shoesphere-3804a.firebaseapp.com
 ```
+## Server Side
+
+```
+   https://github.com/ornob90/shoesphere-server
+```
+
 ## Diagram
 
 ![Diagram](https://raw.githubusercontent.com/ornob90/ornob90/main/image_2023-12-10_190029651.png)
