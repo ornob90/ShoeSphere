@@ -15,11 +15,9 @@ const Products = ({
   pageCount,
   setPageCount,
   handleSearch,
+  productLoad,
 }) => {
-  const { data, isLoading: productLoad } = useGetSecure(
-    ["ProductCount"],
-    "/product-count"
-  );
+  const { data } = useGetSecure(["ProductCount"], "/product-count");
 
   // const { data: products } = useGetSecure(
   //   ["Products", page, size],

@@ -34,6 +34,7 @@ const ProductCollection = () => {
   const [size, setSize] = useState(10);
   const [pageCount, setPageCount] = useState(null);
   const [initialProducts, setInitialProducts] = useState(null);
+  const [productLoad, setProductLoad] = useState(true);
   const { data: shoeBrands, isLoading: brandLoad } = useGetSecure(
     ["Brands"],
     "/brands"
@@ -45,6 +46,7 @@ const ProductCollection = () => {
   // );
 
   useEffect(() => {
+    setProductLoad(true);
     axiosSecure
       .post(`/products?page=${page}&size=${size}`, {
         minPrice: priceRange.min,
@@ -54,10 +56,14 @@ const ProductCollection = () => {
             : priceRange.min + 1,
       })
       .then((res) => {
+        setProductLoad(false);
         setProducts(res.data);
         setInitialProducts(res.data);
         // console.log(res.data);
         return;
+      })
+      .catch((err) => {
+        setProductLoad(false);
       });
   }, []);
 
@@ -171,6 +177,7 @@ const ProductCollection = () => {
           setSize={setSize}
           pageCount={pageCount}
           setPageCount={setPageCount}
+          productLoad={productLoad}
         />
       </div>
     </Container>
