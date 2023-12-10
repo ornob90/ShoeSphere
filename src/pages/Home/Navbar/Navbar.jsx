@@ -57,8 +57,8 @@ const Navbar = ({ handleCartOpen }) => {
       slug: "/cart",
     },
     {
-      name: "Contact",
-      slug: "/login",
+      name: "Checkout",
+      slug: "/checkout",
     },
   ];
 

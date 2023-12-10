@@ -8,14 +8,16 @@ import Subscribe from "../Subscribe/Subscribe";
 import Testimonial from "../Testimonial/Testimonial";
 import ProductCollectionCarousal from "../../ProductCollection/ProductCollectionCarousal/ProductCollectionCarousal";
 import useAuth from "../../../hooks/auth/useAuth";
+import ProductCollectionSkeleton from "../../../components/skeletons/ProductCollectionSkeleton";
 
 const Home = () => {
   const { user } = useAuth();
-  console.log(user);
+  // console.log(user);
   return (
     <div>
       <Banner />
       <BrandsSection />
+
       <SectionHeader title="Discover Brands" />
       <ProductCollectionCarousal />
       <SectionHeader title="New Arrivals" />

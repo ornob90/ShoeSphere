@@ -5,6 +5,7 @@ import FilterDrawer from "./FilterDrawer/FilterDrawer";
 import Products from "./Products/Products";
 import useGetSecure from "../../hooks/apiSecure/useGetSecure";
 import useAxiosSecure from "../../hooks/axios/useAxiosSecure";
+import BrandsSkeleton from "../../components/skeletons/BrandsSkeleton";
 
 const ProductCollection = () => {
   // const shoeBrands = [
@@ -33,7 +34,10 @@ const ProductCollection = () => {
   const [size, setSize] = useState(10);
   const [pageCount, setPageCount] = useState(null);
   const [initialProducts, setInitialProducts] = useState(null);
-  const { data: shoeBrands } = useGetSecure(["Brands"], "/brands");
+  const { data: shoeBrands, isLoading: brandLoad } = useGetSecure(
+    ["Brands"],
+    "/brands"
+  );
   // console.log(shoeBrands);
   // const { data } = useGetSecure(
   //   ["Products"],
@@ -127,22 +131,28 @@ const ProductCollection = () => {
 
   return (
     <Container className="pt-[25%] sm:pt-[20%] md:pt-[15%] lg:pt-[7%] min-h-[600px]">
-      <ul className="flex w-full max-w-full gap-4 mt-5 overflow-x-scroll no-scrollbar ">
-        {shoeBrands?.map(({ _id, name: brandName, logo }) => (
-          <li
-            onClick={() => handleBrand(brandName)}
-            key={brandName}
-            className={` py-3 w-[25%] md:w-[20%] lg:w-[13%]  flex-shrink-0 text-center hover:border-black border border-gray-300  cursor-pointer duration-[.4s] text-sm flex  justify-center ${
-              brands.includes(brandName) ? " bg-black text-white" : "text-black"
-            }`}
-          >
-            {brandName}
-            {/* <div>
+      {brandLoad ? (
+        <BrandsSkeleton />
+      ) : (
+        <ul className="flex w-full max-w-full gap-4 mt-5 overflow-x-scroll no-scrollbar ">
+          {shoeBrands?.map(({ _id, name: brandName, logo }) => (
+            <li
+              onClick={() => handleBrand(brandName)}
+              key={brandName}
+              className={` py-3 w-[25%] md:w-[20%] lg:w-[13%]  flex-shrink-0 text-center hover:border-black border border-gray-300  cursor-pointer duration-[.4s] text-sm flex  justify-center ${
+                brands.includes(brandName)
+                  ? " bg-black text-white"
+                  : "text-black"
+              }`}
+            >
+              {brandName}
+              {/* <div>
               <img src={logo} alt="" className="w-[20px] " />
             </div> */}
-          </li>
-        ))}
-      </ul>
+            </li>
+          ))}
+        </ul>
+      )}
       <div className="relative flex flex-col mt-5 lg:flex-row">
         <FilterDrawer
           setGenders={setGenders}

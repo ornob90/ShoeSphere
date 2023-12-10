@@ -3,6 +3,7 @@ import Container from "../../components/shared/Containers/Container";
 import CartTable from "./CartTable";
 import CartSummery from "./CartSummery";
 import Button from "../../components/html/Button";
+import ProductCardSkeleton from "../../components/skeletons/ProductCardSkeleton";
 
 const Cart = () => {
   return (

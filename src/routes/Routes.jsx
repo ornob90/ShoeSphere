@@ -88,14 +88,14 @@ const router = createBrowserRouter([
         element: <OrderManage />,
       },
       // Upcoming...
-      // {
-      //   path: "/profile/:id/admin/product-manage",
-      //   element: <ProductManage />,
-      // },
-      // {
-      //   path: "/profile/:id/admin/add-product",
-      //   element: <AddProduct />,
-      // },
+      {
+        path: "/profile/:id/admin/product-manage",
+        element: <ProductManage />,
+      },
+      {
+        path: "/profile/:id/admin/add-product",
+        element: <AddProduct />,
+      },
       {
         path: "/profile/:id/admin/manage-users",
         element: <ManageUsers />,

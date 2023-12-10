@@ -52,12 +52,12 @@ const ProfileSideBar = () => {
       show: role === "admin",
     },
     // Upcoming...
-    // {
-    //   name: "Manage Products",
-    //   to: `/profile/${_id}/admin/product-manage`,
-    //   icon: (className) => <FaBoxes className={`${className}`} />,
-    //   show: role === "admin",
-    // },
+    {
+      name: "Manage Products",
+      to: `/profile/${_id}/admin/product-manage`,
+      icon: (className) => <FaBoxes className={`${className}`} />,
+      show: role === "admin",
+    },
     {
       name: "Manage Users",
       to: `/profile/${_id}/admin/manage-users`,
@@ -104,7 +104,7 @@ const ProfileSideBar = () => {
           </div>
           <div>
             <p>Hi,</p>
-            <p className="font-bold">{userName.toUpperCase()}</p>
+            <p className="font-bold">{userName && userName.toUpperCase()}</p>
           </div>
         </div>
         <ul className="flex flex-col gap-4 mt-10 ">

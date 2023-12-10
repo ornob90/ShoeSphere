@@ -4,6 +4,7 @@ import ProductCard from "../ProductCard/ProductCard";
 import Pagination from "../../../components/shared/Pagination";
 import useGetSecure from "../../../hooks/apiSecure/useGetSecure";
 import Search from "../../../components/shared/Search";
+import ProductCollectionSkeleton from "../../../components/skeletons/ProductCollectionSkeleton";
 
 const Products = ({
   products,
@@ -15,7 +16,10 @@ const Products = ({
   setPageCount,
   handleSearch,
 }) => {
-  const { data } = useGetSecure(["ProductCount"], "/product-count");
+  const { data, isLoading: productLoad } = useGetSecure(
+    ["ProductCount"],
+    "/product-count"
+  );
 
   // const { data: products } = useGetSecure(
   //   ["Products", page, size],
@@ -43,17 +47,21 @@ const Products = ({
         </div> */}
         <Search
           onChange={handleSearch}
-          className="hidden md:flex"
+          className="flex w-full"
           iconClass={`text-xl right-[3%] top-[25%] `}
           inputClass="py-2 pl-2"
         />
       </div>
 
-      <div className="grid grid-cols-1 mt-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mb-4 gap-x-2 gap-y-8">
-        {products?.map((product) => (
-          <ProductCard key={product._id} product={product} />
-        ))}
-      </div>
+      {productLoad ? (
+        <ProductCollectionSkeleton />
+      ) : (
+        <div className="min-h-[500px] grid grid-cols-1 mt-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mb-4 gap-x-2 gap-y-8">
+          {products?.map((product) => (
+            <ProductCard key={product._id} product={product} />
+          ))}
+        </div>
+      )}
 
       <Pagination
         setPage={setPage}
