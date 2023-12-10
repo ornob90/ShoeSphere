@@ -1,13 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import Table from "../../../components/shared/Table/Table";
 import TableHeader from "../../../components/shared/table/TableHeader";
 import TableBody from "../../../components/shared/Table/TableBody";
 import TableRow from "../../../components/shared/table/TableRow";
 import { AiFillDelete } from "react-icons/ai";
 import { AiFillEdit } from "react-icons/ai";
+import useGetSecure from "../../../hooks/apiSecure/useGetSecure";
+import { Pagination } from "swiper/modules";
 
 const ProductTable = () => {
-  const headers = ["ID", "Name", "Quantity", "Price", "Status", "Action"];
+  const [page, setPage] = useState(0);
+  const [size, setSize] = useState(10);
+  const [pageCount, setPageCount] = useState(null);
+
+  const headers = [
+    "Name",
+    "Brand",
+    "Gender",
+    "Available",
+    "SellCount",
+    "Action",
+  ];
   const orders = [
     {
       ID: "1",
@@ -45,29 +58,47 @@ const ProductTable = () => {
       Status: "In Stock",
     },
   ];
+
+  const { data: products } = useGetSecure(
+    ["Products", page, size],
+    `/products?page=${page}&size=${size}`
+  );
+
   return (
     <div className="min-h-[400px] bg-white mt-5 pt-5 overflow-x-auto">
       <Table>
         <TableHeader headers={headers} cellWidth="35%" />
         <TableBody>
-          {orders?.map((row, idx) => (
-            <>
+          {products?.map(
+            ({ _id, name, brand, gender, available, sellCount }, idx) => (
               <TableRow
                 className=" font-[300] text-gray-700 text-sm"
-                key={row.ID}
-                cells={Object.values(row).slice(0, -1)}
+                key={_id}
+                cells={[
+                  name,
+                  brand,
+                  gender,
+                  available ? "Yes" : "NO",
+                  sellCount,
+                ]}
                 cellWidth="35%"
               >
-                <th className="text-start w-[35%]">Pending</th>
                 <th className="text-start w-[35%] flex justify-left gap-4">
-                  <AiFillEdit className="text-blue-500 text-2xl" />
+                  {/* <AiFillEdit className="text-blue-500 text-2xl" /> */}
                   <AiFillDelete className="text-red-500 text-2xl" />
                 </th>
               </TableRow>
-            </>
-          ))}
+            )
+          )}
         </TableBody>
       </Table>
+      {/* <Pagination
+        setPage={setPage}
+        pageCount={pageCount}
+        page={page}
+        setSize={setSize}
+        size={size}
+      /> */}
     </div>
   );
 };
