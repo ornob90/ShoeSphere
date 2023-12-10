@@ -6,6 +6,9 @@ This is an E-Commerce website built using the MERN (MongoDB, Express.js, React.j
 ```
 shoesphere-3804a.firebaseapp.com
 ```
+## Diagram
+
+![Diagram](https://raw.githubusercontent.com/ornob90/ornob90/main/image_2023-12-10_190029651.png)
 
 ## Features
 - **Authentication:**
