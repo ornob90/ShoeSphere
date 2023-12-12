@@ -63,7 +63,7 @@ This is a Full stack E-Commerce website built using the MERN (MongoDB, Express.j
 - **Password:** Admin1200,()
 
 ## Challenges
-- Overcame challenges related to [Highlight specific challenges during development].
+- One of the most hardest challenge in this project was to implement parrarel filtering and reduce the load time of this project. I had to think a lot to figure the logic behind parrarel filtering. I try to reduce the api call to decrease the load time. 
 
 ## Technologies Used
 - MERN Stack (MongoDB, Express.js, React.js, Node.js)
