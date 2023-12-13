@@ -6,6 +6,7 @@ import Products from "./Products/Products";
 import useGetSecure from "../../hooks/apiSecure/useGetSecure";
 import useAxiosSecure from "../../hooks/axios/useAxiosSecure";
 import BrandsSkeleton from "../../components/skeletons/BrandsSkeleton";
+import useBrands from "../../hooks/specific/useBrands";
 
 const ProductCollection = () => {
   // const shoeBrands = [
@@ -35,10 +36,13 @@ const ProductCollection = () => {
   const [pageCount, setPageCount] = useState(null);
   const [initialProducts, setInitialProducts] = useState(null);
   const [productLoad, setProductLoad] = useState(true);
-  const { data: shoeBrands, isLoading: brandLoad } = useGetSecure(
-    ["Brands"],
-    "/brands"
-  );
+  // const { data: shoeBrands, isLoading: brandLoad } = useGetSecure(
+  //   ["Brands"],
+  //   "/brands"
+  // );
+
+  const { shoeBrands, isLoading: brandLoad } = useBrands();
+
   // console.log(shoeBrands);
   // const { data } = useGetSecure(
   //   ["Products"],
@@ -129,7 +133,7 @@ const ProductCollection = () => {
     axiosSecure
       .post(`/products?page=${page}&size=${size}`, filterOptions)
       .then((res) => {
-        console.log(res.data);
+        // console.log(res.data);
         setProducts(res.data);
       })
       .catch((err) => console.log(err.message));

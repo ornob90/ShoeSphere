@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ProductCollectionCarousalCard from "./ProductCollectionCarousalCard";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -7,9 +7,31 @@ import { Pagination } from "swiper/modules";
 import Container from "../../../components/shared/Containers/Container";
 import useGetSecure from "../../../hooks/apiSecure/useGetSecure";
 import SectionProductSkeleton from "../../../components/skeletons/SectionProductSkeleton";
+import useAxiosSecure from "../../../hooks/axios/useAxiosSecure";
+import useBrands from "../../../hooks/specific/useBrands";
 
 const ProductCollectionCarousal = () => {
-  const { data: shoeBrands, isLoading } = useGetSecure(["Brands"], "/brands");
+  // const { data: shoeBrands, isLoading } = useGetSecure(["Brands"], "/brands");
+
+  const { shoeBrands, isLoading } = useBrands();
+
+  // const [shoeBrands, setShoeBrands] = useState(null);
+  // const [isLoading, setIsLoading] = useState(true);
+
+  // const axiosSecure = useAxiosSecure();
+
+  // useEffect(() => {
+  //   setIsLoading(true);
+  //   axiosSecure
+  //     .get(`/brands`)
+  //     .then((res) => {
+  //       setShoeBrands(res.data);
+  //       setIsLoading(false);
+  //       console.log(shoeBrands);
+  //     })
+  //     .catch((err) => setIsLoading(false));
+  // }, []);
+
   // console.log(shoeBrands);
   return (
     <Container className="">

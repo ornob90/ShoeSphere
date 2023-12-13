@@ -9,7 +9,7 @@ const ProductCarouselCard = ({ product }) => {
   const navigate = useNavigate();
 
   const { images, name, _id } = product;
-
+  // console.log({ name, _id, images });
   const [hover, setHover] = useState(false);
 
   return (

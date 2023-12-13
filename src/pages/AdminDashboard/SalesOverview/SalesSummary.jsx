@@ -11,17 +11,17 @@ const SalesSummary = () => {
   const summary = [
     {
       title: "Total Sales",
-      amount: data?.totalSales || "Loading..",
+      amount: data?.totalSales.toFixed(2) || "Loading..",
       icon: <VscGraphLine className={`text-4xl `} />,
     },
     {
       title: "Total Orders",
-      amount: data?.totalOrders || "Loading..",
+      amount: data?.totalOrders.toFixed(2) || "Loading..",
       icon: <LiaOpencart className={`text-4xl `} />,
     },
     {
       title: "Avg Order Amount",
-      amount: data?.avgOrderAmount || "Loading..",
+      amount: data?.avgOrderAmount.toFixed(2) || "Loading..",
       icon: <BsFillCartCheckFill className={`text-4xl `} />,
     },
   ];

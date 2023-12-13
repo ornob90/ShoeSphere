@@ -12,7 +12,7 @@ import toast from "react-hot-toast";
 import Swal from "sweetalert2";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-const OrderTable = () => {
+const OrderTable = ({ orders }) => {
   const headers = [
     "OrderID",
     "Transaction ID",
@@ -22,11 +22,6 @@ const OrderTable = () => {
     "Status",
   ];
 
-  const { _id: userID } = useUser() || {};
-  const { data: orders } = useGetSecure(
-    ["MyOrders", userID],
-    `/orders/${userID}`
-  );
   const queryClient = useQueryClient();
 
   const { mutateAsync: updateStatus } = useMutation({

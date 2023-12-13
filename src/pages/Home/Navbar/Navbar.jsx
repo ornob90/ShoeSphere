@@ -84,7 +84,7 @@ const Navbar = ({ handleCartOpen }) => {
         }   z-10 `}
       >
         {/* Logo */}
-        <div className="w-max">
+        <div className="w-max flex items-center gap-3">
           <Link to="/" className="text-lg underline font-clashBold sm:text-xl">
             ShoeSphere
           </Link>

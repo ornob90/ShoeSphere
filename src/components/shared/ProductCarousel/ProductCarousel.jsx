@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ProductCarouselCard from "../../cards/ProductCarouselCard";
 import Container from "../Containers/Container";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -7,13 +7,32 @@ import "swiper/css/pagination";
 import { Pagination } from "swiper/modules";
 import useGetSecure from "../../../hooks/apiSecure/useGetSecure";
 import SectionProductSkeleton from "../../skeletons/SectionProductSkeleton";
+import useAxiosSecure from "../../../hooks/axios/useAxiosSecure";
 // import "./style.css";
 
 const ProductCarousel = () => {
-  const { data: products, isLoading } = useGetSecure(
-    ["NewArrival"],
-    `/new-arrivals?size=10`
-  );
+  // const { data: products, isLoading } = useGetSecure(
+  //   ["NewArrival"],
+  //   `/new-arrivals?size=10`
+  // );
+
+  // console.log(products);
+  const [products, setProducts] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const axiosSecure = useAxiosSecure();
+
+  useEffect(() => {
+    setIsLoading(true);
+    axiosSecure
+      .get(`/new-arrivals?size=10`)
+      .then((res) => {
+        setProducts(res.data);
+        setIsLoading(false);
+        console.log(products);
+      })
+      .catch((err) => setIsLoading(false));
+  }, []);
 
   return (
     <Container className="mb-28">

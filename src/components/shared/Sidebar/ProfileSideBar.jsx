@@ -18,6 +18,7 @@ import SidebarLinkSkeleton from "../../skeletons/SidebarLinkSkeleton";
 const ProfileSideBar = () => {
   const { _id, name: userName } = useUser() || {};
   const { role } = useRole() || {};
+  console.log(role);
   const { user: curUser, loading } = useAuth();
 
   const [activeItem, setActiveItem] = useState("Account");

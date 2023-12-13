@@ -10,12 +10,13 @@ import Pagination from "../../../components/shared/Pagination";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
 import useDeleteSecure from "../../../hooks/apiSecure/useDeleteSecure";
+import useAuth from "../../../hooks/auth/useAuth";
 
 const ProductTable = () => {
   const [page, setPage] = useState(0);
   const [size, setSize] = useState(10);
   const [pageCount, setPageCount] = useState(null);
-
+  const { user: curUser } = useAuth();
   const headers = [
     "Name",
     "Brand",
@@ -86,6 +87,10 @@ const ProductTable = () => {
   ]);
 
   const handleDeleteSingleProduct = async (productID) => {
+    if (curUser?.email === "demoadmin@gmail.com") {
+      return toast.error("Demo admin can't delete products");
+    }
+
     try {
       const result = await Swal.fire({
         title: "Are you sure?",

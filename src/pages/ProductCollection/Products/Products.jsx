@@ -5,6 +5,7 @@ import Pagination from "../../../components/shared/Pagination";
 import useGetSecure from "../../../hooks/apiSecure/useGetSecure";
 import Search from "../../../components/shared/Search";
 import ProductCollectionSkeleton from "../../../components/skeletons/ProductCollectionSkeleton";
+import useAxiosSecure from "../../../hooks/axios/useAxiosSecure";
 
 const Products = ({
   products,
@@ -17,7 +18,12 @@ const Products = ({
   handleSearch,
   productLoad,
 }) => {
-  const { data } = useGetSecure(["ProductCount"], "/product-count");
+  // const { data } = useGetSecure(["ProductCount"], "/product-count");
+  const [data, setData] = useState(null);
+  const axiosSecure = useAxiosSecure();
+  useEffect(() => {
+    axiosSecure.get("/product-count").then((res) => setData(res.data));
+  }, []);
 
   // const { data: products } = useGetSecure(
   //   ["Products", page, size],
@@ -27,7 +33,8 @@ const Products = ({
   // console.log(products);
 
   useEffect(() => {
-    setPageCount(Math.ceil(data?.productCount) / size);
+    console.log(data?.productCount);
+    setPageCount(Math.ceil(data?.productCount / size));
   }, [data]);
 
   return (

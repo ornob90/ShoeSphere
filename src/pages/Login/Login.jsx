@@ -137,14 +137,14 @@ const Login = () => {
           </Button>
           <div className="flex justify-between gap-4">
             <Button
-              onClick={() => handleDemo("demo@gmail.com", "Demo1200,()")}
+              onClick={() => handleDemo("demouser@gmail.com", "Ornob1200,()")}
               type="button"
               className="flex-1 bg-green-500 py-2 mt-3 text-sm text-white md:text-base"
             >
               Demo User
             </Button>
             <Button
-              onClick={() => handleDemo("admin@gmail.com", "Admin1200,()")}
+              onClick={() => handleDemo("demoadmin@gmail.com", "Ornob1200,()")}
               type="button"
               className="flex-1 bg-red-500 py-2 mt-3 text-sm text-white md:text-base"
             >

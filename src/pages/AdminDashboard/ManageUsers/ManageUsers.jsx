@@ -12,13 +12,19 @@ import useDeleteSecure from "../../../hooks/apiSecure/useDeleteSecure";
 import toast from "react-hot-toast";
 import { deleteUser } from "firebase/auth";
 import Swal from "sweetalert2";
+import useAuth from "../../../hooks/auth/useAuth";
 
 const ManageUsers = () => {
   const headers = ["Name", "Email", "Role", "Action"];
 
   const { data: users } = useGetSecure(["Users"], `/users`);
+  const { user: curUser } = useAuth();
   const { mutateAsync: removeUser } = useDeleteSecure([["Users"]]);
   const handleDeleteSingleUser = async (userID) => {
+    if (curUser?.email === "demoadmin@gmail.com") {
+      return toast.error("Demo admin can't delete users!!");
+    }
+
     try {
       const result = await Swal.fire({
         title: "Are you sure?",
