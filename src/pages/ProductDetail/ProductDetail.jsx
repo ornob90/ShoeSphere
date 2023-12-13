@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Container from "../../components/shared/Containers/Container";
 
 import DetailCarousal from "./DetailCarousal";
@@ -15,6 +15,11 @@ import "swiper/css/pagination";
 
 import ProductCarouselCard from "../../components/cards/ProductCarouselCard";
 import { Pagination } from "swiper/modules";
+import toast from "react-hot-toast";
+import useAuth from "../../hooks/auth/useAuth";
+import usePostSecure from "../../hooks/apiSecure/usePostSecure";
+import useUser from "../../hooks/specific/useUser";
+import usePutSecure from "../../hooks/apiSecure/usePutSecure";
 const ProductDetail = () => {
   // const images = [
   //   "https://images.unsplash.com/photo-1608231387042-66d1773070a5?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -25,11 +30,13 @@ const ProductDetail = () => {
   // ];
 
   const { id } = useParams();
-
+  const { user: curUser } = useAuth();
   const { data: product } = useGetSecure(
     ["ProductDetail", id],
     `/product/${id}`
   );
+
+  const [productQuantity, setProductQuantity] = useState(0);
 
   const {
     _id,
@@ -49,14 +56,61 @@ const ProductDetail = () => {
     addedDate,
   } = product || {};
 
-  console.log(product);
+  const { _id: user } = useUser() || {};
+
+  const { mutateAsync: addToFavorite } = usePostSecure(null, `/favorite`);
+
+  const { mutateAsync: addToCart } = usePostSecure([["Carts", user]], "/cart");
+
+  const handleBookmarked = async () => {
+    const favProduct = {
+      product: _id,
+      userName: curUser?.displayName,
+      userEmail: curUser?.email,
+    };
+
+    try {
+      const response = await addToFavorite(favProduct);
+      toast.success("Product Bookmarked!!");
+    } catch (error) {
+      console.error(error);
+      toast.error(error.message);
+    }
+  };
+
+  const handleAddToCart = async () => {
+    try {
+      const cartProduct = {
+        user,
+        product: _id,
+        price,
+        quantity: productQuantity,
+      };
+
+      await toast.promise(addToCart(cartProduct), {
+        pending: "Adding to cart...",
+        success: "Added to cart!",
+        error: "Failed to add to cart",
+      });
+    } catch (error) {
+      console.error(error);
+      toast.error(error.message);
+    }
+  };
 
   const { data: suggestions } = useGetSecure(
     ["SuggestionProducts", brand],
     `/suggested-product?brand=${brand}`
   );
 
-  console.log(brand);
+  // console.log(brand);
+
+  const handleQuantity = (action) => {
+    let newQuantity =
+      action === "+" ? productQuantity + 1 : productQuantity - 1;
+    newQuantity = newQuantity < 0 ? 0 : newQuantity;
+    setProductQuantity(newQuantity);
+  };
 
   return (
     <div className="min-h-screen font-poppins">
@@ -97,10 +151,32 @@ const ProductDetail = () => {
               </div>
             ))}
           </div>
-          <QuantityBtn />
+          {/* Quantity  */}
+          <div className="flex items-center gap-4 mt-3">
+            <p
+              onClick={() => handleQuantity("-")}
+              className="w-[20px] h-[20px] lg:w-[35px] lg:h-[35px] rounded-full bg-gray-200 flex justify-center items-center text-xl cursor-pointer active:scale-95 duration-300"
+            >
+              -
+            </p>
+            <p className="px-5 py-1 font-semibold border ">{productQuantity}</p>
+            <p
+              onClick={() => handleQuantity("+")}
+              className=" w-[20px] h-[20px] lg:w-[35px] lg:h-[35px] rounded-full bg-gray-200 flex justify-center items-center text-xl cursor-pointer active:scale-95 duration-300"
+            >
+              +
+            </p>
+          </div>
+
+          {/* Wishlist */}
           <div className="flex flex-col gap-2 mt-10">
-            <Button className="py-2 text-white">Add To Cart</Button>
-            <Button className="py-2 text-black bg-white border border-black">
+            <Button onClick={handleAddToCart} className="py-2 text-white">
+              Add To Cart
+            </Button>
+            <Button
+              onClick={handleBookmarked}
+              className="py-2 text-black bg-white border border-black"
+            >
               Save To Wishlist
             </Button>
           </div>
