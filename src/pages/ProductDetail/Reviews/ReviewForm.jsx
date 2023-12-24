@@ -2,13 +2,14 @@ import React from "react";
 import Input from "../../../components/html/Input";
 import Button from "../../../components/html/Button";
 import usePostSecure from "../../../hooks/apiSecure/usePostSecure";
-import useUser from "../../../hooks/specific/useUser";
+
 import toast from "react-hot-toast";
 
-const ReviewForm = ({ productId }) => {
-  const { mutateAsync: addReview } = usePostSecure(null, "/review");
-
-  const { _id: userId } = useUser();
+const ReviewForm = ({ productId, userId }) => {
+  const { mutateAsync: addReview } = usePostSecure(
+    [["Reviews", userId, productId]],
+    "/review"
+  );
 
   const handleAddReview = async (e) => {
     e.preventDefault();

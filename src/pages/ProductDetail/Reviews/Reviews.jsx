@@ -2,15 +2,24 @@ import React from "react";
 import ReviewForm from "./ReviewForm";
 import Container from "../../../components/shared/Containers/Container";
 import Review from "./Review";
+import useGetSecure from "../../../hooks/apiSecure/useGetSecure";
+import useUser from "../../../hooks/specific/useUser";
 
 const Reviews = ({ productId }) => {
+  const { _id: userId } = useUser() || {};
+
+  const { data: reviews } = useGetSecure(
+    ["Reviews", userId, productId],
+    `/reviews?user=${userId}&product=${productId}`
+  );
+
   return (
     <Container className="mt-16">
-      <ReviewForm productId={productId} />
+      <ReviewForm productId={productId} userId={userId} />
 
       <ul className="mt-20 flex flex-col gap-9 h-[300px] overflow-y-auto no-scrollbar border-b border-b-gray-300">
-        {[1, 2, 3, 4, 5, 6, 7, 8].map((value) => (
-          <Review key={value} />
+        {reviews?.map(({ _id, comment }) => (
+          <Review key={_id} comment={comment} />
         ))}
       </ul>
     </Container>
