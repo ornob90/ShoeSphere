@@ -1,11 +1,37 @@
 import React from "react";
 import Input from "../../../components/html/Input";
 import Button from "../../../components/html/Button";
+import usePostSecure from "../../../hooks/apiSecure/usePostSecure";
+import useUser from "../../../hooks/specific/useUser";
+import toast from "react-hot-toast";
 
-const ReviewForm = () => {
+const ReviewForm = ({ productId }) => {
+  const { mutateAsync: addReview } = usePostSecure(null, "/review");
+
+  const { _id: userId } = useUser();
+
+  const handleAddReview = async (e) => {
+    e.preventDefault();
+
+    const review = {
+      comment: e.target.comment.value,
+      product: productId,
+      user: userId,
+    };
+
+    try {
+      const response = await addReview(review);
+      toast.success("Review Added!");
+      e.target.comment.value = "";
+    } catch (error) {
+      toast.error("Couldn't add review");
+    }
+  };
+
   return (
-    <form className="flex gap-2 items-center">
+    <form onSubmit={handleAddReview} className="flex gap-2 items-center">
       <Input
+        name="comment"
         placeHolder="Drop a review"
         className="bg-transparent border-b border-b-gray-600  md:w-[400px]"
       />

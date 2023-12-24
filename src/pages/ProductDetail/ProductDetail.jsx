@@ -183,7 +183,7 @@ const ProductDetail = () => {
           </div>
         </div>
       </Container>
-      <Reviews />
+      <Reviews productId={_id} />
 
       <SectionHeader title="You may like" />
       {/* Similar Products */}
