@@ -24,7 +24,7 @@ const CartTableRow = ({ cartProduct, handleSelected, selectedIds, userID }) => {
     if (action === "+") {
       newQuantity = productQuantity + 1;
     } else {
-      newQuantity = productQuantity - 1;
+      newQuantity = productQuantity - 1 < 0 ? 0 : productQuantity - 1;
     }
 
     setProductQuantity(newQuantity);

@@ -20,6 +20,7 @@ import useAuth from "../../hooks/auth/useAuth";
 import usePostSecure from "../../hooks/apiSecure/usePostSecure";
 import useUser from "../../hooks/specific/useUser";
 import usePutSecure from "../../hooks/apiSecure/usePutSecure";
+import Reviews from "./Reviews/Reviews";
 const ProductDetail = () => {
   // const images = [
   //   "https://images.unsplash.com/photo-1608231387042-66d1773070a5?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -182,6 +183,7 @@ const ProductDetail = () => {
           </div>
         </div>
       </Container>
+      <Reviews />
 
       <SectionHeader title="You may like" />
       {/* Similar Products */}
