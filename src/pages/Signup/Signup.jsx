@@ -87,7 +87,7 @@ const Signup = () => {
           displayName: name,
           photoURL: photo,
         });
-        addUser({ email, name })
+        addUser({ email, name, photo })
           .then((res) => {
             console.log(res.data);
             navigate("/");
