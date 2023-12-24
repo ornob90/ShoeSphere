@@ -7,35 +7,34 @@ const Footer = () => {
   //   const { isDark } = useTheme();
   const isDark = false;
   return (
-    <div className="dark:bg-dark-mode ">
+    <div className="bg-[#171819] text-white">
       <footer
         className={`footer pt-24 p-10  text-base-content w-full max-w-[1440px] mx-auto  ${
           pathname === "/login" || pathname === "/signup" ? "hidden" : ""
         }  dark:text-dark-text`}
       >
-        <aside className="">
-          <NavLink className="text-lg md:text-2xl">LibraryCatalog</NavLink>
+        <aside className="text-white">
+          <NavLink className="text-lg md:text-2xl">Shoe Sphere</NavLink>
           <p>
             ACME Industries Ltd.
             <br />
             Providing reliable service since 1992
           </p>
         </aside>
-        <nav>
+        <nav className=" text-white">
           <header className="footer-title">Services</header>
-          <a className="link link-hover">Rentals</a>
-          <a className="link link-hover">Repairs</a>
-          <a className="link link-hover">Inspections</a>
-          <a className="link link-hover">Maintenance</a>
+          <a className="link link-hover">Product</a>
+          <a className="link link-hover">Reviews</a>
+          <a className="link link-hover">Orders</a>
         </nav>
-        <nav>
+        <nav className="text-white">
           <header className="footer-title">Company</header>
           <a className="link link-hover">About us</a>
           <a className="link link-hover">Contact</a>
           <a className="link link-hover">Jobs</a>
           <a className="link link-hover">Press kit</a>
         </nav>
-        <nav>
+        <nav className="text-white">
           <header className="footer-title">Legal</header>
           <a className="link link-hover">Terms of use</a>
           <a className="link link-hover">Privacy policy</a>

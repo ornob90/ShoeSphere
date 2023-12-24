@@ -11,7 +11,6 @@ import useAuth from "../../../hooks/auth/useAuth";
 import ProductCollectionSkeleton from "../../../components/skeletons/ProductCollectionSkeleton";
 
 const Home = () => {
-  const { user } = useAuth();
   // console.log(user);
   return (
     <div>
