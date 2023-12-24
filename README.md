@@ -14,7 +14,7 @@ This is a Full stack E-Commerce website built using the MERN (MongoDB, Express.j
 
 ## Diagram
 
-![Diagram](https://raw.githubusercontent.com/ornob90/ornob90/main/image_2023-12-10_190029651.png)
+![Diagram](https://raw.githubusercontent.com/ornob90/ornob90/main/Capture.PNG)
 
 ## Features
 - **Authentication:**
@@ -55,6 +55,12 @@ This is a Full stack E-Commerce website built using the MERN (MongoDB, Express.j
     - Mark orders as delivered.
     - View a sales summary.
 
+- **Review Option**
+  - **Add Review**
+     - User can drop a review under any product details
+  - **See reviews**
+     - User can see all the reviews of a particular product
+   
 - **Responsive Design:**
   - Enjoy a seamless experience across various devices.
 
