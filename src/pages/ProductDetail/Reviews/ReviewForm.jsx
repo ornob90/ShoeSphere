@@ -7,7 +7,7 @@ import toast from "react-hot-toast";
 
 const ReviewForm = ({ productId, userId }) => {
   const { mutateAsync: addReview } = usePostSecure(
-    [["Reviews", userId, productId]],
+    [["Reviews", productId]],
     "/review"
   );
 

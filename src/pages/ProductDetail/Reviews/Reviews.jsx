@@ -6,13 +6,13 @@ import useGetSecure from "../../../hooks/apiSecure/useGetSecure";
 import useUser from "../../../hooks/specific/useUser";
 
 const Reviews = ({ productId }) => {
-  const { _id: userId } = useUser() || {};
-
   const { data: reviews } = useGetSecure(
-    ["Reviews", userId, productId],
-    `/reviews?user=${userId}&product=${productId}`
+    ["Reviews", productId],
+    `/reviews?product=${productId}`
   );
-  console.log(reviews);
+
+  const { _id: userId } = useUser();
+
   return (
     <Container className="mt-16">
       <ReviewForm productId={productId} userId={userId} />
